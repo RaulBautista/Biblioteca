@@ -1,0 +1,44 @@
+.loading-bar {
+	padding: 5px;
+	display: block;
+	text-align: center;
+	box-shadow: inset 0px -45px 30px -40px rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+	margin: 0 auto;
+	margin-top: 100px;
+	font-family: "museo-sans", sans-serif;
+	border: 1px solid #ddd;
+	font-weight: bold;
+	cursor: pointer;
+	width: 250px;
+}
+.loading-bar:hover {
+	color: #20ACB8;
+	box-shadow: inset 0px 45px 30px -40px rgba(0, 0, 0, 0.05);
+}
+
+#content {
+	width: 800px;
+	margin: 0px auto;
+}
+
+#travel {
+	padding: 10px;
+	background: rgba(0,0,0,0.6);
+	border-bottom: 2px solid rgba(0,0,0,0.2);
+	font-variant: normal;
+	text-decoration: none;
+}
+
+
+@media screen and (min-width : 320px) and (max-width: 480px) {
+.loading-bar {
+	display: inline-block;
+	margin-left: 20px;
+	width: 250px;
+}
+#content {
+	margin: 0;
+	width: 150px;
+}
+}
