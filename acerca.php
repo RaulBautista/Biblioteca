@@ -26,7 +26,7 @@
 		<article>
 			<br>
 			<h1>Reglamento de la Biblioteca</h1>
-			<h2>Proximamente!</h2>
+			<h2>Proximamente...</h2>
 		</article>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
