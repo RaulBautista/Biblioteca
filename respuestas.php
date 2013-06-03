@@ -26,8 +26,17 @@
 			$pregunta = $row['pregunta'];
 			$mensaje = nl2br(htmlspecialchars($row['mensaje']));
 			$autor = $row['autor'];
-			echo "<p id='bienvenido'>".$autor." :  <strong>".$pregunta."</strong></p><br>
-			<p id='problema'>".$mensaje."</p><br>";
+
+			printf("
+			<article id='respuestas'>
+				<h1>%s</h1>
+				<p>Posteado por: %s || %s</p><br>
+				<p id='problema'>%s</p><br>
+			</article>						
+				", 
+		$row["pregunta"], $row["autor"],$row["fecha"], nl2br(htmlspecialchars($row["mensaje"])));
+		
+
 			$nombre = $_SESSION['user'];
 			?>
 			<?php
@@ -44,13 +53,14 @@
 			$num_respuestas = mysql_num_rows($consulta);
 
 		while ($row = mysql_fetch_array($consulta)) {
-		printf("
+		printf("<article id='mensaje2'>
 				<div id='autor'>
-					<p>%s respondio: | %s</p>
+					<p>%s || %s</p>
 				</div>
 				<div id='mensaje'>
 					<p>%s</p>
-				</div><br>
+				</div>
+				</article><br>
 				",   
 				$row['autor'],$row["fecha"] , nl2br(htmlspecialchars($row["respuesta"])));
 		}

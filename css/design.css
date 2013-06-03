@@ -174,11 +174,9 @@ footer img{
 
 }
 #autor{
-	background: white;
 	color: #0066FF;
-	margin: 0 auto;
+	margin: 2px auto;
 	max-width: 710px;
-	text-align: center;
 }
 #bienvenido{
 	font-size: 16px;
@@ -330,10 +328,16 @@ form #boton{
    font-weight:bold;
 }
 #mensaje{
+	margin-top: 10px;
+}
+#mensaje2{
 	background: white;
-	padding: 5px;
+	border: 1px solid lightgray;
+	border-radius: 7px;
 	margin: 0 auto;
+	padding: 5px;
 	max-width: 700px;
+
 }
 #nuevo {
   	margin: 0 auto;
@@ -360,16 +364,21 @@ form #boton{
 }
 #problema{
 	background: #F8F8F8;
-	border: solid #C8C8C8 1px;
-	border-radius: 5px;
+	border: 2px solid #C8C8C8;
+	border-radius: 4px;
 	box-shadow: 1px 5px 10px #888888;
 	margin: 0 auto;
-	padding: 10px;
+	padding: 11px;
 	max-width: 800px;
 }
 #respuesta{
 	resize:none;
 	width: 700px;
+}
+#respuestas{
+	padding: 5px;
+	margin: 0 auto;
+	max-width: 700px;
 }
 #tabla{
 	margin-top: 100px;
