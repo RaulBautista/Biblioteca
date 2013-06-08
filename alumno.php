@@ -32,9 +32,9 @@
 		include "includes/menualumno.php";
 		echo "<p id='bienvenido'>Bienvenido <strong>$_SESSION[user]</strong> </p><br>";
 		require_once "includes/conexion.php";
-		echo gettype($link);
-		echo is_resource($link);
-		echo get_resource_type($link);
+		//echo gettype($link);
+		//echo is_resource($link);
+		//echo get_resource_type($link);
 		$result = mysql_query("SELECT * FROM Libros ORDER BY id");
 		?>
 		<table id="datatables" class="display">

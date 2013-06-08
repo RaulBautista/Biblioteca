@@ -356,8 +356,11 @@ form #boton{
 #preguntas{
 	color: #0033FF;
 	background: #F8F8F8;
+	border: 1px solid lightgray;
+	border-radius: 5px;
 	margin: 0 auto;
 	max-width: 700px;
+	padding: 5px;
 }
 #preguntas a{
 	color: #0033FF;
