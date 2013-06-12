@@ -3,7 +3,9 @@
       nocontrol = $( "#nocontrol" ),
       email = $( "#email" ),
       password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( nocontrol ).add( email ).add( password ),
+      carrera = $( "#carrera" ),
+      semestre = $( "#semestre" ),
+      allFields = $( [] ).add( name ).add( nocontrol ).add( email ).add( password ).add( carrera ).add( semestre ),
       tips = $( ".validateTips" );
  
     function updateTips( t ) {
@@ -18,8 +20,8 @@
     function checkLength( o, n, min, max ) {
       if ( o.val().length > max || o.val().length < min ) {
         o.addClass( "ui-state-error" );
-        updateTips( "Ingresa tu " + n + " entre " +
-          min + " y " + max + " caracteres." );
+        updateTips( "Ingresa " + n + " entre " +
+          min + " y " + max + " caracteres" );
         return false;
       } else {
         return true;
@@ -38,7 +40,7 @@
  
     $( "#dialog-form" ).dialog({
       autoOpen: false,
-      height: 400,
+      height: 500,
       width: 300,
       modal: true,
       resizable: false,
@@ -46,26 +48,33 @@
         "Registrarme": function() {
           var bValid = true;
           allFields.removeClass( "ui-state-error" );
+
  
-          bValid = bValid && checkLength( name, "nombre", 3, 50 );
-          bValid = bValid && checkLength( nocontrol, "numero de control", 1, 9 );
-          bValid = bValid && checkLength( email, "email", 6, 80 );
+          bValid = bValid && checkLength( name, "nombre", 10, 50 );
+          bValid = bValid && checkLength( nocontrol, "numero de control", 9, 9 );
+          bValid = bValid && checkLength( email, "email", 6, 50 );
           bValid = bValid && checkLength( password, "password", 5, 16 );
+          bValid = bValid && checkLength( semestre, "semestre", 1, 2 );
  
           bValid = bValid && checkRegexp( name, /^[a-z]([0-9a-z\s\d_])+$/i, "Nombre de usuario may consist of a-z, 0-9, underscores, begin with a letter." );
           bValid = bValid && checkRegexp( nocontrol, /^([0-9_])+$/, "Numero de control de 9 numeros" );
           // From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
           bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "ej. alguien@gmail.com" );
           bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Solo se: a-z 0-9" );
+          bValid = bValid && checkRegexp( semestre, /^([0-9_])+$/, "Ingrese el numero de tu semestre" );
+
  
           if ( bValid ) {
-            $.post("proceso.php",$('#form').serialize(),function(res){
+            $.post("includes/registro.php",$('#form').serialize(),function(res){
                 //$( this ).dialog( "close" );
-                if(res == 1){
+                if(res == "exito"){
                     //$('#exito').delay(300).fadeIn('slow');      // Si hemos tenido éxito, hacemos aparecer el div 'exito' con un efecto fadeIn lento tras un delay de 0,5 segundos.
-                    $('div.exito').html('Usuario registrado con exito').delay(300).fadeIn('slow');
-                } else {
-                    $('div.exito').html('Ocurrio un error en su registro. Intentalo mas tarde').delay(300).fadeIn('slow');   // Si no, lo mismo, pero haremos aparecer el div 'fracaso'
+                    $('div.exito').html('Usuario registrado con exito. Inicie sesion').delay(300).fadeIn('slow');
+                }else if(res == "existe"){
+                  $('div.exito').html('El numero de control ingresado ya esta registrado').delay(300).fadeIn('slow');
+                }
+                 else if (res == "error"){
+                  $('div.exito').html('Ocurrio un error en su registro. Intentalo mas tarde').delay(300).fadeIn('slow');   // Si no, lo mismo, pero haremos aparecer el div 'fracaso'
                 }
                 });
             $( this ).dialog( "close" );

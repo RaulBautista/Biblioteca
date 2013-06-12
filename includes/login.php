@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es-ES">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,22 +11,23 @@
 		<header>
 			<img src="../img/logos.png" alt="tec">
 			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("menu.php"); ?>
 		</header>
 <?php
-	error_reporting(E_ALL & ~E_NOTICE); 
+	//error_reporting(E_ALL & ~E_NOTICE); 
 	session_start();
-	require_once('conexion.php');
-	echo gettype($link);
 	$tipo = strip_tags($_POST['tipo']);
 	$numcontrol = strip_tags($_POST['numcontrol']);
-	$password = strip_tags(sha1($_POST['pass']));	
+	$password = sha1($_POST['pass']);	
 
-	if ($tipo == 1) {
-		$query = @mysql_query('SELECT * FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"');
+	if($tipo == '1') {
+	require_once('conexion.php');
+		$query = @mysql_query('SELECT * FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
 		if (!$existe = @mysql_fetch_object($query)) {
-			echo "<p align='center'> No esta registrado o sus datos son incorrectos. Compruebe sus datos </p> 
-			<a href='../colecciones.php' class='boton'> Intente nuevamente! </a>
+			echo "<br><p align='center'> No esta registrado o sus datos son incorrectos. Compruebe sus datos </p> 
+			<a href='../colecciones.php' class='boton'> Intente nuevamente </a>
+			<footer>
+				<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
+			</footer>
 			";
 				exit();
 		}else{
@@ -38,14 +39,16 @@
 			//echo '<script> window.location="../alumno.php"</script>';
 			header ("Location: ../alumno.php");
 		}
-	}	
-	if ($tipo==2) {
-		$query = @mysql_query('SELECT * FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"');
-		if(!$existe = @mysql_fetch_object($query)) {
-			echo "<p align='center'> No esta registrado o sus datos son incorrectos. </p> 
-			<a href='../colecciones.php' class='boton'> Intente nuevamente! </a>
+	}
+
+	elseif($tipo == '2') {
+		require_once('conexion.php');
+		$query2 = @mysql_query('SELECT * FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
+		if(!$encontrado = @mysql_fetch_object($query2)) {
+			echo "<p align='center'> No es un admin. </p> 
+			<a href='../colecciones.php' class='boton'> Intente nuevamente </a>
 			";
-				exit();
+			exit();
 		}else{
 			$_SESSION['logged'] = '2';
 			//echo '<script> window.location="../administrador.php"</script>';

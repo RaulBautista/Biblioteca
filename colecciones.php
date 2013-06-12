@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="es-ES">
 <head>
 	<meta charset="UTF-8">
@@ -6,29 +6,10 @@
 	<title>Colecciones</title>
 	<link rel="stylesheet" href="css/design.css">
 	<link rel="stylesheet" type="text/css" href="css/style4.css" />
-	<script type="text/javascript" src="js/new/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="js/new/slide.js"></script>
-	<script language="javascript" type="text/javascript" src="js/new/slidecoleccion.js"></script>
-  	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-
-	<script type="text/javascript">
- 		$(document).ready( function(){	
-		// buttons for next and previous item						 
-		var buttons = { previous:$('#jslidernews1 .button-previous') ,
-						next:$('#jslidernews1 .button-next') };
-		 $obj = $('#jslidernews1').lofJSidernews( { interval : 4000,
-											 	easing			: 'easeInOutQuad',
-												duration		: 1200,
-												auto		 	: true,
-												maxItemDisplay  : 3,
-												startItem		:1,
-												navPosition     : 'horizontal', // horizontal
-												navigatorHeight : null,
-												navigatorWidth  : null,
-												mainWidth:980,
-												buttons:buttons} );		
-	});
-</script>
+	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
+	<script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
+  	<script type="text/javascript" src="js/new/formularioJquery.js"></script>
+  	<script type="text/javascript" src="js/new/jquery-ui-1.10.3.custom.min.js"></script>
 </head>
 <body>
 	<section class="contenedor">
@@ -37,7 +18,7 @@
 			<h1>Instituto Tecnologico De Iztapalapa II</h1>
 			<?php include("includes/menu.php") ?>		
 		</header>
-		<section id="libros">
+
 			<?php
 			error_reporting(E_ALL & ~E_NOTICE);  
 			session_start();
@@ -49,136 +30,60 @@
 			?>
 			<br>
 			<?php }else{ ?>
-			<section class="acceso">
-				<div id="botones">
-					<a href="#" id="desocultari">Inicia Sesion</a> o 
-					<a href="#" id="desocultarr">Registrate</a>
+
+			<div id="paginaColeccion">
+			<p>
+				<div class="cont">
+					<h1>Accede a la BD de la Biblioteca</h1><br>
+					<img src="img/logo.png" alt="tec">
 				</div>
-				<form action="includes/login.php" method="POST" id="formulario1">
-					<select name="tipo">
-						   <option value="1">Alumno</option>
-						   <option value="2">Administrador</option>
- 					</select><br>
-					<input type="text" name="numcontrol" placeholder="Numero de Control" required />
-					<input type="password" name="pass" placeholder="Contraseña" required /><br>
+			</p><br>
+			<p>
+				<div class="cont">
+				<h1>Iniciar sesión</h1><br>
+				<form action="includes/login.php" method="POST" id="signupform">
+        			<select name="tipo" id="tipo">
+               		 	<option value="1">Usuario</option>
+               			<option value="2">Administrador</option>
+        			</select><br>
+					<label>No. control:</label>
+					<input type="text" name="numcontrol" placeholder="Numero de Control" title="No. de control de 9 numeros" required /><br> <!--autofocus -->
+					<label>Password:</label>
+					<input type="password" name="pass" placeholder="Contraseña" title="ingresa tu contraseña" required /><br>
 					<input type="submit" id="boton" value="Entrar" />
-				</form>
-				<form action="includes/registro.php" method="POST" id="formulario2">
-					<input type="text" name="numcontrol" placeholder="Ingrese Numero de Control" required />
-					<input type="text" name="nombre" placeholder="Ingrese su Nombre Completo" required />
-					<input type="password" name="pass" placeholder="Ingrese Una Contraseña" required />
-					<input type="email" name="correo" placeholder="Ingrese Su E-mail" required /><br>
-					<input type="submit" id="boton" value="Registarme" name="registro"/>
-				</form>
-			</section><br><br>
-<div id="jslidernews1" class="lof-slidecontent" style="max-width:920px; height:340px;">
-	<div class="preload"><div></div></div>
-    	<div  class="button-previous"></div>
-            <div  class="button-next"></div>
-            	<div class="main-slider-content" style="width:900px; height:340px;">
-                	<ul class="sliders-wrap-inner">
-                    	<li>
-                          	<img src="img/thumbl_980x340.png" title="Newsflash 2" max-width="900px">           
-                          	<div class="slider-description">
-                            	<div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ Bienvenido! /</a> <i> — Diciembre 2012</i></div>
-                            	<h4>Instituto Tecnologico de Iztapalapa II</h4>
-                            	<p>En esta pagina puedes encontrar algun libro de tu interes.
-                            		<a class="readmore" href="Busqueda.php"> Buscar </a>
-                            	</p>
-                			</div>
-                    	</li> 
-	                   <li>
-	                      <img src="img/feliz navidad.jpg" title="Feliz Navidad" >           
-	                         <div class="slider-description">
-	                           <div class="slider-meta"><a target="_parent" title="Feliz Navidad" href="#Category-2">/ Felices Fiestas /</a> 	<i> — Diciembre 2012</i></div>
-	                            <h4>El Instituto Tecnologico de Iztapalapa II</h4>
-	                            <p>Les desea Felices fiestas decembrinas!
-	                            <a class="readmore" href="http://www.itiztapalapa2.edu.mx/"> Pagina Oficial </a>
-	                            </p>
-	                         </div>
-	                    </li> 
-	                   <li>
-	                      <img src="img/thumbl_980x340_003.png" title="Newsflash 3" >            
-	                        <div class="slider-description">
-	                          <div class="slider-meta"><a target="_parent" title="Newsflash 3" href="#Category-3">/ Newsflash 3 /</a> 	<i> — Monday, February 15, 2010 12:42</i></div>
-	                            <h4>Content of Newsflash 3</h4>
-	                            <p>With a library of thousands of free Extensions, you can add what you need as your site grows. Don't...
-	                            <a class="readmore" href="#">Read more </a>
-	                            </p>
-	                         </div>
-	                    </li> 
-	                    <li>
-	                      <img src="img/thumbl_980x340_004.png" title="Newsflash 5" >            
-	                        <div class="slider-description">
-	                          <div class="slider-meta"><a target="_parent" title="Newsflash 4" href="#Category-4">/ Newsflash 4 /</a>	<i> — Monday, February 15, 2010 12:42</i></div>
-	                            <h4>Content of Newsflash 4</h4>
-	                            <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
-	                            <a class="readmore" href="#">Read more </a>
-	                            </p>
-	                         </div>
-	                    </li> 
-	                    <li>
-	                      <img src="img/thumbl_980x340_005.png" title="Newsflash 5" >            
-	                        <div class="slider-description">
-	                           <div class="slider-meta"><a target="_parent" title="Newsflash 5" href="#">/ Newsflash 5 /</a>	<i> — Monday, February 15, 2010 12:42</i></div>
-	                           <h4>Content of Newsflash 5</h4>
-	                            <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
-	                            <a class="readmore" href="#">Read more </a>
-	                            </p>
-	                         </div>
-	                    </li> 
-	                    <li>
-	            
-	                      <img src="img/thumbl_980x340_006.png" title="Newsflash 5" >            
-	                        <div class="slider-description">
-	                          <div class="slider-meta"><a target="_parent" title="Newsflash 6" href="#">/ Newsflash 6 /</a>	<i> — Monday, February 15, 2010 12:42</i></div>
-	                            <h4>Content of Newsflash 6</h4>
-	                            <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
-	                            <a class="readmore" href="#">Read more </a>
-	                            </p>
-	                         </div>
-	                    </li> 
-	                     <li>
-	                      <img src="img/thumbl_980x340_007.png" title="Newsflash 5" >            
-	                        <div class="slider-description">
-	                          <div class="slider-meta"><a target="_parent" title="Newsflash 7" href="#">/ Newsflash 7 /</a>	<i> — Monday, February 15, 2010 12:42</i></div>
-	                            <h4>Content of Newsflash 7</h4>
-	                            <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
-	                            <a class="readmore" href="#">Read more </a>
-	                            </p>
-	                         </div>
-	                    </li> 
-	                      <li>
-	                      <img src="img/thumbl_980x340_008.png" title="Newsflash 8" >            
-	                        <div class="slider-description">
-	        
-	                          <div class="slider-meta"><a target="_parent" title="Newsflash 8" href="#">/ Newsflash 8 /</a>	<i> — Monday, February 15, 2010 12:42</i></div>
-	                            <h4>Content of Newsflash 8</h4>
-	                            <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
-	                                <a class="readmore" href="#">Read more </a>
-	                            </p>
-	                         </div>
-                    </li> 
-                  </ul> 
-              </div>
-           	<div class="navigator-content">
-                  <div class="button-control"><span></span></div>	
-                  <div class="navigator-wrapper">
-                        <ul class="navigator-wrap-inner">
-                           <li><span>1</span></li>
-                           <li><span>2</span></li>
-                           <li><span>3</span></li>
-                           <li><span>4</span></li>    
-                           <li><span>5</span></li>
-                           <li><span>6</span></li>       
-                           <li><span>7</span></li>       
-                           <li><span>8</span></li>          		
-                        </ul>
-                  </div>
-             </div>
- </div>
+				</p></form>
+				</div>
+			<br>
+		</div>
+
+		<div id="dialog-form" title="Registro de alumno">
+  			<p class="validateTips">Ingrese sus datos por favor</p>
+  			<form id="form">
+  			<fieldset>
+    		<label for="name">Nombre completo</label>
+    		<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+    		<label for="nocontrol">No. Control</label>
+    		<input type="text" name="nocontrol" id="nocontrol" value="" class="text ui-widget-content ui-corner-all" />
+    		<label for="email">Email</label>
+    		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
+    		<label for="password">Password</label>
+    		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+    		<label for="carrera">Carrera</label>
+    		<select name="tipo" id="tipo">
+    					<option value="">Elije una carrera</option>
+               		 	<option value="Tics">Tics</option>
+               			<option value="Loguistica">Logística</option>
+               			<option value="Administracion">Administracion</option>
+        			</select>
+    		<label for="semestre">Semestre</label>
+    		<input type="semestre" name="semestre" id="semestre" value="" class="text ui-widget-content ui-corner-all" />
+  			</fieldset>
+  			</form>
+			</div>
+			<br>
+			<button id="create-user">Crea una cuenta</button>
+			<div class="exito"></div>
 			<?php }?>
-	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 	</footer>

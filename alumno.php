@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es-ES">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -81,7 +81,6 @@
 	} ?>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-		<a href="https://www.facebook.com/tecnologicodeiztapalapall.instituto?fref=ts"><img src="img/facebook.png" alt="Redes Sociales"></a>
 	</footer>
 	</section>
 </body>

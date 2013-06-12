@@ -9,7 +9,6 @@ body{
 	background:#e3eef0 url(../img/bg.jpg);
 	font-family: 'Playfair Display SC', serif;
 	font-size: 16px;
-	
 }
 aside { 
 	display: inline-block;
@@ -38,11 +37,6 @@ header h1{
 	margin-top: 20px;
 	margin-right: 100px;
 }
-input{
-	text-align: center;
-	margin: 7px 0;
-	padding: 6px;
-}
 img { max-width: 100%; }
 footer{
 	background-color: #20ACB8;
@@ -54,9 +48,20 @@ footer{
 footer img{
 	margin: 15px 0 0 700px;
 }
-.acceso h1{
-	text-align: center;
+
+/* Formulario logeo */
+label, input { display:block; font-size: 14px; text-align: left; padding: 2px;}
+input.text {  width:95%; padding: .1em; font-size: 12px;}
+fieldset { padding:0; border:0; margin-top:25px; }
+div#users-contain { width: 350px; margin: 20px 0; }
+div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateTips { border: 1px solid transparent; font-size: 14px; padding: 0.3em; }
+#dialog-form{
+    margin: 0 auto;
 }
+
 .boton{
 	border:1px solid #25729a;-webkit-box-shadow: #B4B5B5 5px 5px 5px  ;-moz-box-shadow: #B4B5B5 5px 5px 5px ; box-shadow: #B4B5B5 5px 5px 5px  ; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;width:150px;font-size:12px;font-family:tahoma, verdana, arial, sans-serif; padding: 10px 10px 10px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #FFFFFF; background-color: #3093c7;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3093c7), color-stop(100%, #1c5a85));
@@ -100,6 +105,13 @@ footer img{
  	background-image: linear-gradient(top, #7DADE3, #547CFF);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#7DADE3, endColorstr=#547CFF);
 
 }
+.cont{
+	height: 300px;
+}
+.cont img{
+	margin-top: 50px;
+	width: 200px;
+}
 .contenedor{
 	background: #F5F5F5;
 	-moz-box-shadow: 5px 5px rgba(0,0,0,0.5);
@@ -107,8 +119,16 @@ footer img{
 	box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
 	border: 1px solid  gray;
 	margin: 0 auto;
-	margin-top: 10px; 
+	margin-top: 10px;
 	max-width: 1024px;
+}
+.exito{
+	color: tomato;
+	font-weight:bold;
+	margin: 30px auto;
+	padding: 12px;
+	text-align: center;
+	width: 300px;
 }
 .foro{
 	border:1px solid #25729a;-webkit-box-shadow: #B4B5B5 5px 5px 5px  ;-moz-box-shadow: #B4B5B5 5px 5px 5px ; box-shadow: #B4B5B5 5px 5px 5px  ; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;
@@ -179,12 +199,19 @@ footer img{
 	max-width: 710px;
 }
 #bienvenido{
-	font-size: 16px;
-	padding: 5px;
+	border-bottom: solid 1px cornflowerblue;
+	margin: 10px auto;
+	padding: 20px;
 	text-align: center;
+	max-width: 850px;
 }
 #botones{
 	margin: 10px 0 45px 0; 
+}
+#create-user{
+	margin: 0 auto;
+	display: block;
+	font-size: 14px;
 }
 #desocultari, #desocultarr{
 	border:1px solid #25729a;-webkit-box-shadow: #B4B5B5 5px 5px 5px  ;-moz-box-shadow: #B4B5B5 5px 5px 5px ; box-shadow: #B4B5B5 5px 5px 5px  ; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;width:150px;font-size:12px;font-family:tahoma, verdana, arial, sans-serif; padding: 10px 10px 10px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #FFFFFF; background-color: #3093c7;
@@ -210,25 +237,24 @@ footer img{
 	margin-bottom: 4px;
 	display: none;
 }
-#formulario1 input{
-	color: #356AA0;
-	font-size: 15px;
-	width: 230px;
-}
-#formulario2 input{
-	color: #356AA0;
-	font-size: 15px;
-	width: 230px;
-}
 #formulariobusqueda{
 	margin: 0 auto;
 	width: 100px;
 	padding: 10px;
 }
 form #boton{
-	background: #C3D9FF;
+	background: white;
+	border: solid 1px CornflowerBlue;
 	border-radius: 7px;
-	width: 100px;
+	color: CornflowerBlue;
+	font-size: 14px;
+	padding: 5px;
+	text-align: center;
+	width: 180px;
+}
+form #boton:hover{
+	background: CornflowerBlue;
+	color: white;
 }
 #formbusqueda{
 	margin: 0 auto;
@@ -353,6 +379,16 @@ form #boton{
 	text-align: center;
 	width: 30px;
 }
+#paginaColeccion{
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+	-moz-column-gap: 90px;
+	-webkit-column-gap: 90px;
+	-webkit-column-rule: 1px solid #ccc; /*Linea divisora*/
+	-moz-column-rule: 1px solid #ccc;
+	margin: 0 auto;
+	width: 700px;
+}
 #preguntas{
 	color: #0033FF;
 	background: #F8F8F8;
@@ -382,6 +418,10 @@ form #boton{
 	padding: 10px;
 	margin: 0 auto;
 	max-width: 700px;
+}
+#seleccion{
+	text-align: center;
+	display: block;
 }
 #tabla{
 	margin-top: 100px;

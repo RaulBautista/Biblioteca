@@ -987,20 +987,20 @@
             this.oLanguage = {
                 "sProcessing": "Procesando...",
                 "sLengthMenu": "Mostrar _MENU_ registros",
-                "sZeroRecords": "No hay resultados",
-                "sEmptyTable": "Datos no disponibles",
+                "sZeroRecords": "No se encontraron resultados con su criterio de busqueda",
+                "sEmptyTable": "Datos no disponibles. Intente mas tarde",
                 "sLoadingRecords": "Cargando...",
                 "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
                 "sInfoEmpty": "Mostrando 0 a 0 de 0 entradas",
                 "sInfoFiltered": "(filtro de _MAX_ registros)",
                 "sInfoPostFix": "",
                 "sInfoThousands": ",",
-                "sSearch": "Buscar:",
+                "sSearch": "Buscar: ",
                 "sUrl": "",
                 "oPaginate": {
                     "sFirst":    "Primero",
-                    "sPrevious": "Anterior",
-                    "sNext":     "Siguiente",
+                    "sPrevious": "<<",
+                    "sNext":     ">>",
                     "sLast":     "Ultimo"
                 },
                 "fnInfoCallback": null

@@ -66,9 +66,13 @@
   			</div>
 		</form>
 		<article id="articulos">
-			<?php
+		<?php
 			require "includes/conexion.php";
 			$result = mysql_query("SELECT * FROM Articulos");
+			$num = mysql_num_rows($result);
+			if ($num == 0) {
+				echo "<p id='bienvenido'>No hay articulos aun</p>";
+			}else{
 			?>
 			<table id="datatables" class="display">
         <thead>
@@ -83,15 +87,15 @@
 	</thead>
                 <tbody>
                     <?php
-                    $contador = 0;
+                    $contador = 0;                    
                     while ($row = mysql_fetch_array($result)) {
-                    	$contador ++;
+                    	$contador ++;             
                         ?>
                         <tr>
                             <td><?=$contador?></td>
                             <td><?=$row['titulo']?></td>
                             <td><?=$row['autor']?></td>                                                   
-                            <td><a href="#" onclick="window.open('<?=$row['ruta']?>')">Abrir archivo pdf</a></td>
+                            <td><a href="#" onclick="window.open('<?=$row['ruta']?>')"><img src="img/pdf.png" alt="PDF" width="35px"> </a></td>
                             <td id="votedown"><a href="" class="vote" id="<?php echo $row['id']; ?>" name="down"><?php echo $row['down']; ?></a></td>
                             <td id="voteup"><a href="" class="vote" id="<?php echo $row['id']; ?>" name="up"><?php echo $row['up']; ?></a></td>
                         </tr>
@@ -100,11 +104,14 @@
                     ?>
                 </tbody>
             </table>
+            <?php } ?>
 		</article>
 		 <!--<input type="button" value="Abrir archivo pdf" onclick="window.open('uploads/1.pdf')" />
 		 <a href="#" onclick="window.open('uploads/1.pdf')">Abrir archivo pdf</a>
 		-->
-		<?php } ?>
+		<?php }else{
+			header("location: colecciones.php");
+		} ?>
 		<footer>
 			<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 		</footer>

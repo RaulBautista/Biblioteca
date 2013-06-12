@@ -45,7 +45,7 @@
 				<textarea name="respuesta" id="respuesta" rows="7" required></textarea>
 				<input type="hidden" name="autor" value="<?php echo $nombre ?>"/>
 				<input type="hidden" name="id" value="<?php echo $id ?>"/>
-				<input type="submit" id="enviarRespuesta" value="Responder" />
+				<input type="submit" id="enviarRespuesta" value="Deja una respuesta" /><br>
 			</form>
 			<?php
 			$consulta = @mysql_query('SELECT * FROM Respuestas WHERE id_pregunta = "'.mysql_real_escape_string($id).'" ORDER BY fecha DESC')
