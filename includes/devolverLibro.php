@@ -1,4 +1,4 @@
- <BODY ONLOAD="exito(); error();">
+ <BODY ONLOAD="exito();">
 <?php
 	if($_GET["activar"]=="ok"){
 	$hoyday = date("Y/m/d"); 
@@ -18,8 +18,7 @@
 
 	if($limite>=$hoy){
 		$day = date("Y/m/d", strtotime($hoyday));
-		echo "<script>alert('Justo a tiempo')</script>";
-
+		//echo "<script>alert('Justo a tiempo')</script>";
 		$op1=@mysql_query("UPDATE Libros SET 
 		estado = 'Disponible'
 		WHERE id = '$id_libro'", $link)
@@ -31,7 +30,7 @@
 				
 				echo "<script>
 				function exito(){
-					alert('Devolucion realizada con exito!')
+					alert('Devolucion realizada a tiempo')
 					document.location.href='../colecciones.php';
 				}
 				</script>";
@@ -46,7 +45,7 @@
 
 
 	}if($limite<$hoy){
-		echo "<script>alert('La fecha para devolucion EXPIRO el dia $devolver.')</script>";
+		//echo "<script>alert('La fecha para devolucion EXPIRO el dia $devolver.')</script>";
 		$day = date("Y/m/d", strtotime($hoyday));
 
 		$op1=@mysql_query("UPDATE Libros SET 
@@ -59,7 +58,7 @@
 				or die(mysql_error());
 				echo "<script>
 				function exito(){
-					alert('Devolucion realizada con exito!')
+					alert('La fecha para devolucion EXPIRO el dia $devolver')
 					document.location.href='../colecciones.php';
 				}
 				</script>";

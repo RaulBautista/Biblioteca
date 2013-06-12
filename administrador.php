@@ -7,8 +7,11 @@
 	<link rel="stylesheet" href="css/design.css">
 	<link rel="stylesheet" href="css/demo_table_jui.css">
     <link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.min.css">
+    <link rel="stylesheet" href="css/freeow.css">
     <script src="js/new/jquery.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="js/new/jquery.freeow.min.js" type="text/javascript"></script>
+    <script src="js/new/alertas.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         $('#datatables').dataTable({
@@ -32,7 +35,21 @@
 		if ($_SESSION['logged']=='2') { 
 			require_once "includes/conexion.php";
 			$result = mysql_query("SELECT * FROM Libros ORDER BY id");
-		?>
+
+			$verificar = mysql_query("SELECT * FROM Prestamo");
+			$num = mysql_num_rows($verificar);
+			if ($num > 0) { 
+			echo"
+				<div id='freeow' class='freeow freeow-top-right'></div>
+				<script>
+				$('#freeow').freeow('Tiene $num libros prestados', 'Verifique por favor', {
+    			classes: ['smokey', 'alert'],
+    			autoHide: false
+				});
+				</script>
+			";
+		 } ?>
+
 		<div id="botones">
 			<a href="InsertarLibro.php" class="insertar">Insertar Nuevo Libro</a>
 			<a href="includes/Logout.php" class="cerrar">Cerrar Sesion</a>

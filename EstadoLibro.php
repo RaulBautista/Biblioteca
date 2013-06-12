@@ -35,6 +35,7 @@
 		//header ('Content-type: text/html; charset=utf-8');
 		require_once ("includes/conexion.php");
 		$id = strip_tags($_GET['id']);
+		$hoyday = date("d/m/Y"); 
 		$consulta = mysql_query("SELECT * FROM Libros
 			WHERE id = $id", $link)
 			or die(mysql_error());
@@ -49,7 +50,7 @@
 			<label>No. control del alumno: </label>
 			<input type="text" name="numcontrol_alum" placeholder="Numero de 9 digitos" title="Se requiere No. control del alumno" required /><br>
 			<label>Fecha de prestamo: </label>
-			<input type="date" name="fechaprestamo" placeholder="Fecha de hoy" required />
+			<input type="date" name="fechaprestamo" value="<?php echo $hoyday; ?>" placeholder="Fecha de hoy" required />
 			<label>Limite limte para devolver: </label>
 			<input type="date" name="fechadevolver" required />
 			<label>Observaciones del libro: </label>
