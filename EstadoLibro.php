@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es-Es">
+<html lang="es">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -13,12 +13,12 @@
 	<script type="text/javascript">
 	$(document).ready
     if (!Modernizr.inputtypes.date) {
-    $(function calendario(){
-        $("input[type=date]").datepicker();
+    	$(function calendario(){
+        	$("input[type=date]").datepicker({ dateFormat: "dd-mm-yy" }).val();
     	});
 	}
 	if(Modernizr.input.required){
-		 $("#nuevo").validate();
+		 //$("#nuevo").validate();
 	}
 	</script>
 </head>
@@ -32,27 +32,31 @@
 		<?php 
 		session_start();
 		if($_SESSION['logged']=='2'){
-		//header ('Content-type: text/html; charset=utf-8');
+		date_default_timezone_set("America/Mexico_City");
 		require_once ("includes/conexion.php");
 		$id = strip_tags($_GET['id']);
-		$hoyday = date("d/m/Y"); 
+		$hoyday = date("d-m-Y"); 
+		$hora = date("g:i:s A");
 		$consulta = mysql_query("SELECT * FROM Libros
 			WHERE id = $id", $link)
 			or die(mysql_error());
 			$fila = mysql_fetch_array($consulta);
 			$estado = strtoupper($fila["estado"]);
 		if ($estado == strtoupper('disponible')) {
+			echo "<p id='bienvenido'><strong>Formulario para prestamo de libro</strong><br><br>".date('j M Y - g:i:s A ')."</p>";
 		?>
-		<br><p align="center">Llenar formulario para realizar el prestamo </P><br>
+		
 		<form method="POST" action="PrestarLibro.php" id="nuevo" >
 			<label>ID del Libro: </label>
 			<input type="text" name="id_libro"  value="<?php echo $fila['id']; ?>" readonly /><br>
 			<label>No. control del alumno: </label>
 			<input type="text" name="numcontrol_alum" placeholder="Numero de 9 digitos" title="Se requiere No. control del alumno" required /><br>
 			<label>Fecha de prestamo: </label>
-			<input type="date" name="fechaprestamo" value="<?php echo $hoyday; ?>" placeholder="Fecha de hoy" required />
+			<input type="date" name="fechaprestamo" value="<?php echo $hoyday ?>" placeholder="Fecha de hoy" required />
+			<input type="text" name="horaprestamo" value="<?php echo $hora; ?>" >
 			<label>Limite limte para devolver: </label>
 			<input type="date" name="fechadevolver" required />
+			<input type="text" name="horadevolver" value="<?php echo $hora; ?>">
 			<label>Observaciones del libro: </label>
 			<input type="text" name="observacion"  placeholder="Acerca del libro"/><br>
 			<input type="submit" name="prestar" value="Aceptar prestamo">
@@ -68,8 +72,8 @@
 		<TR>
 			<TH>Id libro</TH>
 			<TH>No.control alumno</TH>
-			<TH>Fecha prestamo</TH>
-			<TH>Limite devolucion</TH>
+			<TH>Fecha de prestamo</TH>
+			<TH>Fecha de devolucion</TH>
 			<TH>Observacion</TH>
 			<TH>Devolucion</TH>
 		</TR>
@@ -89,10 +93,10 @@
 					<td>%s</td>
 					<td>%s</td>
 					<td>
-					<a href='#' onClick='confirmar()'>devolver</a>	
+					<a href='#' onClick='confirmar()'>Devolver</a>	
 					</td>			
 				</tr>", 
-				$row["id_libro"], $row["numcontrol_alum"], $row["fecha_prestamo"], $row["fecha_devolver"],$row["observacion"]);
+				$row["id_libro"], $row["numcontrol_alum"], date("j M Y - g:i:s A ", strtotime($row["fecha_prestamo"])), date("j M Y - g:i:s A ", strtotime($row["fecha_devolver"])),$row["observacion"]);
 	}
 	mysql_free_result($consulta);
 	mysql_close($link);

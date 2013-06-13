@@ -1,5 +1,10 @@
  <BODY ONLOAD="exito();">
 <?php
+	session_start();
+	if(!$_SESSION['logged']=='2'){
+		header("location: ../colecciones.php");
+		exit();
+	}else{
 	if($_GET["activar"]=="ok"){
 	$hoyday = date("Y/m/d"); 
 	$hoy = strtotime($hoyday);
@@ -17,7 +22,7 @@
 	$limite = strtotime($devolver);
 
 	if($limite>=$hoy){
-		$day = date("Y/m/d", strtotime($hoyday));
+		//$day = date("Y/m/d", strtotime($hoyday));
 		//echo "<script>alert('Justo a tiempo')</script>";
 		$op1=@mysql_query("UPDATE Libros SET 
 		estado = 'Disponible'
@@ -46,7 +51,7 @@
 
 	}if($limite<$hoy){
 		//echo "<script>alert('La fecha para devolucion EXPIRO el dia $devolver.')</script>";
-		$day = date("Y/m/d", strtotime($hoyday));
+		//$day = date("Y/m/d", strtotime($hoyday));
 
 		$op1=@mysql_query("UPDATE Libros SET 
 		estado = 'Disponible'
@@ -70,6 +75,7 @@
 				</script>";			
 				}
 	}
+}
 }
 	
 ?>

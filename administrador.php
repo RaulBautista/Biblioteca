@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -7,19 +7,21 @@
 	<link rel="stylesheet" href="css/design.css">
 	<link rel="stylesheet" href="css/demo_table_jui.css">
     <link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.min.css">
-    <link rel="stylesheet" href="css/freeow.css">
+    <link rel="stylesheet" href="css/toastmessage.css">
+    <style type="text/css">
+    	#link{text-decoration: none; color: white;}
+    </style>
     <script src="js/new/jquery.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="js/new/jquery.freeow.min.js" type="text/javascript"></script>
-    <script src="js/new/alertas.js" type="text/javascript"></script>
-    <script type="text/javascript" charset="utf-8">
+    <script src="js/new/jquery.toastmessage.js"></script>
+    <script type="text/javascript">
     $(document).ready(function(){
         $('#datatables').dataTable({
             "sPaginationType":"full_numbers",
             "aaSorting":[[0, "asc"]],
             "bJQueryUI":true
         });
-    })        
+    });
     </script>
 </head>
 <body>
@@ -38,17 +40,57 @@
 
 			$verificar = mysql_query("SELECT * FROM Prestamo");
 			$num = mysql_num_rows($verificar);
-			if ($num > 0) { 
-			echo"
-				<div id='freeow' class='freeow freeow-top-right'></div>
-				<script>
-				$('#freeow').freeow('Tiene $num libros prestados', 'Verifique por favor', {
-    			classes: ['smokey', 'alert'],
-    			autoHide: false
+			if ($num == 1) {
+			echo"<script>
+			function showStickyNoticeToast() {
+				$().toastmessage('showToast', {
+				text : 'Tiene $num libro prestado',
+				sticky : true,
+				position : 'top-right',
+				type : 'notice',
+				closeText: '',
+				close : function () {console.log('toast is closed ...');}
+				}); 
+			} 
+			showStickyNoticeToast();
+			</script> ";
+		 	}
+			elseif ($num > 1) { 
+			echo"<script>
+			function showStickyNoticeToast() {
+				$().toastmessage('showToast', {
+				text : 'Tiene $num libros prestados',
+				sticky : true,
+				position : 'top-right',
+				type : 'notice',
+				closeText: '',
+				close : function () {console.log('toast is closed ...');}
+				}); 
+			} 
+			showStickyNoticeToast();
+			</script> ";
+		 }
+		 $vencidos = mysql_fetch_array($verificar);
+		 $fechaprestamo = $vencidos['fecha_prestamo'];
+		 $fechadevolver = $vencidos['fecha_devolver'];
+		 if ($fechadevolver < $fechaprestamo) {
+		 	echo"<script>		 		
+		 	function showStickyWarningToast() {
+				$().toastmessage('showToast', {
+				text : '<a href=vencidos.php id=link>Tiene prestamos vencidos. Click para verlos</a>',
+				sticky : true,
+				position : 'top-center',
+				type : 'warning',
+				closeText: '',
+				close : function () {
+				console.log('toast is closed ...');
+				}
 				});
-				</script>
-			";
-		 } ?>
+			} 
+			showStickyWarningToast();
+			</script>";
+		 }
+		 ?>
 
 		<div id="botones">
 			<a href="InsertarLibro.php" class="insertar">Insertar Nuevo Libro</a>
