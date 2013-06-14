@@ -1,5 +1,5 @@
 .click-nav {
-	margin-top: -50px;
+	margin-top: -90px;
 	float: right;
 	width: 200px;
 
@@ -18,12 +18,12 @@
 	right:0;
 }
 .click-nav ul .clicker {
-	background:#2284B5;
+	background: lightslategray; /*Color menu #2284B5*/
 	color:#FFF;
 }
 .click-nav ul .clicker:hover,
 .click-nav ul .active {
-	background:#196F9A;
+	background: #196F9A;/*#196F9A*/
 }
 .click-nav img {
 	position:absolute;
@@ -41,7 +41,7 @@
 	text-decoration:none;
 }
 .click-nav ul li a:hover {
-	background:#F2F2F2;
+	background: lightgray; /*#F2F2F2*/
 }
 /* Fallbacks */
 .click-nav .no-js ul {

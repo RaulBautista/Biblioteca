@@ -29,7 +29,7 @@
 				<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 			</footer>
 			";
-				exit();
+			exit();
 		}else{
 			$sql = mysql_query('SELECT * FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'"', $link);
 			$row = mysql_fetch_array($sql);
@@ -45,8 +45,11 @@
 		require_once('conexion.php');
 		$query2 = @mysql_query('SELECT * FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
 		if(!$encontrado = @mysql_fetch_object($query2)) {
-			echo "<p align='center'> No es un admin. </p> 
+			echo "<p align='center'> Sus datos son incorrectos. Compruebelos por favor</p> 
 			<a href='../colecciones.php' class='boton'> Intente nuevamente </a>
+			<footer>
+				<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
+			</footer>
 			";
 			exit();
 		}else{

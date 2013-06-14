@@ -1,11 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Prestamos Vencidos</title>
 	<link rel="stylesheet" href="css/design.css">
 	<link rel="stylesheet" href="css/tabla.css">
+	<style>
+		#color{ color: crimson;}
+	</style>
 </head>
 <body>
 	<section class="contenedor">
@@ -33,7 +36,7 @@
 							<TH>No.control alumno</TH>
 							<TH>Fecha de prestamo</TH>
 							<TH>Fecha de devolucion</TH>
-							<TH>Observacion</TH>
+							<TH id='oculta'>Observacion</TH>
 						</TR>
 					</thead>
 				<?php
@@ -41,8 +44,8 @@
 				printf("<tr><td>%s</td>
 						<td>%s</td>
 						<td>%s</td>
-						<td>%s</td>
-						<td>%s</td>		
+						<td id='color'>%s</td>
+						<td id='oculta'>%s</td>		
 					</tr>", 
 				$datos["id_libro"], $datos["numcontrol_alum"], date("j M Y - g:i:s A ", strtotime($datos["fecha_prestamo"])), date("j M Y - g:i:s A ", strtotime($datos["fecha_devolver"])),$datos["observacion"]);
 				}

@@ -70,7 +70,7 @@
 			}
 			}
 		}else{
-
+		echo "<p id='bienvenido'>Formulario para ingresar un nuevo libro a la BD </p>";
 		?>
 
 		<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="nuevo">

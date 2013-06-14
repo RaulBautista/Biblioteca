@@ -29,12 +29,74 @@
 		<?php
 		session_start();
 		if($_SESSION['logged'] == '1') { 
+		$usuario = $_SESSION['user'];
 		include "includes/menualumno.php";
-		echo "<p id='bienvenido'>Bienvenido <strong>$_SESSION[user]</strong> </p><br>";
 		require_once "includes/conexion.php";
+		echo "<div id='bienvenido'><p>Bienvenido <strong>$usuario</strong></p></div>";
+		$consultap = mysql_query("SELECT id, pregunta, total FROM Preguntas where autor ='$usuario'", $link);
+		$numero_preguntas = mysql_num_rows($consultap);
+		if ($numero_preguntas > 0) { ?>
+			<div id="mispreguntas">
+			<?php
+			echo "<p>Tienes $numero_preguntas preguntas realizadas en el foro</p>";
+			while ($preguntas = mysql_fetch_array($consultap)) {
+				$total = $preguntas['total'];
+				if ($total == 0) {
+					$total = 'Parece que nadie a visto tu pregunta aun';
+					echo "<style type='text/css'>#ocul{display: none;}</style>";
+				}
+				echo "<a href='respuestas.php?id=$preguntas[id]'><p><b>$preguntas[pregunta]:</b> <span id='ocul'>respuestas: </span>$total</p></a>";
+			} ?>
+			</div>
+		<?php }
 		//echo gettype($link);
 		//echo is_resource($link);
 		//echo get_resource_type($link);
+		$dato = mysql_query("SELECT numcontrol FROM Alumnos WHERE nombre ='$usuario'", $link);
+		$datos = mysql_fetch_array($dato);
+		$numcontrol = $datos['numcontrol'];
+
+		$hoy = date("Y-m-d H:i:s A");
+		$consult = mysql_query("SELECT fecha_devolver FROM Prestamo WHERE numcontrol_alum = '$numcontrol' ORDER BY fecha_devolver ", $link);
+		$num = mysql_num_rows($consult);
+		if ($num > 0) {
+			echo "<script src='js/new/jquery.toastmessage.js'></script>
+				<link rel='stylesheet' href='css/toastmessage.css'>";
+			while ($devolver = mysql_fetch_array($consult)) {
+			$fecha = date("j M Y - g:i A", strtotime($devolver['fecha_devolver']));
+			$fecha_comparar = date("Y-m-d H:i:s A", strtotime($devolver['fecha_devolver']));
+			if ($fecha_comparar < $hoy) {
+			echo"<script>
+			function showStickyNoticeToast() {
+				$().toastmessage('showToast', {
+				text : 'Debiste devolver a la Biblioteca un libro antes del: <br> $fecha',
+				sticky : false,
+				stayTime: 7000,
+				position : 'top-right',
+				type : 'error',
+				closeText: '',
+				close : function () {console.log('toast is closed ...');}
+			}); 
+			} 
+			showStickyNoticeToast();
+			</script> ";			
+			}else{
+			echo"<script>
+			function showStickyNoticeToast() {
+				$().toastmessage('showToast', {
+				text : 'Debes devolver a la Biblioteca un libro antes del: <br> $fecha',
+				sticky : false,
+				position : 'top-right',
+				type : 'warning',
+				closeText: '',
+				close : function () {console.log('toast is closed ...');}
+				}); 
+			} 
+			showStickyNoticeToast();
+			</script> ";			
+			}
+		}
+		}
 		$result = mysql_query("SELECT * FROM Libros ORDER BY id");
 		?>
 		<table id="datatables" class="display">
@@ -77,7 +139,7 @@
             </table>
 
 	<?php }else{
-		header("location: colecciones.php");
+		header("location: index.php");
 	} ?>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>

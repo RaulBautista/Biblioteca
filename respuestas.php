@@ -34,7 +34,7 @@
 				<p id='problema'>%s</p><br>
 			</article>						
 				", 
-		$row["pregunta"], $row["autor"],$row["fecha"], nl2br(htmlspecialchars($row["mensaje"])));
+		$row["pregunta"], $row["autor"],date("j M Y - g:i:s A ", strtotime($row["fecha"])), nl2br(htmlspecialchars($row["mensaje"])));
 		
 
 			$nombre = $_SESSION['user'];
@@ -45,8 +45,21 @@
 				<textarea name="respuesta" id="respuesta" rows="7" required></textarea>
 				<input type="hidden" name="autor" value="<?php echo $nombre ?>"/>
 				<input type="hidden" name="id" value="<?php echo $id ?>"/>
+				<div id="contador"></div>
 				<input type="submit" id="enviarRespuesta" value="Deja una respuesta" /><br>
 			</form>
+			<script>
+			$('#respuesta').keydown(function(e){
+			var maxChars = 499;
+			if($(this).val().length <= maxChars)
+			{
+				var charsLeft = ( maxChars - $(this).val().length );
+				$('#contador').text( charsLeft + ' caracteres restantes' ).css('color', (charsLeft<10)?'#F00':'#000' );
+			}else{
+				return ($.inArray(e.keyCode,[8,35,36,37,38,39,40]) !== -1);
+			}
+			})
+			</script>
 			<?php
 			$consulta = @mysql_query('SELECT * FROM Respuestas WHERE id_pregunta = "'.mysql_real_escape_string($id).'" ORDER BY fecha DESC')
 			or die (mysql_error()); 
@@ -62,14 +75,16 @@
 				</div>
 				</article><br>
 				",   
-				$row['autor'],$row["fecha"] , nl2br(htmlspecialchars($row["respuesta"])));
+				$row['autor'],date("j M Y - g:i:s A ", strtotime($row["fecha"])) , nl2br(htmlspecialchars($row["respuesta"])));
 		}
 		//nl2br($cadena_de_texto);
 		mysql_free_result($consulta);
 		mysql_close($link); ?>	
-		<a href="foro.php" class="boton">Regresar</a>
+		<a href="foro.php" class="boton">Regresar al foro</a>
 
-		<?php } ?>
+		<?php }else{
+			header("Location: index.php");
+		} ?>
 		<footer>
 			<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 		</footer>

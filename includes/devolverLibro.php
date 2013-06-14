@@ -6,23 +6,17 @@
 		exit();
 	}else{
 	if($_GET["activar"]=="ok"){
-	$hoyday = date("Y/m/d"); 
-	$hoy = strtotime($hoyday);
-
+	$hoy = date("Y-m-d H:i:s A");
 	$id_prestamo = strip_tags($_GET['id']);
-
 	include("conexion.php");
-	$consulta = @mysql_query('SELECT * FROM Prestamo WHERE id_prestamo = "'.mysql_real_escape_string($id_prestamo).'"')
-			    or die (mysql_error());
+	$consulta = @mysql_query('SELECT * FROM Prestamo WHERE id_prestamo = "'.mysql_real_escape_string($id_prestamo).'"') or die (mysql_error());
 	$query = mysql_fetch_array($consulta);
 	$id_libro = $query['id_libro'];
 	$id_prestamo = $query['id_prestamo'];
 	$devolver = $query['fecha_devolver'];
 	$id_libro= $query['id_libro'];
-	$limite = strtotime($devolver);
-
-	if($limite>=$hoy){
-		//$day = date("Y/m/d", strtotime($hoyday));
+	$limite = date("Y-m-d H:i:s A", strtotime($devolver));
+	if($limite >= $hoy){
 		//echo "<script>alert('Justo a tiempo')</script>";
 		$op1=@mysql_query("UPDATE Libros SET 
 		estado = 'Disponible'
@@ -49,10 +43,8 @@
 			}
 
 
-	}if($limite<$hoy){
+	}if($limite < $hoy){
 		//echo "<script>alert('La fecha para devolucion EXPIRO el dia $devolver.')</script>";
-		//$day = date("Y/m/d", strtotime($hoyday));
-
 		$op1=@mysql_query("UPDATE Libros SET 
 		estado = 'Disponible'
 		WHERE id = '$id_libro'", $link)
@@ -61,9 +53,10 @@
 			if($op1){
 				mysql_query("DELETE FROM Prestamo WHERE id_prestamo = '$id_prestamo'", $link)
 				or die(mysql_error());
+				$fecha = date("j M Y - g:i:s A ", strtotime($devolver));
 				echo "<script>
 				function exito(){
-					alert('La fecha para devolucion EXPIRO el dia $devolver')
+					alert('La fecha para devolucion EXPIRO el dia $fecha')
 					document.location.href='../colecciones.php';
 				}
 				</script>";

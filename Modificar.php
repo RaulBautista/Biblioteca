@@ -13,7 +13,9 @@
 			<?php include("includes/menu.php"); ?>
 		</header>
 
-		<?php 
+		<?php
+		session_start();
+		if($_SESSION['logged'] == '2') { 
 		header ('Content-type: text/html; charset=utf-8'); 
 		require ("includes/conexion.php");
 		error_reporting(E_ALL & ~E_NOTICE); 
@@ -24,7 +26,7 @@
 			WHERE id = $id", $link)
 			or die(mysql_error());
 			$row = mysql_fetch_array($sql);
-			$mensaje = "<p align='center'>Actualizar Datos del libro: <b>$row[titulo]</b></p>";
+			echo "<p id='bienvenido'> Actualizar Datos del libro: <strong>$row[titulo]</strong></p>";
 		}
 
 		if(isset($_POST['alta']) == 'alta'){
@@ -100,7 +102,11 @@
 			<input type="submit" name="alta" value="Aceptar Cambios" />
 		</form>		
 		<a href="colecciones.php" class="boton">Cancelar</a>
-	<?php } ?>
+	<?php }
+	}else{
+		header("location: index.php");
+	}
+	 ?>
 		<footer>
 			<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 		</footer>

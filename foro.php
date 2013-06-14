@@ -51,12 +51,28 @@
 					<input type="text" id="pregunta" name="pregunta" class="txt"><br>
 					<label>Describe tu pregunta</label>
 					<textarea id="msg" name="msg" class="txtarea"></textarea>
+					<div id="contador"></div>
 					<button id="send">Preguntar</button>
 				</form>
 			</div>
 			<script type="text/javascript" src="js/new/formularioNuevoTema.js"></script>
 			<div id="content"></div>
-	<?php } ?>
+			<script>
+			$('#msg').keydown(function(e){
+			var maxChars = 299;
+			if($(this).val().length <= maxChars)
+			{
+				var charsLeft = ( maxChars - $(this).val().length );
+				$('#contador').text( charsLeft + ' caracteres restantes' ).css('color', (charsLeft<10)?'#F00':'#000' );
+			}else{
+				return ($.inArray(e.keyCode,[8,35,36,37,38,39,40]) !== -1);
+			}
+			})
+			</script>
+		<?php 
+		}else{
+		header("Location: index.php");
+		} ?>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 	</footer>

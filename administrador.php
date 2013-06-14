@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/toastmessage.css">
     <style type="text/css">
     	#link{text-decoration: none; color: white;}
+    	input{width: 50%; }
     </style>
     <script src="js/new/jquery.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
@@ -36,16 +37,14 @@
 		session_start();
 		if ($_SESSION['logged']=='2') { 
 			require_once "includes/conexion.php";
-			$result = mysql_query("SELECT * FROM Libros ORDER BY id");
-
-			$verificar = mysql_query("SELECT * FROM Prestamo");
+			$verificar = mysql_query("SELECT * FROM Prestamo", $link);
 			$num = mysql_num_rows($verificar);
-			if ($num == 1) {
+			if ($num > 0) { 
 			echo"<script>
 			function showStickyNoticeToast() {
 				$().toastmessage('showToast', {
-				text : 'Tiene $num libro prestado',
-				sticky : true,
+				text : 'Hay $num libros prestados',
+				sticky : false,
 				position : 'top-right',
 				type : 'notice',
 				closeText: '',
@@ -54,32 +53,16 @@
 			} 
 			showStickyNoticeToast();
 			</script> ";
-		 	}
-			elseif ($num > 1) { 
-			echo"<script>
-			function showStickyNoticeToast() {
-				$().toastmessage('showToast', {
-				text : 'Tiene $num libros prestados',
-				sticky : true,
-				position : 'top-right',
-				type : 'notice',
-				closeText: '',
-				close : function () {console.log('toast is closed ...');}
-				}); 
-			} 
-			showStickyNoticeToast();
-			</script> ";
-		 }
-		 $vencidos = mysql_fetch_array($verificar);
-		 $fechaprestamo = $vencidos['fecha_prestamo'];
-		 $fechadevolver = $vencidos['fecha_devolver'];
-		 if ($fechadevolver < $fechaprestamo) {
+			$hoy = date("Y-m-d H:i:s A");
+		 	$vencidos = mysql_fetch_array($verificar);
+		 	$fechadevolver = $vencidos['fecha_devolver'];
+		 	if ($fechadevolver < $hoy) {
 		 	echo"<script>		 		
 		 	function showStickyWarningToast() {
 				$().toastmessage('showToast', {
-				text : '<a href=vencidos.php id=link>Tiene prestamos vencidos. Click para verlos</a>',
+				text : '<a href=vencidos.php id=link>Hay prestamos vencidos.<br> Click para verlos</a>',
 				sticky : true,
-				position : 'top-center',
+				position : 'top-right',
 				type : 'warning',
 				closeText: '',
 				close : function () {
@@ -90,6 +73,8 @@
 			showStickyWarningToast();
 			</script>";
 		 }
+		 }
+		 $result = mysql_query("SELECT * FROM Libros ORDER BY id");
 		 ?>
 
 		<div id="botones">

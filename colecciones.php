@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-ES">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -43,7 +43,7 @@
 				<h1>Iniciar sesión</h1><br>
 				<form action="includes/login.php" method="POST" id="signupform">
         			<select name="tipo" id="tipo">
-               		 	<option value="1">Usuario</option>
+               		 	<option value="1">Alumno</option>
                			<option value="2">Administrador</option>
         			</select><br>
 					<label>No. control:</label>
@@ -51,11 +51,11 @@
 					<label>Password:</label>
 					<input type="password" name="pass" placeholder="Contraseña" title="ingresa tu contraseña" required /><br>
 					<input type="submit" id="boton" value="Entrar" />
-				</p></form>
+				</form>
 				</div>
+				</p>
 			<br>
 		</div>
-
 		<div id="dialog-form" title="Registro de alumno">
   			<p class="validateTips">Ingrese sus datos por favor</p>
   			<form id="form">

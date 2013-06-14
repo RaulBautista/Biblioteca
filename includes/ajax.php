@@ -16,7 +16,7 @@ while($row = mysql_fetch_array($run)) {
 					<p id='num_respuestas'>%s</p>	
 			</article><br>
 	", 
-	$row["pregunta"], $row["fecha"], $row['total']);
+	$row["pregunta"], date("j M Y - g:i:s A ", strtotime($row["fecha"])), $row['total']);
 	}
 	mysql_free_result($run);
 	mysql_close($link);

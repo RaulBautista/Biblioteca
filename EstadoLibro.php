@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -70,7 +70,7 @@
 		<TABLE id="tabla" border=1 CELLSPACING=1 CELLPADDING=1>
 	<thead>
 		<TR>
-			<TH>Id libro</TH>
+			<TH id="oculta">Id libro</TH>
 			<TH>No.control alumno</TH>
 			<TH>Fecha de prestamo</TH>
 			<TH>Fecha de devolucion</TH>
@@ -87,7 +87,7 @@
     }
     </script>";
 
-		printf("<tr><td>%s</td>
+		printf("<tr><td id='oculta'>%s</td>
 					<td><a href='datosAlumno.php?numcontrol=$row[numcontrol_alum]&id=$id'>%s</a></td>
 					<td>%s</td>
 					<td>%s</td>
@@ -96,7 +96,7 @@
 					<a href='#' onClick='confirmar()'>Devolver</a>	
 					</td>			
 				</tr>", 
-				$row["id_libro"], $row["numcontrol_alum"], date("j M Y - g:i:s A ", strtotime($row["fecha_prestamo"])), date("j M Y - g:i:s A ", strtotime($row["fecha_devolver"])),$row["observacion"]);
+				$row["id_libro"], $row["numcontrol_alum"], date("j M Y - g:i A", strtotime($row["fecha_prestamo"])), date("j M Y - g:i A", strtotime($row["fecha_devolver"])),$row["observacion"]);
 	}
 	mysql_free_result($consulta);
 	mysql_close($link);

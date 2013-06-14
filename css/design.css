@@ -26,7 +26,7 @@ a{
 	text-decoration: none;
 }
 header{
-	background-color: #87CEFA;
+	background-color: lightskyblue; /*#87CEFA*/
 }
 header img{
 	margin: 30px 30px;
@@ -39,7 +39,7 @@ header h1{
 }
 img { max-width: 100%; }
 footer{
-	background-color: #20ACB8;
+	background-color: #20ACB8; /*#20ACB8*/
 	color: white;
 	margin-top: 150px;
 	padding: 10px;
@@ -200,42 +200,22 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 }
 #bienvenido{
 	border-bottom: solid 1px cornflowerblue;
-	margin: 10px auto;
+	margin: 30px auto;
 	padding: 20px;
 	text-align: center;
-	max-width: 850px;
+	max-width: 830px;
 }
 #botones{
 	margin: 10px 0 45px 0; 
 }
-#create-user{
+#create-user{ /*Boton crear una cuenta*/
 	margin: 0 auto;
 	display: block;
 	font-size: 14px;
 }
-#desocultari, #desocultarr{
-	border:1px solid #25729a;-webkit-box-shadow: #B4B5B5 5px 5px 5px  ;-moz-box-shadow: #B4B5B5 5px 5px 5px ; box-shadow: #B4B5B5 5px 5px 5px  ; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;width:150px;font-size:12px;font-family:tahoma, verdana, arial, sans-serif; padding: 10px 10px 10px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #FFFFFF; background-color: #3093c7;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3093c7), color-stop(100%, #1c5a85));
-	background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
-	background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
- 	background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
- 	background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
- 	background-image: linear-gradient(top, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
-	text-decoration: none;
-	text-align: center;
-	width: 150px;
-}
-#desocultari:hover, #desocultarr:hover{
-	background: rgba(0,0,0,.8);
-}
 #enviarRespuesta{
 	display: block;
 	margin: 10px auto;
-}
-#formulario1, #formulario2{
-	margin: 0 auto;
-	margin-bottom: 4px;
-	display: none;
 }
 #formulariobusqueda{
 	margin: 0 auto;
@@ -358,12 +338,21 @@ form #boton:hover{
 }
 #mensaje2{
 	background: white;
-	border: 1px solid lightgray;
+	border: solid 1px lightgray;
 	border-radius: 7px;
 	margin: 0 auto;
 	padding: 5px;
 	max-width: 700px;
 
+}
+#mispreguntas{
+	background: lavender;
+	border: solid 1px cornflowerblue;
+	border-radius: 5px;
+	margin: 30px auto;
+	padding: 10px;
+	text-align: center;
+	max-width: 840px;
 }
 #nuevo {
   	margin: 0 auto;
@@ -379,13 +368,16 @@ form #boton:hover{
 	text-align: center;
 	width: 30px;
 }
-#paginaColeccion{
+#paginaColeccion{ /*Logeo*/
 	-moz-column-count: 2;
 	-webkit-column-count: 2;
+	column-count: 2;
 	-moz-column-gap: 90px;
 	-webkit-column-gap: 90px;
+	column-gap: 90px;
 	-webkit-column-rule: 1px solid #ccc; /*Linea divisora*/
 	-moz-column-rule: 1px solid #ccc;
+	column-rule: 1px solid #ccc;
 	margin: 0 auto;
 	width: 700px;
 }
@@ -475,8 +467,11 @@ footer img{
 }
 
 @media screen and (min-width : 320px) and (max-width: 480px) {
+*{
+	font-size: 10px;
+}
 body{
-	font-size: 14px;
+	font-size: 10px;
 }
 aside{ 
 	width: 315px;
@@ -492,7 +487,8 @@ header img{
 	margin-left: 22%;
 }
 input{
-	width: 50px;
+	margin: 0 auto;
+	width: 200px;
 }
 footer{
 	margin-top: 10px;
@@ -515,7 +511,7 @@ footer{
  	width: 400px;
 }
 #menu li a{
- 	font-size: 17px;
+ 	font-size: 14px;
  	padding: 15px;
 }
 #preguntas{
