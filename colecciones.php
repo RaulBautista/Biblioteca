@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Colecciones</title>
+	<title>Logeo</title>
 	<link rel="stylesheet" href="css/design.css">
 	<link rel="stylesheet" type="text/css" href="css/style4.css" />
 	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">

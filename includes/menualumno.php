@@ -1,8 +1,12 @@
+<?php
+$nombre = $_SESSION['user'];
+ $loged=substr($nombre,0,15); 
+?>
 <link rel="stylesheet" href="css/menualumno.css">
 <div class="click-nav">
 	<ul class="no-js">
 		<li>
-			<a class="clicker"><img src="img/i-1.png" alt="Icon">Menu</a>
+			<a class="clicker"><img src="img/i-1.png" alt="Icon"><?php echo $loged."...";  ?></a>
 				<ul>
 					<li><a href="alumno.php"><img src="img/i-2.png" alt="Icon">Libros</a></li>
 					<li><a href="articulos.php"><img src="img/i-4.png" alt="Icon">Articulos</a></li>

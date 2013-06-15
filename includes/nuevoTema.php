@@ -21,5 +21,7 @@ if($_SESSION['logged'] == '1') {
 	}else{
 		echo "false";	
 	}
+}else{
+	header("location: ../index.php");
 }
 ?>

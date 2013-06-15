@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es-ES">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,14 +13,13 @@
 		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/ie7-squish.js&quot; type="text/javascript"></script>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js&quot; type="text/javascript"></script>
 	<![endif]-->
-
 	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="js/new/apprise-v2.js"></script>
 	<script type="text/javascript" src="js/new/jquery-ui-1.9.2.custom.min.js"></script>
 	<script>
 		$(document).ready(function(){
 		//Apprise('Pagina en construccion!. Cualquier sugerencia por favor hacerla al correo <a target="_blank" href="https://www.facebook.com/Xnour">raul_nouni@hotmail.com</a>');
-		//$("#featured").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
+		$("#featured").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
 		});
 	</script>	
 </head>

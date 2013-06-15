@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="css/design.css">
     <link rel="stylesheet" href="css/demo_table_jui.css">
     <link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.min.css">
+    <style>
+    	@media screen and (min-width : 320px) and (max-width: 480px) {input{max-width: 130px;}}
+    </style>
 	<script src="js/new/jquery.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8">

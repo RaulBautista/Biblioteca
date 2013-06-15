@@ -10,9 +10,11 @@
 		<header>
 			<img src="img/logos.png" alt="tec">
 			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("includes/menu.php") ?>		
+			<?php include("includes/menu.php") ?>	
 		</header>
 		<?php 
+		session_start();
+		if ($_SESSION['logged'] == '2') {
 		header ('Content-type: text/html; charset=utf-8');
 		require_once ("includes/conexion.php");
 
@@ -33,8 +35,7 @@
 		$titulos = $row['titulo'];
 		$ejemplar_nums = $row['ejemplar_num'];
 			//if($existe = @mysql_fetch_object($query))
-			if(($ejemplar_nums == $ejemplar_num) && ($titulos == $titulo))
-			{
+		if(($ejemplar_nums == $ejemplar_num) && ($titulos == $titulo)){
 				echo "
 				<p align='center'> Asigne correctamente el numero de ejemplar del libro $titulo. </p> <br>
 				<a href='colecciones.php' class='boton'>Regresar</a>";
@@ -101,7 +102,12 @@
 			<input type="submit" name="alta" value="Dar de Alta" />
 		</form>
 		<a href="colecciones.php" class="boton">Cancelar</a>
-		<?php } ?>
+		<?php 
+		}
+		}else{
+			header("location: index.php");
+		}
+		 ?>
 		<footer>
 			<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 		</footer>

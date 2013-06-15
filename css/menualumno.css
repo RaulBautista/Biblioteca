@@ -1,8 +1,7 @@
 .click-nav {
-	margin-top: -90px;
+	margin-top: -104px;
 	float: right;
 	width: 200px;
-
 }
 .click-nav ul {
 	font-weight:900;
@@ -13,12 +12,14 @@
 	cursor:pointer;
 }
 .click-nav ul li ul {
-	position:relative; /*Propiedad para sobresaliur de la*/
+	position: absolute; /*Propiedad para sobresalir relative es la mejor opc*/
 	left:0;
 	right:0;
 }
 .click-nav ul .clicker {
 	background: lightslategray; /*Color menu #2284B5*/
+	border: solid 2px lightgray;
+	border-radius: 5px;
 	color:#FFF;
 }
 .click-nav ul .clicker:hover,
@@ -49,4 +50,12 @@
 }
 .click-nav .no-js:hover ul {
 	display:block;
+}
+@media screen and (max-width: 768px){
+.click-nav {
+	margin-top: -55px;
+}
+.click-nav ul li ul {
+	position: relative;
+}
 }
