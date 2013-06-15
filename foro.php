@@ -41,7 +41,7 @@
 			require_once ("includes/conexion.php");
 			$consulta = @mysql_query('SELECT * FROM Preguntas')
 			or die (mysql_error()); 
-			echo "<p id='bienvenido'>Bienvenido al Foro de preguntas <strong>$_SESSION[user]</strong></p><br>"
+			echo "<p id='bienvenido'>Bienvenido al Foro de preguntas. Hay personas que necesitan tu ayuda</p><br>"
 			?>
 			<a href="#inline" class="boton" id="modalbox">Nuevo Tema</a>
 			<div id="inline">

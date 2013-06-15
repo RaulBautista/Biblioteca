@@ -1,6 +1,6 @@
 <?php
 $nombre = $_SESSION['user'];
- $loged=substr($nombre,0,15); 
+ $loged=substr($nombre,0,10); 
 ?>
 <link rel="stylesheet" href="css/menualumno.css">
 <div class="click-nav">

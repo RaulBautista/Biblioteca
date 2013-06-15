@@ -324,14 +324,8 @@ form #boton:hover{
    	text-decoration:none;
 }
 #menu ul li a:hover{
-	background:#369;
+	background: #369;
    	color: black;
-}
-#menu ul li a.active,
-#menu ul li a.active:hover {
-   color:#fff;
-   background:#000;
-   font-weight:bold;
 }
 #mensaje{
 	margin-top: 10px;
@@ -351,8 +345,12 @@ form #boton:hover{
 	border-radius: 5px;
 	margin: 30px auto;
 	padding: 10px;
-	text-align: center;
 	max-width: 840px;
+}
+#mispreguntas li{
+	margin-left: 50px;
+	padding: .1em;
+	list-style-type: circle; /*square*/
 }
 #nuevo {
   	margin: 0 auto;
@@ -468,6 +466,11 @@ footer img{
 #paginaColeccion{
 	width: 500px;
 }
+#respuesta{
+	display: block;
+	margin: 0 auto;
+	width: 500px;
+}
 }
 
 @media screen and (min-width : 320px) and (max-width: 480px) {
@@ -506,12 +509,9 @@ footer{
 	margin-top: 0;
 	width: 200px;
 }
-.insertar{
-	display: inline-block;
-}
-#libros{
-	margin-top: 150px;
-}
+.insertar{ 	display: inline-block; }
+#content{ 	margin: 0 auto; }
+#libros{ 	margin-top: 150px; }
 #menu { padding: 2px 0; }
 #menu li{
 	float: left;
@@ -522,6 +522,9 @@ footer{
  	font-size: 14px;
  	padding: 15px;
 }
+#mispreguntas li{
+	margin-left: 3px;
+}
 #paginaColeccion{
 	-moz-column-count: 1;
 	-webkit-column-count: 1;
@@ -530,7 +533,6 @@ footer{
 	width: 250px;
 }
 #preguntas{
-	margin: 0;
 	width: 300px;
 }
 #formbusqueda{

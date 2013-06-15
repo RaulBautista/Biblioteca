@@ -6,8 +6,13 @@
 	<link rel="stylesheet" href="css/design.css">
 	<link rel="stylesheet" href="css/dropzone.css">
 	<link rel="stylesheet" href="css/tabla.css">
-	<script src = "js/new/dropzone.js"></script>
+	<style>
+		#mens{color: darkred; font-size: 12px;}
+	</style>
+	<link rel='stylesheet' href='css/toastmessage.css'>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src='js/new/jquery.toastmessage.js'></script>
+	<script src = "js/new/dropzone.js"></script>
 	<script type="text/javascript">
 	$(function() {
 		$(".vote").click(function() {
@@ -57,14 +62,16 @@
 		session_start();
 		if($_SESSION['logged'] == '1') { 
 		include "includes/menualumno.php";
-		echo "<p id='bienvenido'>Bienvenido <strong>$_SESSION[user]</strong> aqui puedes subir tus articulos en formato PDF y votar el que mas te guste</p><br>"
+		echo "<p id='bienvenido'><strong>$_SESSION[user]</strong> 
+		aqui puedes subir tus articulos en formato PDF<br></p><br>"
 		?>
-
 		<form action="upload.php" class="dropzone">
   			<div class="fallback">
     			<input name="file" type="file" />
   			</div>
 		</form>
+
+		<div class="exito"></div>
 		<article id="articulos">
 		<?php
 			require "includes/conexion.php";
@@ -95,7 +102,7 @@
                             <td><?=$contador?></td>
                             <td><?=$row['titulo']?></td>
                             <td><?=$row['autor']?></td>                                                   
-                            <td><a href="#" onclick="window.open('<?=$row['ruta']?>')"><img src="img/pdf.png" alt="PDF" width="35px"> </a></td>
+                            <td><a href="#" onclick="window.open('<?=$row['ruta']?>')"><img src="img/pdf.png" alt="PDF" width="30px"> </a></td>
                             <td id="votedown"><a href="" class="vote" id="<?php echo $row['id']; ?>" name="down"><?php echo $row['down']; ?></a></td>
                             <td id="voteup"><a href="" class="vote" id="<?php echo $row['id']; ?>" name="up"><?php echo $row['up']; ?></a></td>
                         </tr>

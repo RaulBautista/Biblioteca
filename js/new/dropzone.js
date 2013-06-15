@@ -419,7 +419,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
 
 
     Dropzone.prototype.events = ["drop", "dragstart", "dragend", "dragenter", "dragover", "dragleave", "selectedfiles", "addedfile", "removedfile", "thumbnail", "error", "processingfile", "uploadprogress", "sending", "success", "complete", "reset"];
-
+    /*Opciones configuracion*/
     Dropzone.prototype.defaultOptions = {
       url: null,
       method: "post",
@@ -435,7 +435,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       acceptParameter: null,
       enqueueForUpload: true,
       previewsContainer: null,
-      dictDefaultMessage: "Intenta arrastrar un archivo aqui",
+      dictDefaultMessage: "Intenta arrastrar un archivo aqui<br><br><p id = 'mens'>Unicamente archivos PDF. Verifica que no se repita el nombre de tu archivo con los ya existentes.</p>",
       dictFallbackMessage: "Tu navegador no soporta la opcion drag and drop para subir archivos",
       dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
       accept: function(file, done) {
@@ -857,9 +857,9 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
 
     Dropzone.prototype.accept = function(file, done) {
       if (file.size > this.options.maxFilesize * 1024 * 1024) {
-        return done("Archivo demaciado grande (" + (Math.round(file.size / 1024 / 10.24) / 100) + "MB). Tamano permitido max: " + this.options.maxFilesize + "MB");
+        return done("Archivo demaciado grande (" + (Math.round(file.size / 1024 / 10.24) / 100) + "MB). Tamaño permitido max: " + this.options.maxFilesize + "MB");
       } else {
-        return this.options.accept.call(this, file, done);
+        return this.options.accept.call(this, file, done);        
       }
     };
 
@@ -987,6 +987,20 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
 
       xhr = new XMLHttpRequest();
       xhr.open(this.options.method, this.options.url, true);
+      //Se recarca la pagina una ves subido un archivo. success subida
+      function showStickyNoticeToast() {
+        $().toastmessage('showToast', {
+        text : 'Validando y verificando que no exista otro archivo con el mismo nombre...',
+        sticky : false,
+        stayTime: 4000,
+        position : 'top-right',
+        type : 'warning',
+        closeText: '',
+        close : function () {console.log('toast is closed ...');}
+      }); 
+      }
+      showStickyNoticeToast();
+      setTimeout("location.reload()", 4010);
       handleError = function() {
         return _this.errorProcessing(file, xhr.responseText || ("Server responded with " + xhr.status + " code."));
       };
@@ -1046,6 +1060,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       this.emit("success", file, responseText, e);
       this.emit("finished", file, responseText, e);
       return this.emit("complete", file);
+
     };
 
     Dropzone.prototype.errorProcessing = function(file, message) {

@@ -37,7 +37,7 @@
 					<h1>Accede a la BD de la Biblioteca</h1><br>
 					<img src="img/logo.png" alt="tec">
 				</div>
-			</p><br>
+			</p> <br>
 			<p>
 				<div class="cont">
 				<h1>Iniciar sesión</h1><br>
