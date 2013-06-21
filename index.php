@@ -21,6 +21,14 @@
 		//Apprise('Pagina en construccion!. Cualquier sugerencia por favor hacerla al correo <a target="_blank" href="https://www.facebook.com/Xnour">raul_nouni@hotmail.com</a>');
 		$("#featured").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
 		});
+		    //A. El navegador es Safari
+    	if( $.browser.safari ) alert('Si la pagina no se vizualiza bien, intenta con otro navegador (Chrome, Firefox u Opera)');
+    	//B. El navegador es Internet Explorer, pero con versión superior a la 6
+    	if ($.browser.msie && $.browser.version > 6 ) alert('Te recomendamos cambiar de navegador para ver mejor esta aplicacin web. Cambiate a Chrome, Firefox u Opera');
+    	//C. El navegador es Internet Explorer, pero con versión inferior o igual a la 6
+    	if ($.browser.msie && $.browser.version <= 6 ) alert('Te recomendamos cambiar de navegador para ver mejor esta aplicacin web. Cambiate a Chrome, Firefox u Opera');
+    	//D. El navegador es Mozilla Firefox en versión 2 o superior
+    	//if ($.browser.mozilla && $.browser.version >= "1.8" ) alert('Usas mozilla');
 	</script>	
 </head>
 <body>

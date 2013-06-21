@@ -10,8 +10,9 @@
     <style>
     	@media screen and (min-width : 320px) and (max-width: 480px) {input{max-width: 130px;}}
     </style>
-	<script src="js/new/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/new/jquery.sticky.js"></script>
     <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         $('#datatables').dataTable({
@@ -35,7 +36,7 @@
 			$usuario = $_SESSION['user'];
 			include "includes/menualumno.php";
 			require_once "includes/conexion.php";
-			echo "<div id='bienvenido'><p>Bienvenido <strong>$usuario</strong></p></div>";
+			echo "<div id='bienvenido'><p>Bienvenido(a) <strong>$usuario</strong></p></div>";
 			//echo gettype($link);
 			//echo is_resource($link);
 			//echo get_resource_type($link);
@@ -137,7 +138,7 @@
 				if ($total == 0) {
 					$total = 'Parece que nadie a visto tu pregunta aún';
 				}
-				echo "<li><a href='respuestas.php?id=$preguntas[id]'><b>$preguntas[pregunta] || </b>respuestas: <b>$total</b></a></li>";
+				echo "<li><a href='respuestas.php?id=$preguntas[id]'><b>$preguntas[pregunta]<br> </b>respuestas: <b>$total</b></a></li>";
 			} ?>
 			</ul>
 			</div>

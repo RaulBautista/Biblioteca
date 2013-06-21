@@ -12,7 +12,7 @@
     	#link{text-decoration: none; color: white;}
     	input{width: 50%; }
     </style>
-    <script src="js/new/jquery.js" type="text/javascript"></script>
+    <script src="js/new/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
     <script src="js/new/jquery.toastmessage.js"></script>
     <script type="text/javascript">

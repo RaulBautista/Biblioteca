@@ -3,13 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Logeo</title>
+	<title>Login</title>
 	<link rel="stylesheet" href="css/design.css">
 	<link rel="stylesheet" type="text/css" href="css/style4.css" />
 	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
 	<script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
   	<script type="text/javascript" src="js/new/formularioJquery.js"></script>
   	<script type="text/javascript" src="js/new/jquery-ui-1.10.3.custom.min.js"></script>
+  	<script type="text/javascript" src="js/new/modernizr.custom.32453.js"></script>
+  	<script>
+  	if(!Modernizr.input.required){
+  		$(document).ready(function(){
+  		$("#formlogin").submit(function () {
+  		if($("#numcontrol").val().length < 9) {
+            $('#mensaje').html('Ingrese numero de control de 9 numeros').delay(500).fadeIn('slow');
+            return false;  
+        }
+        if($("#pass").val().length < 3) {
+			$('#mensaje').html('Ingrese su contraseña').delay(500).fadeIn('slow');
+			return false;
+		} 
+        return true;
+  		});
+  		});
+	}
+  	</script>
 </head>
 <body>
 	<section class="contenedor">
@@ -41,16 +59,18 @@
 			<p>
 				<div class="cont">
 				<h1>Iniciar sesión</h1><br>
-				<form action="includes/login.php" method="POST" id="signupform">
+				<form action="includes/login.php" method="POST" id="formlogin">
         			<select name="tipo" id="tipo">
                		 	<option value="1">Alumno</option>
                			<option value="2">Administrador</option>
         			</select><br>
 					<label>No. control:</label>
-					<input type="text" name="numcontrol" placeholder="Numero de Control" title="No. de control de 9 numeros" required /><br> <!--autofocus -->
+					<input type="text" id="numcontrol" name="numcontrol" placeholder="Numero de Control" maxlength="9" title="No. de control de 9 numeros" required /><br> <!--autofocus -->
 					<label>Password:</label>
-					<input type="password" name="pass" placeholder="Contraseña" title="ingresa tu contraseña" required /><br>
+					<input type="password" id="pass" name="pass" placeholder="Contraseña" title="ingresa tu contraseña" required /><br>
 					<input type="submit" id="boton" value="Entrar" />
+					<div id="mensaje" style="color: darkred;"></div>
+        			</div>
 				</form>
 				</div>
 				</p>

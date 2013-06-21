@@ -31,7 +31,7 @@
 			";
 			exit();
 		}else{
-			$sql = mysql_query('SELECT * FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'"', $link);
+			$sql = mysql_query('SELECT nombre FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'"', $link);
 			$row = mysql_fetch_array($sql);
 			$nombre = $row['nombre'];
 			$_SESSION['logged'] = '1';
@@ -43,7 +43,7 @@
 
 	elseif($tipo == '2') {
 		require_once('conexion.php');
-		$query2 = @mysql_query('SELECT * FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
+		$query2 = mysql_query('SELECT * FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
 		if(!$encontrado = @mysql_fetch_object($query2)) {
 			echo "<p align='center'> Sus datos son incorrectos. Compruebelos por favor</p> 
 			<a href='../colecciones.php' class='boton'> Intente nuevamente </a>
@@ -53,7 +53,11 @@
 			";
 			exit();
 		}else{
+			$sql2 = mysql_query('SELECT nombre FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'"', $link);
+			$row2 = mysql_fetch_array($sql2);
 			$_SESSION['logged'] = '2';
+			$_SESSION['user'] = $row2['nombre'];
+			echo $_SESSION['user'];
 			//echo '<script> window.location="../administrador.php"</script>';
 			header ("Location: ../administrador.php"); 
 		}

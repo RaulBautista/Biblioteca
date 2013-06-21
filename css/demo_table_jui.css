@@ -65,10 +65,10 @@ table.display thead th div.DataTables_sort_wrapper span {
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * DataTables features
+ * DataTables features tabla en general
  */
-
 .dataTables_wrapper {
+	margin-top: 50px;
 	position: relative;
 	min-height: 302px;
 	_height: 302px;
@@ -145,7 +145,7 @@ table.display {
 	margin: 0 auto;
 	width: 100%;
 	clear: both;
-	border-collapse: collapse;
+	/*border-collapse: collapse;*/
 	font-size: 14px;
 }
 
@@ -202,18 +202,12 @@ table.display td.center {
 table.display tr.odd.gradeA {
 	background-color: #ddffdd;
 }
-
 table.display tr.even.gradeA {
 	background-color: #eeffee;
 }
-
-
-
-
 table.display tr.odd.gradeA {
 	background-color: #ddffdd;
 }
-
 table.display tr.even.gradeA {
 	background-color: #eeffee;
 }
@@ -512,5 +506,4 @@ table{
 td, th { 
 	padding: 4px;
 }
-
 }

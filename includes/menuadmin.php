@@ -15,7 +15,7 @@ $nombre = $_SESSION['user'];
 				</ul>
 		</li>
 	</ul>
-</div>
+</div><br><br>
 	<script>
 		$(function() {
 			// Clickable Dropdown

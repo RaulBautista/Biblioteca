@@ -36,14 +36,14 @@ $(document).ready(function() {
 							$("#contact").fadeOut("fast", function exito(){
 								$(this).before("<p><strong><br><br>Pregunta publicada exitosamente! :)</strong></p>");
 								//setTimeout("$.fancybox.close()", 2000);
-								setTimeout("location.href='foro.php'", 1200);
+								setTimeout("location.href='foro.php'", 1300);
 								
 							});
 						}else{
 							$("#contact").fadeOut("fast", function fracaso(){
 								$(this).before("<p><strong><br><br>Ha ocurrido un error intente mas tarde :(</strong></p>");
 								//setTimeout("$.fancybox.close()", 2000);
-								setTimeout("location.href='foro.php'", 1200);
+								setTimeout("location.href='foro.php'", 1300);
 							});
 						}
 					}

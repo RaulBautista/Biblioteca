@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<title>Foro</title>
@@ -43,16 +43,16 @@
 			or die (mysql_error()); 
 			echo "<p id='bienvenido'>Bienvenido al Foro de preguntas. Hay personas que necesitan tu ayuda</p><br>"
 			?>
-			<a href="#inline" class="boton" id="modalbox">Nuevo Tema</a>
+			<a href="#inline" class="boton" id="modalbox">Tienes alguna pregunta</a>
 			<div id="inline">
 				<h2>Ingresa datos suficientes para ayudarte a resolver tu pregunta</h2>
 				<form id="contact" name="contact" action="NuevoTema" method="post">
 					<label>Titulo</label>
-					<input type="text" id="pregunta" name="pregunta" class="txt"><br>
+					<input type="text" id="pregunta" name="pregunta" class="txt" placeholder="Maximo 100 caracteres" maxlength="100px"><br>
 					<label>Describe tu pregunta</label>
 					<textarea id="msg" name="msg" class="txtarea"></textarea>
 					<div id="contador"></div>
-					<button id="send">Preguntar</button>
+					<button id="send">Publica tu pregunta</button>
 				</form>
 			</div>
 			<script type="text/javascript" src="js/new/formularioNuevoTema.js"></script>

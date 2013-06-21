@@ -50,7 +50,7 @@
 			<label>ID del Libro: </label>
 			<input type="text" name="id_libro"  value="<?php echo $fila['id']; ?>" readonly /><br>
 			<label>No. control del alumno: </label>
-			<input type="text" name="numcontrol_alum" placeholder="Numero de 9 digitos" title="Se requiere No. control del alumno" required /><br>
+			<input type="text" name="numcontrol_alum" placeholder="Numero de 9 digitos" maxlength="9" title="Se requiere No. control del alumno" required /><br>
 			<label>Fecha de prestamo: </label>
 			<input type="date" name="fechaprestamo" value="<?php echo $hoyday ?>" placeholder="Fecha de hoy" required />
 			<input type="text" name="horaprestamo" value="<?php echo $hora; ?>" >
