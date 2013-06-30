@@ -17,8 +17,8 @@
         	$("input[type=date]").datepicker({ dateFormat: "dd-mm-yy" }).val();
     	});
 	}
-	if(Modernizr.input.required){
-		 //$("#nuevo").validate();
+	if(!Modernizr.input.required) {
+		 alert("Verifique los datos antes de dar click en Aceptar prestamo");
 	}
 	</script>
 </head>
@@ -36,7 +36,7 @@
 		require_once ("includes/conexion.php");
 		$id = strip_tags($_GET['id']);
 		$hoyday = date("d-m-Y"); 
-		$hora = date("g:i:s A");
+		$hora = date("g:i a");
 		$consulta = mysql_query("SELECT * FROM Libros
 			WHERE id = $id", $link)
 			or die(mysql_error());
@@ -58,7 +58,7 @@
 			<input type="date" name="fechadevolver" required />
 			<input type="text" name="horadevolver" value="<?php echo $hora; ?>">
 			<label>Observaciones del libro: </label>
-			<input type="text" name="observacion"  placeholder="Acerca del libro"/><br>
+			<input type="text" name="observacion"  placeholder="Alguna nota..." maxlength="100" /><br>
 			<input type="submit" name="prestar" value="Aceptar prestamo">
 		</form>
 		<a href="colecciones.php" class="boton">Cancelar</a>

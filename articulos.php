@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<title>Articulos</title>
@@ -20,8 +20,9 @@
 		var name = $(this).attr("name");
 		var dataString = 'id='+ id ;
 		var parent = $(this);
-
 		if(name=='up'){
+			var r = confirm("¿Deseas dar un voto positivo a este articulo?")
+			if (r == true){
 			$(this).fadeIn(200).html('...');
 			$.ajax({
    				type: "POST",
@@ -32,7 +33,10 @@
     				parent.html(html);
   				}  
   			});
+			}
 		}else{
+			var r = confirm("¿Deseas dar un voto negativo a este articulo?")
+			if (r == true){
 			$(this).fadeIn(200).html('...');
 			$.ajax({
    				type: "POST",
@@ -43,6 +47,7 @@
        				parent.html(html);
   				}
  			});
+			}
 		}
 		return false;
 		});

@@ -987,13 +987,13 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
 
       xhr = new XMLHttpRequest();
       xhr.open(this.options.method, this.options.url, true);
-      //Se recarca la pagina una ves subido un archivo. success subida
+      //Se recarca la pagina una ves subido un archivo. success subida configuracion
       function showStickyNoticeToast() {
         $().toastmessage('showToast', {
         text : 'Validando y verificando que no exista otro archivo con el mismo nombre...',
         sticky : false,
         stayTime: 4000,
-        position : 'top-right',
+        position : 'top-center',
         type : 'warning',
         closeText: '',
         close : function () {console.log('toast is closed ...');}

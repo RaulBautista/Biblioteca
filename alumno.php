@@ -124,7 +124,6 @@
                     ?>
                 </tbody>
             </table>
-
 		<?php 
 		$consultap = mysql_query("SELECT id, pregunta, total FROM Preguntas where autor ='$usuario'", $link);
 		$numero_preguntas = mysql_num_rows($consultap);

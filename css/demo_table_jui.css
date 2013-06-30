@@ -486,14 +486,15 @@ Media Queries
 */
 
 @media screen and (max-width: 768px){
-table { 
-	width: 500px;
+.oculta2{
+	display: none;
 }
 }
 
 @media screen and (min-width : 320px) and (max-width: 480px) {
 td, th{
-	font-size: 12px;
+	font-size: 1em;
+	padding: 4px;
 }
 #oculta{
 	display: none;
@@ -502,8 +503,5 @@ table{
 	font:normal 11px verdana, arial, helvetica, sans-serif;
 	padding-left: 0;
 	width: 200px;
-}
-td, th { 
-	padding: 4px;
 }
 }

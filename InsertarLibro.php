@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<title>Altas</title>
@@ -19,7 +19,7 @@
 		require_once ("includes/conexion.php");
 
 		if(isset($_POST['alta']) == 'alta'){
-			
+
 		$autor = strip_tags(htmlentities($_POST['autor']));
 		$titulo = strip_tags(htmlentities($_POST['titulo']));
 		$edicion = strip_tags(htmlentities($_POST['edicion']));
@@ -98,7 +98,7 @@
 				<option value="002">Historia</option>
 				<option value="003">Quimica</option>
 				<option value="004">Matematicas</option>
- 			</select><br>
+ 			</select><br><br>
 			<input type="submit" name="alta" value="Dar de Alta" />
 		</form>
 		<a href="colecciones.php" class="boton">Cancelar</a>

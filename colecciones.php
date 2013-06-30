@@ -14,17 +14,17 @@
   	<script>
   	if(!Modernizr.input.required){
   		$(document).ready(function(){
-  		$("#formlogin").submit(function () {
-  		if($("#numcontrol").val().length < 9) {
-            $('#mensaje').html('Ingrese numero de control de 9 numeros').delay(500).fadeIn('slow');
-            return false;  
-        }
-        if($("#pass").val().length < 3) {
-			$('#mensaje').html('Ingrese su contraseña').delay(500).fadeIn('slow');
-			return false;
-		} 
-        return true;
-  		});
+  			$("#formlogin").submit(function () {
+  			if($("#numcontrol").val().length < 9) {
+            	$('#mensaje').html('Ingrese numero de control de 9 numeros').delay(500).fadeIn('slow');
+            	return false;  
+        	}
+        	if($("#pass").val().length < 3) {
+				$('#mensaje').html('Ingrese su contraseña').delay(500).fadeIn('slow');
+				return false;
+			} 
+        	return true;
+  			});
   		});
 	}
   	</script>

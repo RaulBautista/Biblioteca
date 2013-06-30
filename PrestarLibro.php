@@ -26,7 +26,7 @@
 	$fecha_prestamo = date("Y-m-d H:i:s A", strtotime($fechaprestamo." ".$horaprestamo));
 	$fecha_devolver = date("Y-m-d H:i:s A", strtotime($fechadevolver." ".$horadevolver));
 
-	if ($fecha_devolver < $fecha_prestamo) {
+	if($fecha_devolver < $fecha_prestamo) {
 		echo "
 			<script>
 			alert('Ingrese una fecha de devolucion valida'); 
@@ -44,6 +44,14 @@
 		";
 		exit();
 		}
+	}elseif($fechaprestamo < date("d/m/Y") || date("d-m-Y")){
+		echo "
+			<script>
+			alert('Fecha de prestamo no valida, verifiquela por favor.'); 
+			document.location.href='EstadoLibro.php?id=$id_libro';
+			</script>
+		";
+		exit();
 	}
 
 	$consulta = @mysql_query('SELECT * FROM Alumnos WHERE numcontrol = "'.mysql_real_escape_string($numcontrol).'"')

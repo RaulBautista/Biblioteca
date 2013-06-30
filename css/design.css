@@ -472,7 +472,7 @@ footer img{
 
 @media screen and (min-width : 320px) and (max-width: 480px) {
 *{
-	font-size: 12px;
+	font-size: 1em;
 }
 aside{ 
 	width: 315px;

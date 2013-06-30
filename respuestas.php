@@ -36,7 +36,7 @@
 				<hr size='4' />
 			</article>						
 				", 
-			$row["pregunta"], $row["autor"],date("j M Y - g:i:s A ", strtotime($row["fecha"])), nl2br(htmlspecialchars($row["mensaje"])));
+			$row["pregunta"], $row["autor"],date("j M Y - g:i A ", strtotime($row["fecha"])), nl2br(htmlspecialchars($row["mensaje"])));
 			$nombre = $_SESSION['user'];
 			?>
 			<?php
@@ -65,7 +65,7 @@
 			$consulta = @mysql_query('SELECT * FROM Respuestas WHERE id_pregunta = "'.mysql_real_escape_string($id).'" ORDER BY fecha DESC')
 			or die (mysql_error()); 
 			$num_respuestas = mysql_num_rows($consulta);
-		while ($row = mysql_fetch_array($consulta)) {
+			while ($row = mysql_fetch_array($consulta)) {
 			if ($row['control'] == "1") {
 				$res = htmlspecialchars($row["respuesta"]);
 			}

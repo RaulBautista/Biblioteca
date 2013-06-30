@@ -84,15 +84,15 @@
 		<table id="datatables" class="display">
         <thead>
 		<TR>
-			<th>Autor</th>
-			<th id="oculta">Titulo</th>
+			<th id="oculta">Autor</th>
+			<th>Titulo</th>
 			<th id="oculta">Edicion</th>
-			<th id="oculta">Lugar de Edicion</th>
+			<th id="oculta" class="oculta2">Lugar de Edicion</th>
 			<th id="oculta">Editorial</th>
 			<th id="oculta">Año de Edicion</th>
-			<th id="oculta">Num. de Paginas</th>
-			<th id="oculta">Num. ejemplar</th>
-			<th id="oculta">Area</th>
+			<th id="oculta" class="oculta2">Num. de Paginas</th>
+			<th id="oculta" class="oculta2">Num. ejemplar</th>
+			<th id="oculta" class="oculta2">Area</th>
 			<th>Estado</th>
 			<th></th>
 			<th></th>
@@ -110,21 +110,21 @@
     				</script>";
                     	$contador ++;
                     printf("
+					<td id='oculta'>%s</td>
 					<td>%s</td>
 					<td id='oculta'>%s</td>
+					<td id='oculta' class='oculta2'>%s</td>
 					<td id='oculta'>%s</td>
 					<td id='oculta'>%s</td>
-					<td id='oculta'>%s</td>
-					<td id='oculta'>%s</td>
-					<td id='oculta'>%s</td>
-					<td id='oculta'>%s</td>
-					<td id='oculta'>%s</td>
+					<td id='oculta' class='oculta2'>%s</td>
+					<td id='oculta' class='oculta2'>%s</td>
+					<td id='oculta' class='oculta2'>%s</td>
 					<td><a href='EstadoLibro.php?id=$row[id]' id='btn-tabla'>%s</a></td>
 					<td>
 						<a href='Modificar.php?id=$row[id]' id='btn-tabla'>Modificar</a>
 					</td>
 					<td>
-					 	<a href='#' onClick='confirmar()'>Eliminar</a>
+					 	<a href='#' onClick='confirmar()'><img src='img/delete.png'></a>
 					</td>							
 				</tr>", 
 				$row["autor"], $row["titulo"],  $row["edicion"],  $row["lugar_edicion"], $row["editorial"], $row["ano_edicion"], $row["num_paginas"], $row["ejemplar_num"],$row["id_area"], $row["estado"]);
@@ -134,7 +134,7 @@
 				?>
                 </tbody>
             </table>
-		</div>
+		</div>		
 			<?php }else{
 		header("location: index.php");
 	} ?>

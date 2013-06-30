@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/slideindex.css">
 	<link rel="stylesheet" href="css/apprise-v2.css">
 	<!--[if IE]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>		
 		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js&quot; type="text/javascript"></script>
 		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/ie7-squish.js&quot; type="text/javascript"></script>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js&quot; type="text/javascript"></script>
@@ -20,15 +20,14 @@
 		$(document).ready(function(){
 		//Apprise('Pagina en construccion!. Cualquier sugerencia por favor hacerla al correo <a target="_blank" href="https://www.facebook.com/Xnour">raul_nouni@hotmail.com</a>');
 		$("#featured").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-		});
-		    //A. El navegador es Safari
+		});		 
     	if( $.browser.safari ) alert('Si la pagina no se vizualiza bien, intenta con otro navegador (Chrome, Firefox u Opera)');
     	//B. El navegador es Internet Explorer, pero con versión superior a la 6
     	if ($.browser.msie && $.browser.version > 6 ) alert('Te recomendamos cambiar de navegador para ver mejor esta aplicacin web. Cambiate a Chrome, Firefox u Opera');
     	//C. El navegador es Internet Explorer, pero con versión inferior o igual a la 6
     	if ($.browser.msie && $.browser.version <= 6 ) alert('Te recomendamos cambiar de navegador para ver mejor esta aplicacin web. Cambiate a Chrome, Firefox u Opera');
     	//D. El navegador es Mozilla Firefox en versión 2 o superior
-    	//if ($.browser.mozilla && $.browser.version >= "1.8" ) alert('Usas mozilla');
+    	if ($.browser.mozilla && $.browser.version <= "1.8" ) alert('Actualiza tu navegador para seguir navegando en esta pagina');
 	</script>	
 </head>
 <body>
@@ -64,7 +63,6 @@
 						<p>Visitia la pagina Oficial del Instituto Tecnologico de Iztapalapa II  <a href="http://www.itiztapalapa2.edu.mx/" >Visitar la pagina</a></p>
 					 </div>
 			    </div>
-
 			<!-- Third Content -->
 			    <div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" >
 					<img src="img/images/biblioteca3.png" alt="" id="imagenIndex" />
@@ -73,7 +71,6 @@
 						<p>Aqui encontraras avisos referentes a la biblioteca</p>
 			         </div>
 			    </div>
-
 		    <!-- Fourth Content -->
 			    <div id="fragment-4" class="ui-tabs-panel ui-tabs-hide" >
 					<img src="img/images/biblioteca4.png" alt="" id="imagenIndex" />
