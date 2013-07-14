@@ -1,17 +1,3 @@
-<!DOCTYPE HTML>
-<html lang="es-MX">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Ingresar</title>
-	<link rel="stylesheet" href="../css/design.css">
-</head>
-<body>
-	<section class="contenedor">
-		<header>
-			<img src="../img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-		</header>
 <?php
 	//error_reporting(E_ALL & ~E_NOTICE); 
 	session_start();
@@ -23,12 +9,7 @@
 	require_once('conexion.php');
 		$query = @mysql_query('SELECT * FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
 		if (!$existe = @mysql_fetch_object($query)) {
-			echo "<br><p align='center'> No esta registrado o sus datos son incorrectos. Compruebe sus datos </p> 
-			<a href='../colecciones.php' class='boton'> Intente nuevamente </a>
-			<footer>
-				<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-			</footer>
-			";
+			echo "error";
 			exit();
 		}else{
 			$sql = mysql_query('SELECT nombre FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'"', $link);
@@ -37,6 +18,7 @@
 			$_SESSION['logged'] = '1';
 			$_SESSION['user'] = $nombre;
 			//echo '<script> window.location="../alumno.php"</script>';
+			echo "exito";
 			header ("Location: ../alumno.php");
 		}
 	}
@@ -45,24 +27,16 @@
 		require_once('conexion.php');
 		$query2 = mysql_query('SELECT * FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
 		if(!$encontrado = @mysql_fetch_object($query2)) {
-			echo "<p align='center'> Sus datos son incorrectos. Compruebelos por favor</p> 
-			<a href='../colecciones.php' class='boton'> Intente nuevamente </a>
-			<footer>
-				<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-			</footer>
-			";
+			echo "error";
 			exit();
 		}else{
 			$sql2 = mysql_query('SELECT nombre FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'"', $link);
 			$row2 = mysql_fetch_array($sql2);
 			$_SESSION['logged'] = '2';
 			$_SESSION['user'] = $row2['nombre'];
-			echo $_SESSION['user'];
+			echo "exito";
 			//echo '<script> window.location="../administrador.php"</script>';
 			header ("Location: ../administrador.php"); 
 		}
 	}	
 ?>
-	</section>
-</body>
-</html>

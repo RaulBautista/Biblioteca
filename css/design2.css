@@ -1,24 +1,41 @@
 *{
 	margin: 0;
 	padding: 0;
+	font-size: 16px;
+	position:static; 
 }
 a{
 	text-decoration: none;
 	color: cornflowerblue;
 }
 a:hover{
-	border-bottom: solid 1px darkcyan;
+	border-bottom: solid 1px darkcyan;	
+}
+body{
+	background:#e3eef0 url(../img/bg_body.png);
 }
 header{
-	background: url(../img/bg.png);
+	position: fixed;
+	background: url(../img/head_bg.png);
+	/*
+	background-color: #F2F2F2;
+    background-image: -moz-linear-gradient(center top , #FEFEFE, #F2F2F2); */
+    top: 0;
+	width: 100%;
 }
 header img{
-	width: 90px;
+	width: 51px;
+	margin-left: 20px;
+	position: relative;
+}
+li{
+	list-style: none;
 }
 nav ul{
 	max-width: 400px;
-	float: right;
 	margin-top: -32px;
+	position: absolute;
+	right: 0;
 }
 nav ul li{	
 	display: inline-block;
@@ -26,24 +43,219 @@ nav ul li{
 	padding: 6px 10px;
 	border-left: solid 1px gray;
 }
-footer{
-	background: url(../img/bg.png);
-	text-align: center;
+p{
+	line-height: 22px;
 }
-.contenedor{
-	background-color: #F2F2F2;
-    background-image: -moz-linear-gradient(center top , #FEFEFE, #F2F2F2);
+footer{
+	background: url(../img/head_bg.png);
+	color: cornflowerblue;
+	min-height: 40px;
+	padding-top: 10px;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+footer p{
+	font-size: 12px;
+}
+form input, label, select{
+	display: block;	
+}
+input[type=text],input[type=password], textarea, select{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    color: #404040;      
+    padding: 4px;
+    position: relative;    
+}
+input:focus{
+	border-color: cornflowerblue; /*#6CAC02 verde*/
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(108, 172, 2, 0.6);
+    opacity: 0.7;
+    outline: medium none;
+}
+textarea:focus{
+	border-color: cornflowerblue; /*#6CAC02 verde*/
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(108, 172, 2, 0.6);
+    opacity: 0.7;
+    outline: medium none;
+}
+/*Formulario de registro*/
+fieldset { padding:0; border:0; margin-top:25px; }
+div#users-contain { width: 350px; margin: 20px 0; }
+div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateTips { border: 1px solid transparent; font-size: 14px; padding: 0.3em; }
+#dialog-form{
+    margin: 0 auto;
+}
+.autor{ /*Autor de cada respuesta del foro*/
+	color: cornflowerblue;
+}
+.boton{
+	border:1px solid #25729a;-webkit-box-shadow: #B4B5B5 5px 5px 5px  ;-moz-box-shadow: #B4B5B5 5px 5px 5px ; box-shadow: #B4B5B5 5px 5px 5px  ; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;width:165px;font-size:12px;font-family:tahoma, verdana, arial, sans-serif; padding: 10px 10px 10px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #FFFFFF; background-color: #3093c7;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3093c7), color-stop(100%, #1c5a85));
+	background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+	background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+ 	background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+ 	background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+ 	background-image: linear-gradient(top, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+ 	display: block;
+ 	margin: 30px auto;
+}
+.boton:hover {
+	border:1px solid #1c5675; background-color: #7DADE3;
+ 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7DADE3), color-stop(100%, #547CFF));
+ 	background-image: -webkit-linear-gradient(top, #7DADE3, #547CFF);
+ 	background-image: -moz-linear-gradient(top, #7DADE3, #547CFF);
+ 	background-image: -ms-linear-gradient(top, #7DADE3, #547CFF);
+ 	background-image: -o-linear-gradient(top, #7DADE3, #547CFF);
+ 	background-image: linear-gradient(top, #7DADE3, #547CFF);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#7DADE3, endColorstr=#547CFF);
+
+}
+.boton2{
+	background: none repeat scroll 0 0 CornflowerBlue;
+    border: 1px solid CornflowerBlue;
+    border-radius: 7px 7px 7px 7px;
+    color: white;
+    cursor: pointer;
+	display: block;
+    font-size: 14px;
+    margin: 10px auto;
+    padding: 5px;
+    text-align: center;
+    width: 180px;
+}
+.boton2:hover{
+	background: none repeat scroll 0 0 white;
+    color: CornflowerBlue;
+}
+.bienvenido p{
+	display: inline-block;	
+	padding: 10px;
+}
+.cont{	/*divs de la pagina coleccion.php*/
+	height: 280px;
+}
+.contenedor{ /*Contiene todo mi contenido dentro del body*/
 	max-width: 1024px;
 	min-height: 500px;
-	margin: 0 auto;
+	margin: 70px auto 10px auto;
+}
+.division{ /*label hr*/
+	margin: 20px auto;
+	width: 700px;
+}
+.facebook{ /*Logo facebook en el footer*/
+	position: absolute;
+	bottom: 10px;
+	right: 30px;
+	background: url(../img/head_bg.png) no-repeat;
+}
+.fecha{
+	color: royalblue;
+	margin-left: 50px;
+}
+.frame{
+	border: solid 1px gray;
+	border-radius: 5px;
+	margin-top: 30px;
+	padding: 10px;
 }
 .img_footer{
 	width: 70px;
 	margin: 0 50px;
 }
-.facebook{
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
+.logo_tec{
+	width: 200px;
+}
+/*Divs que muestran mensajes de libros pedidos*/
+.mensaje_error{	
+	color: crimson;
+}
+.mensaje_warning{
+	color: goldenrod;
+}
+.misPreguntas{	
+	margin: 20px auto;
+}
+.num_respuestas{ /*Foro numero de respuesta de cada pregunta*/
+	border: solid 1px cornflowerblue;
+	border-radius: 50%;
 	background-color: cornflowerblue;
+	color: white;
+	margin-top: 7px;
+	padding: 1px;
+	position: absolute;
+	right: 10px;
+	text-align: center;	
+	top: 10px;
+	width: 30px;
+}
+.pregunta_foro:before{ /*Preguntas del foro*/
+	content: url(../img/mensaje.png);
+	margin-right: 8px;
+}
+.preguntas{ /*Div de preguntas del foro*/
+	background: none repeat scroll 0 0 #F8F8F8;
+	border: solid 1px gray;
+	border-radius: 5px;
+	padding: 5px;
+	position: relative;
+}
+.respuetas_alumnos{ /*Article de cada respuesta en el foro*/
+	background-color: white;
+	border: solid 1px gray;
+	border-radius: 7px;
+	display: block;
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 5px;
+}
+#contador{ /*Div donde aparece el contador de letras*/
+	display: block;
+	margin: 0 auto;
+	max-width: 700px;
+}
+
+#paginaColeccion{ /*Formulario de logeo*/
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+	-o-column-count: 2;
+	column-count : 2;
+	-moz-column-gap: 90px;
+	-webkit-column-gap: 90px;
+	column-gap: 90px;
+	-webkit-column-rule: 1px solid #ccc; /*Linea divisora*/
+	-moz-column-rule: 1px solid #ccc;
+	column-rule: 1px solid #ccc;
+	margin: 0 auto;
+	width: 700px;
+}
+/*Article Pregunta en pagina respuestas.php*/
+#pregunta{
+	border: solid 1px lightgray;
+	border-radius: 7px;
+	display: block;
+	margin: 30px auto 20px auto;
+	padding: 10px;
+	max-width: 700px;
+}
+#problema{ /*respuestas.php*/
+	background: #F8F8F8;
+	border: 2px solid #C8C8C8;
+	border-radius: 4px;
+	box-shadow: 1px 5px 10px #888888;
+	margin: 0 20px;
+	padding: 11px;
+}
+
+#respuesta{ /*Textarea responderopopkop pregunta*/
+	display: block;
+	margin: 0 auto;
+	position:static; 
+	resize: none;
+	width: 700px;
 }

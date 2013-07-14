@@ -1,6 +1,6 @@
 <?php
 $nombre = $_SESSION['user'];
- $loged=substr($nombre,0,10); 
+ $loged=substr($nombre,0,12); 
 ?>
 <link rel="stylesheet" href="css/menualumno.css">
 <div class="click-nav">
@@ -8,7 +8,8 @@ $nombre = $_SESSION['user'];
 		<li>
 			<a class="clicker"><img src="img/i-1.png" alt="Icon"><?php echo $loged."...";  ?></a>
 				<ul>
-					<li><a href="alumno.php"><img src="img/i-2.png" alt="Icon">Libros</a></li>
+					<li><a href="alumno.php"><img src="img/i-2.png" alt="Icon">Inicio</a></li>					
+					<li><a href="libros.php"><img src="img/i-2.png" alt="Icon">Libros</a></li>
 					<li><a href="articulos.php"><img src="img/i-4.png" alt="Icon">Articulos</a></li>
 					<li><a href="foro.php"><img src="img/i-5.png" alt="Icon">Foro</a></li>
 					<li><a href="includes/Logout.php"><img src="img/i-6.png" alt="Icon">Salir</a></li>

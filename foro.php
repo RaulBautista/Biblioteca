@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Foro</title>
-	<link rel="stylesheet" href="css/design.css">
+	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" href="css/infinite.css">
 	<link rel="stylesheet" type="text/css" media="all" href="css/formulario.css">
   	<link rel="stylesheet" type="text/css" media="all" href="css/fancybox/jquery.fancybox.css">
@@ -15,7 +15,7 @@
 	$('#content').scrollPagination({
 		nop     : 1, // The number of posts per scroll to be loaded
 		offset  : 0, // Initial offset, begins at 0 in this case
-		error   : 'No hay mas resultados!', // When the user reaches the end this is the message that is
+		error   : 'No hay mas resultados', // When the user reaches the end this is the message that is
 		                            // displayed. You can change this if you want.
 		delay   : 500, // When you scroll down the posts will load after a delayed amount of time.
 		               // This is mainly for usability concerns. You can alter this as you see fit
@@ -27,12 +27,11 @@
 
 </head>
 <body>
+	<header>
+		<img src="img/logo_mini.png" alt="tec">	
+		<?php include("includes/menu.php");?>
+	</header>
 	<section class="contenedor">
-		<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("includes/menu.php");?>
-		</header>
 		<?php
 		error_reporting(E_ALL & ~E_NOTICE);  
 		session_start();
@@ -41,11 +40,11 @@
 			require_once ("includes/conexion.php");
 			$consulta = @mysql_query('SELECT * FROM Preguntas')
 			or die (mysql_error()); 
-			echo "<p id='bienvenido'>Bienvenido al Foro de preguntas. Hay personas que necesitan tu ayuda</p><br>"
+			echo "<div class='bienvenido'>Bienvenido al Foro de preguntas.</div><hr><br>"
 			?>
 			<a href="#inline" class="boton" id="modalbox">Tienes alguna pregunta</a>
 			<div id="inline">
-				<h2>Ingresa datos suficientes para ayudarte a resolver tu pregunta</h2>
+				<h2>Ingresa datos suficientes para ayudarte a resolver tu pregunta</h2><br>
 				<form id="contact" name="contact" action="NuevoTema" method="post">
 					<label>Titulo</label>
 					<input type="text" id="pregunta" name="pregunta" class="txt" placeholder="Maximo 100 caracteres" maxlength="100px"><br>
@@ -73,9 +72,10 @@
 		}else{
 		header("Location: index.php");
 		} ?>
+	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
+		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook" class="facebook"></a>
 	</footer>
-	</section>
 </body>
 </html>

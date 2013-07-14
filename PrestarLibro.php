@@ -44,7 +44,7 @@
 		";
 		exit();
 		}
-	}elseif($fechaprestamo < date("d/m/Y") || date("d-m-Y")){
+	}elseif($fechaprestamo < (date("d/m/Y") || date("d-m-Y"))){
 		echo "
 			<script>
 			alert('Fecha de prestamo no valida, verifiquela por favor.'); 

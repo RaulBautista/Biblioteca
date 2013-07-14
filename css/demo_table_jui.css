@@ -1,3 +1,7 @@
+td, th{
+	font-size: 14px;
+}
+
 .paging_two_button .ui-button {
 	float: left;
 	cursor: pointer;
@@ -49,6 +53,7 @@ table.display thead th div.DataTables_sort_wrapper {
 	position: relative;
 	padding-right: 20px;
 	padding-right: 20px;
+	font-size: 12px;
 }
 
 table.display thead th div.DataTables_sort_wrapper span {

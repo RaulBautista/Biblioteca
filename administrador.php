@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Administrador</title>
-	<link rel="stylesheet" href="css/design.css">
+	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" href="css/demo_table_jui.css">
-    <link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.min.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="css/toastmessage.css">
     <style type="text/css">
     	#link{text-decoration: none; color: white;}
@@ -26,12 +26,11 @@
     </script>
 </head>
 <body>
+	<header>
+		<img src="img/logo_mini.png" alt="tec">			
+		<?php include("includes/menu.php") ?>		
+	</header>
 	<section class="contenedor">
-		<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("includes/menu.php") ?>		
-		</header>
 		<div id="libros">
 		<?php
 		session_start();
@@ -138,9 +137,9 @@
 			<?php }else{
 		header("location: index.php");
 	} ?>
+	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 	</footer>
-	</section>
 </body>
 </html>

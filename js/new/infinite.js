@@ -30,7 +30,7 @@
 			
 			// Custom messages based on settings
 			if($settings.scroll == true) $initmessage = 'Click para ver mas';
-			else $initmessage = 'Click para ver mas';
+			else $initmessage = 'Click para ver mas.';
 			
 			// Append custom messages and extra UI
 			$this.append('<div class="content"></div><div class="loading-bar">'+$initmessage+'</div>');

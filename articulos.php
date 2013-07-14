@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Articulos</title>
-	<link rel="stylesheet" href="css/design.css">
+	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" href="css/dropzone.css">
 	<link rel="stylesheet" href="css/tabla.css">
 	<style>
@@ -56,19 +56,17 @@
 	</script>
 </head>
 <body>
+	<header>
+		<img src="img/logo_mini.png" alt="tec">		
+		<?php include("includes/menu.php") ?>		
+	</header>
 	<section class="contenedor">
-		<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("includes/menu.php") ?>		
-		</header>
 		<?php
 		error_reporting(E_ALL & ~E_NOTICE);
 		session_start();
 		if($_SESSION['logged'] == '1') { 
 		include "includes/menualumno.php";
-		echo "<p id='bienvenido'><strong>$_SESSION[user]</strong> 
-		aqui puedes subir tus articulos en formato PDF<br></p><br>"
+		echo "<p id='bienvenido'>Aqui puedes compartir archivos en formato PDF.<br></p><hr><br>"
 		?>
 		<form action="upload.php" class="dropzone">
   			<div class="fallback">
@@ -83,7 +81,7 @@
 			$result = mysql_query("SELECT * FROM Articulos");
 			$num = mysql_num_rows($result);
 			if ($num == 0) {
-				echo "<p id='bienvenido'>No hay articulos aun</p>";
+				echo "<p class='bienvenido'>No hay articulos aun</p>";
 			}else{
 			?>
 			<table id="datatables" class="display">
@@ -91,7 +89,7 @@
 		<TR>
 			<th>No.</th>
 			<th>Titulo</th>
-			<th>Autor</th>
+			<th>Subido por</th>
 			<th>Enlace</th>
 			<th><img src="img/dislike2.png" alt="dislike"></th>
 			<th><img src="img/like2.png" alt="like"></th>
@@ -124,9 +122,10 @@
 		<?php }else{
 			header("location: colecciones.php");
 		} ?>
-		<footer>
-			<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-		</footer>
 	</section>
+	<footer>
+		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
+		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook" class="facebook"></a>
+	</footer>
 </body>
 </html>

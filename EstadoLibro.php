@@ -6,7 +6,7 @@
 	<title>Libros</title>
 	<link rel="stylesheet" href="css/design.css" />
 	<link rel="stylesheet" href="css/tabla.css">
-	<link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.min.css" />
+	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css" />
 	<script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="js/new/modernizr.custom.32453.js"></script>
 	<script src="js/new/jquery-ui-1.9.2.custom.min.js"></script>

@@ -4,39 +4,71 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Login</title>
-	<link rel="stylesheet" href="css/design.css">
-	<link rel="stylesheet" type="text/css" href="css/style4.css" />
+	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
-	<script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
+	<style>
+	#load{
+		margin-top: -10px;
+		width: 20px;
+	}
+	</style>
+	<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="js/new/jquery-1.9.1.min.js"></script>
   	<script type="text/javascript" src="js/new/formularioJquery.js"></script>
   	<script type="text/javascript" src="js/new/jquery-ui-1.10.3.custom.min.js"></script>
   	<script type="text/javascript" src="js/new/modernizr.custom.32453.js"></script>
   	<script>
-  	if(!Modernizr.input.required){
-  		$(document).ready(function(){
+  	function validaForm(){
+    if($('#numcontrol').val().length < 9){
+        $('#mensaje').html('Tu numero de control debe tener 9 numeros').hide().fadeIn(900).delay(3000).fadeOut(500);
+        $('#numcontrol').focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+        return false;
+    }
+    if($('#pass').val().length < 3){
+        $('#mensaje').html('Tu contraseña debe ser mayor a 3 caracteres').hide().fadeIn(900).delay(3000).fadeOut(500);
+        $('#pass').focus();
+        return false;
+    }
+    return true; // Si todo está correcto
+	}
+  	$(document).ready(function(){
+  		if(!Modernizr.input.required){
   			$("#formlogin").submit(function () {
-  			if($("#numcontrol").val().length < 9) {
-            	$('#mensaje').html('Ingrese numero de control de 9 numeros').delay(500).fadeIn('slow');
-            	return false;  
-        	}
-        	if($("#pass").val().length < 3) {
-				$('#mensaje').html('Ingrese su contraseña').delay(500).fadeIn('slow');
-				return false;
-			} 
+  				if($("#numcontrol").val().length < 10) {
+            		$('#mensaje').html('Ingrese numero de control de 9 numeros').hide().fadeIn(800).delay(3000).fadeOut(800);
+            		return false;  
+        		}
+        		if($("#pass").val().length < 4) {
+					$('#mensaje').html('Ingrese su contraseña').hide().fadeIn(800).delay(3000).fadeOut(800);
+					return false;
+				} 
         	return true;
   			});
-  		});
-	}
+		}
+		$('#boton').click( function() { 
+			if(validaForm()){			
+				$('#mensaje').html('<img src="img/load-indicator.gif" alt="..." id="load"/>').hide().fadeIn(600);
+				$.post("includes/login.php",$('#formlogin').serialize(),function(res){                
+            		if(res == "error"){
+           				$('#mensaje').html('No estas registrado o tus datos son incorrectos. Verificalos por favor').hide().fadeIn(900).delay(3000).fadeOut(500);
+            		}else{
+            		window.location='colecciones.php';
+            		}
+            		return false;
+            	});            	        
+        	}
+		});
+  	});
   	</script>
 </head>
 <body>
+	<header>
+		<img src="img/logo_mini.png" alt="tec">			
+		<?php include("includes/menu.php") ?>		
+	</header>
 	<section class="contenedor">
-		<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("includes/menu.php") ?>		
-		</header>
-
 			<?php
 			error_reporting(E_ALL & ~E_NOTICE);  
 			session_start();
@@ -48,30 +80,27 @@
 			?>
 			<br>
 			<?php }else{ ?>
-
 			<div id="paginaColeccion">
 			<p>
 				<div class="cont">
 					<h1>Accede a la BD de la Biblioteca</h1><br>
-					<img src="img/logo.png" alt="tec">
+					<img src="img/logo.png" alt="tec" class="logo_tec">
 				</div>
 			</p> <br>
 			<p>
 				<div class="cont">
 				<h1>Iniciar sesión</h1><br>
-				<form action="includes/login.php" method="POST" id="formlogin">
+				<!--<form action="includes/login.php" method="POST" id="formlogin"> -->
+				<form id="formlogin" method="post">
         			<select name="tipo" id="tipo">
                		 	<option value="1">Alumno</option>
                			<option value="2">Administrador</option>
         			</select><br>
-					<label>No. control:</label>
-					<input type="text" id="numcontrol" name="numcontrol" placeholder="Numero de Control" maxlength="9" title="No. de control de 9 numeros" required /><br> <!--autofocus -->
-					<label>Password:</label>
+					<input type="text" id="numcontrol" name="numcontrol" placeholder="Numero de Control" maxlength="9" title="No. de control de 9 numeros" required /><br>
 					<input type="password" id="pass" name="pass" placeholder="Contraseña" title="ingresa tu contraseña" required /><br>
-					<input type="submit" id="boton" value="Entrar" />
-					<div id="mensaje" style="color: darkred;"></div>
-        			</div>
-				</form>
+					<input type="button" id="boton" class="boton2" style="margin:0;" value="Entrar" />
+				</form><br>				
+				<div id="mensaje" style="color: darkred;"></div>
 				</div>
 				</p>
 			<br>
@@ -96,17 +125,18 @@
                			<option value="Administracion">Administracion</option>
         			</select>
     		<label for="semestre">Semestre</label>
-    		<input type="semestre" name="semestre" id="semestre" value="" class="text ui-widget-content ui-corner-all" />
+    		<input type="text" name="semestre" id="semestre" value="" class="text ui-widget-content ui-corner-all" />
   			</fieldset>
   			</form>
 			</div>
-			<br>
-			<button id="create-user">Crea una cuenta</button>
+			<br><br>
+			<button id="create-user" style="display: block; margin: 0 auto;">Crea una cuenta</button>
 			<div class="exito"></div>
 			<?php }?>
+	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
+		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook" class="facebook"></a>
 	</footer>
-	</section>
 </body>
 </html>

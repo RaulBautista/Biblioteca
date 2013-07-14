@@ -4,8 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Biblioteca</title>
-	<link rel="stylesheet" href="css/design2.css">
-	<link rel="stylesheet" type="text/css" href="css/slideindex.css">
+	<link rel="stylesheet" href="css/design2.css">	
 	<link rel="stylesheet" href="css/apprise-v2.css">
 	<!--[if IE]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>		
@@ -15,7 +14,6 @@
 	<![endif]-->
 	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="js/new/apprise-v2.js"></script>
-	<script type="text/javascript" src="js/new/jquery-ui-1.9.2.custom.min.js"></script>
 	<script>
 		$(document).ready(function(){
 		//Apprise('Pagina en construccion!. Cualquier sugerencia por favor hacerla al correo <a target="_blank" href="https://www.facebook.com/Xnour">raul_nouni@hotmail.com</a>');
@@ -42,7 +40,7 @@
 	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/facebook.png" alt="Facebook" class="facebook"></a>
+		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook" class="facebook"></a>
 		<a href="http://www.sep.gob.mx/"><img src="img/sep.gif" alt="sep" class="img_footer"></a>
 		<a href="http://www.dgit.gob.mx/"><img src="img/dgest.png" alt="dgest" class="img_footer"></a>
 		<a href="http://www.tecnologicosdf.mx/"><img src="img/SEP_IT.png" alt="sep" class="img_footer"></a>
