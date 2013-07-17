@@ -5,12 +5,45 @@
 	<title>Respuestas</title>
 	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" href="css/prettify.css">
-	<style>#checkbox{display: inline; margin-left: 10px;}</style>
+	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
+	<link rel="stylesheet" href="css/codemirror.css">
+	<style type="text/css">
+      .CodeMirror { border: 1px solid silver; height: auto;}
+      /*.CodeMirror-empty { outline: 1px solid #c22; }*/
+      .CodeMirror-empty.CodeMirror-focused { outline: none; }
+      .CodeMirror pre.CodeMirror-placeholder { color: #999; }
+    </style>
 	<script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
+	<script src="js/new/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/prettify/prettify.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/es.js"></script>
+	<!--Codemirror -->
+	<script src="js/codemirror/codemirror.js"></script>
+	<script src="js/codemirror/edit/closetag.js"></script>
+	<script src="js/codemirror/xml.js"></script>
+	<script src="js/codemirror/javascript.js"></script>
+	<script src="js/codemirror/php.js"></script>
+	<script src="js/codemirror/css.js"></script>
+	<script src="js/codemirror/clike.js"></script>
+	<script src="js/codemirror/htmlmixed.js"></script>
+	<script src="js/codemirror/display/placeholder.js"></script>
+	<script src="js/jquery.autosize-min.js"></script>
 	<script>
 		$(document).on('ready', function(){
 			prettyPrint();
+			$('.animated').autosize({append: "\n"});
+			$( "#tabs" ).tabs();
+			$('#respuesta').keydown(function(e){
+			var maxChars = 499;
+			if($(this).val().length <= maxChars)
+			{
+				var charsLeft = ( maxChars - $(this).val().length );
+				$('#contador').text( charsLeft + ' caracteres restantes.' ).css('color', (charsLeft<10)?'#F00':'#000' );
+			}else{
+				return ($.inArray(e.keyCode,[8,35,36,37,38,39,40]) !== -1);
+			}
+			})
 		});
 	</script>
 </head>
@@ -23,6 +56,8 @@
 		<?php
 		error_reporting(E_ALL & ~E_NOTICE);  
 		session_start();
+		//date_default_timezone_set('America/Los_Angeles');
+		date_default_timezone_set('America/Mexico_City');		
 		if($_SESSION['logged'] == '1') { 
 			include "includes/menualumno.php";
 			require_once("includes/conexion.php");
@@ -30,43 +65,55 @@
 			$consulta = @mysql_query('SELECT * FROM Preguntas WHERE id = "'.mysql_real_escape_string($id).'"')
 			or die (mysql_error()); 
 			$row = mysql_fetch_array($consulta);
-			$pregunta = $row['pregunta'];
-			$mensaje = nl2br(htmlspecialchars($row['mensaje']));
-			$autor = $row['autor'];
 			printf("
 			<br>
-			<article id='pregunta'>
+			<article id='pregunta_res'>
 				<h1>%s</h1>
 				<p>Posteado por: %s || %s</p><br>
 				<p id='problema'>%s</p><br>				
-			</article>						
+			</article>				
 				", 
-			$row["pregunta"], $row["autor"],date("j M Y - g:i A ", strtotime($row["fecha"])), nl2br(htmlspecialchars($row["mensaje"])));
+			$row["pregunta"], $row["autor"], date("j M Y - g:i A ", strtotime($row["fecha"])), nl2br(htmlspecialchars($row["mensaje"])));
 			$nombre = $_SESSION['user'];
 			?>
 			<?php
 			?>
-			<form method="POST" action="responder.php" id="FormRespuesta">
-				<textarea name="respuesta" id="respuesta" rows="5" required></textarea>
-				<input type="hidden" name="autor" value="<?php echo $nombre ?>"/>
-				<input type="hidden" name="id" value="<?php echo $id ?>"/>
-				<div id="contador"></div>
-				<div align="center" style="color: darkred;">¿Incluiste código de algún lenguaje como Java o PHP?<input type="checkbox" id="checkbox" name="control" value="1"></div>
-				<input type="submit" id="boton" value="Publica tu respuesta" class="boton2"/><br>
-			</form>
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Texto</a></li>
+					<li><a href="#tabs-2">Código</a></li>
+				</ul>
+				<div id="tabs-1">
+				<form method="POST" action="responder.php" id="FormRespuesta">
+					<textarea name="respuesta" id="respuesta" class="animated" placeholder="Publica aqui tus comentarios... <img src=' '> <iframe src=' '></iframe>" ></textarea>
+					<input type="hidden" name="autor" value="<?php echo $nombre ?>"/>
+					<input type="hidden" name="id" value="<?php echo $id ?>"/>
+					<input type="submit" id="boton" value="Publica tu respuesta" class="boton2"/>
+					<div id="contador"></div>	
+				</form>			
+				</div>				
+				 <div id="tabs-2">	
+				 <form method="POST" action="responder.php" id="FormRespuesta">			 	
+				 	<textarea id="code" name="respuesta" placeholder="Tu codigo aqui..."></textarea>
+				 	<input type="hidden" name="autor" value="<?php echo $nombre ?>"/>
+					<input type="hidden" name="id" value="<?php echo $id ?>"/>
+					<input type="hidden" name="control" value="1"/>
+					<input type="submit" id="boton" value="Publica tu respuesta" class="boton2"/>
+				</form>
+				</div>								
+			</div>
+			<script type="text/javascript">
+				var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+				lineNumbers: true,
+				//mode: 'text/html',
+				mode: 'application/x-httpd-php',
+				indentUnit: 4,
+				viewportMargin: Infinity,
+				indentWithTabs: true,
+				autoCloseTags: true
+				});
+    		</script>
 			<hr size='4'/ class="division">
-			<script>
-			$('#respuesta').keydown(function(e){
-			var maxChars = 499;
-			if($(this).val().length <= maxChars)
-			{
-				var charsLeft = ( maxChars - $(this).val().length );
-				$('#contador').text( charsLeft + ' caracteres restantes.' ).css('color', (charsLeft<10)?'#F00':'#000' );
-			}else{
-				return ($.inArray(e.keyCode,[8,35,36,37,38,39,40]) !== -1);
-			}
-			})
-			</script>
 			<?php
 			$consulta = @mysql_query('SELECT * FROM Respuestas WHERE id_pregunta = "'.mysql_real_escape_string($id).'" ORDER BY fecha DESC')
 			or die (mysql_error()); 

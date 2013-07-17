@@ -2,7 +2,7 @@
 <html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>alumnos</title>
 	<link rel="stylesheet" href="css/design2.css">
     <link rel="stylesheet" href="css/demo_table_jui.css">
@@ -45,7 +45,7 @@
 			$consult = mysql_query("SELECT fecha_devolver FROM Prestamo WHERE numcontrol_alum = '$numcontrol' ORDER BY fecha_devolver ", $link);
 			$num = mysql_num_rows($consult);
 			if ($num > 0) {
-			echo "<div class='frame'><h2>Tus prestamos</h2><br><hr><br> ";
+			echo "<div class='frame'><h2>Tus prestamos</h2><br><hr size='4'><br> ";
 				while ($devolver = mysql_fetch_array($consult)) {
 					$fecha = date("j M Y - g:i A", strtotime($devolver['fecha_devolver']));
 					$fecha_comparar = date("Y-m-d H:i:s A", strtotime($devolver['fecha_devolver']));
@@ -83,7 +83,11 @@
 				} ?>
 			</ul>
 		</div>
-		<?php }
+		<?php }else{
+			echo "<br><h3><a href='foro.php'>
+			¿Tienes alguna pregunta? Entra al foro. O tal vez que sabes la respuesta a alguna pregunta.
+			</a></h3><br>";
+		}
 	}else{
 		header("location: index.php");
 	} ?>

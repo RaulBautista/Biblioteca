@@ -15,13 +15,14 @@ body{
 	background:#e3eef0 url(../img/bg_body.png);
 }
 header{
-	position: fixed;
+	position:fixed !important;
 	background: url(../img/head_bg.png);
 	/*
 	background-color: #F2F2F2;
     background-image: -moz-linear-gradient(center top , #FEFEFE, #F2F2F2); */
     top: 0;
 	width: 100%;
+	z-index:9999;
 }
 header img{
 	width: 51px;
@@ -49,7 +50,8 @@ p{
 footer{
 	background: url(../img/head_bg.png);
 	color: cornflowerblue;
-	min-height: 40px;
+	display: block;
+	min-height: 50px;
 	padding-top: 10px;
 	position: relative;
 	text-align: center;
@@ -94,6 +96,16 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 .autor{ /*Autor de cada respuesta del foro*/
 	color: cornflowerblue;
 }
+.area_preguntas{ /*Area del foro donde se cargan mis datos de preguntas foro.php*/
+	background-color: white;
+	border: solid 1px lightgray;
+	border-radius: 7px;
+	display: block;
+	margin: 20px auto;
+	padding: 5px;
+	position: relative;
+	max-width: 700px;
+}
 .boton{
 	border:1px solid #25729a;-webkit-box-shadow: #B4B5B5 5px 5px 5px  ;-moz-box-shadow: #B4B5B5 5px 5px 5px ; box-shadow: #B4B5B5 5px 5px 5px  ; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;width:165px;font-size:12px;font-family:tahoma, verdana, arial, sans-serif; padding: 10px 10px 10px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #FFFFFF; background-color: #3093c7;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3093c7), color-stop(100%, #1c5a85));
@@ -132,6 +144,13 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	background: none repeat scroll 0 0 white;
     color: CornflowerBlue;
 }
+.boton_error{ /*Boton para cargar datos en foro.php*/
+	background-color: darkred;
+}
+.boton_error:hover{
+	background-color: white;
+	color: darkred;
+}
 .bienvenido p{
 	display: inline-block;	
 	padding: 10px;
@@ -140,13 +159,14 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	height: 280px;
 }
 .contenedor{ /*Contiene todo mi contenido dentro del body*/
+	display: block;
 	max-width: 1024px;
-	min-height: 500px;
+	min-height: 515px;
 	margin: 70px auto 10px auto;
 }
 .division{ /*label hr*/
 	margin: 20px auto;
-	width: 700px;
+	max-width: 700px;
 }
 .facebook{ /*Logo facebook en el footer*/
 	position: absolute;
@@ -154,9 +174,13 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	right: 30px;
 	background: url(../img/head_bg.png) no-repeat;
 }
-.fecha{
-	color: royalblue;
-	margin-left: 50px;
+.fecha_foro{ /*Fecha de la pregunta en el foro*/
+	color: gray;
+	position: absolute;
+	right: 10px;
+}
+.fecha_foro span{
+	font-size: 14px;
 }
 .frame{
 	border: solid 1px gray;
@@ -178,34 +202,30 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 .mensaje_warning{
 	color: goldenrod;
 }
-.misPreguntas{	
-	margin: 20px auto;
+.mensaje_foro{ /*Respuestas en el foro.php*/
+	margin-bottom: 10px;
 }
-.num_respuestas{ /*Foro numero de respuesta de cada pregunta*/
-	border: solid 1px cornflowerblue;
-	border-radius: 50%;
-	background-color: cornflowerblue;
-	color: white;
-	margin-top: 7px;
-	padding: 1px;
-	position: absolute;
-	right: 10px;
-	text-align: center;	
-	top: 10px;
-	width: 30px;
+.mensaje_foro a{
+	font-size: 18px;
 }
-.pregunta_foro:before{ /*Preguntas del foro*/
-	content: url(../img/mensaje.png);
-	margin-right: 8px;
+.msg_respuesta img, iframe{
+	display: block;
+	margin: 0 auto;
+	max-width: 670px;
+	max-height: 430px;
+	padding: 15px 0;
 }
-.preguntas{ /*Div de preguntas del foro*/
-	background: none repeat scroll 0 0 #F8F8F8;
-	border: solid 1px gray;
+.num_respuestas{
+	background-color: royalblue;
+	border: solid 1px royalblue;
 	border-radius: 5px;
-	padding: 5px;
-	position: relative;
+	color: white;
+	font-size: 14px;
+	padding: 2px;
+	text-align: center;
+	max-width: 120px;
 }
-.respuetas_alumnos{ /*Article de cada respuesta en el foro*/
+.respuetas_alumnos{ /*Article de cada respuesta */
 	background-color: white;
 	border: solid 1px gray;
 	border-radius: 7px;
@@ -235,7 +255,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	width: 700px;
 }
 /*Article Pregunta en pagina respuestas.php*/
-#pregunta{
+#pregunta_res{
 	border: solid 1px lightgray;
 	border-radius: 7px;
 	display: block;
@@ -255,7 +275,14 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 #respuesta{ /*Textarea responderopopkop pregunta*/
 	display: block;
 	margin: 0 auto;
-	position:static; 
 	resize: none;
-	width: 700px;
+	width: 600px;
+	-webkit-transition: height 0.2s;
+				-moz-transition: height 0.2s;
+				transition: height 0.2s;
+}
+#tabs{
+	display: block;
+	max-width: 700px;
+	margin: 0 auto;
 }

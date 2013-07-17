@@ -4,27 +4,17 @@
 	<meta charset="UTF-8">
 	<title>Foro</title>
 	<link rel="stylesheet" href="css/design2.css">
-	<link rel="stylesheet" href="css/infinite.css">
 	<link rel="stylesheet" type="text/css" media="all" href="css/formulario.css">
   	<link rel="stylesheet" type="text/css" media="all" href="css/fancybox/jquery.fancybox.css">
+  	<style>
+  		#checkbox{display: inline; margin-left: 10px;}
+  	</style>
 	<script type="text/javascript" src="js/new/jquery-1.7.2.min.js"></script>
-	<script src="js/new/infinite.js"></script>
 	<script type="text/javascript" src="css/fancybox/jquery.fancybox.js?v=2.0.6"></script>
-	<script>
-	$(document).ready(function() {
-	$('#content').scrollPagination({
-		nop     : 1, // The number of posts per scroll to be loaded
-		offset  : 0, // Initial offset, begins at 0 in this case
-		error   : 'No hay mas resultados', // When the user reaches the end this is the message that is
-		                            // displayed. You can change this if you want.
-		delay   : 500, // When you scroll down the posts will load after a delayed amount of time.
-		               // This is mainly for usability concerns. You can alter this as you see fit
-		scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
-		               // but will still load if the user clicks.
-	});
-	});
-	</script>
-
+	<script src="js/moment.min.js"></script>
+	<script src="js/es.js"></script>
+	<script src="js/livestamp.min.js"></script>
+	<script src="js/scrollFunction.js"></script>
 </head>
 <body>
 	<header>
@@ -49,13 +39,15 @@
 					<label>Titulo</label>
 					<input type="text" id="pregunta" name="pregunta" class="txt" placeholder="Maximo 100 caracteres" maxlength="100px"><br>
 					<label>Describe tu pregunta</label>
-					<textarea id="msg" name="msg" class="txtarea"></textarea>
+					<textarea id="msg" name="msg" class="txtarea"></textarea>				
 					<div id="contador"></div>
 					<button id="send">Publica tu pregunta</button>
 				</form>
 			</div>
 			<script type="text/javascript" src="js/new/formularioNuevoTema.js"></script>
-			<div id="content"></div>
+			<div class="contenido"></div>
+			<br><br>
+			<button id="cargando" class="boton2">Click para ver mas</button>
 			<script>
 			$('#msg').keydown(function(e){
 			var maxChars = 299;

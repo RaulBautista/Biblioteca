@@ -70,10 +70,10 @@
 		?>
 		<form action="upload.php" class="dropzone">
   			<div class="fallback">
-    			<input name="file" type="file" />
+    			<input name="file" type="file" >
   			</div>
 		</form>
-
+		<br>
 		<div class="exito"></div>
 		<article id="articulos">
 		<?php
@@ -122,7 +122,7 @@
 		<?php }else{
 			header("location: colecciones.php");
 		} ?>
-	</section>
+	</section><br>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook" class="facebook"></a>
