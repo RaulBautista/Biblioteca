@@ -34,30 +34,21 @@
     return true; // Si todo está correcto
 	}
   	$(document).ready(function(){
-  		if(!Modernizr.input.required){
-  			$("#formlogin").submit(function () {
-  				if($("#numcontrol").val().length < 10) {
-            		$('#mensaje').html('Ingrese numero de control de 9 numeros').hide().fadeIn(800).delay(3000).fadeOut(800);
-            		return false;  
-        		}
-        		if($("#pass").val().length < 4) {
-					$('#mensaje').html('Ingrese su contraseña').hide().fadeIn(800).delay(3000).fadeOut(800);
-					return false;
-				} 
-        	return true;
-  			});
-		}
-		$('#boton').click( function() { 
-			if(validaForm()){			
+		$("#formlogin").submit(function (event) {
+			event.preventDefault();
+			if(validaForm()){
 				$('#mensaje').html('<img src="img/load-indicator.gif" alt="..." id="load"/>').hide().fadeIn(600);
 				$.post("includes/login.php",$('#formlogin').serialize(),function(res){                
             		if(res == "error"){
            				$('#mensaje').html('No estas registrado o tus datos son incorrectos. Verificalos por favor').hide().fadeIn(900).delay(3000).fadeOut(500);
+            		}else if(res == "exito"){            		
+            			window.location='alumno.php';
             		}else{
-            		window.location='colecciones.php';
+            			window.location='colecciones.php';
             		}
-            		return false;
             	});            	        
+        	}else{
+        		return false;
         	}
 		});
   	});
@@ -90,7 +81,6 @@
 			<p>
 				<div class="cont">
 				<h1>Iniciar sesión</h1><br>
-				<!--<form action="includes/login.php" method="POST" id="formlogin"> -->
 				<form id="formlogin" method="post">
         			<select name="tipo" id="tipo">
                		 	<option value="1">Alumno</option>
@@ -98,7 +88,7 @@
         			</select><br>
 					<input type="text" id="numcontrol" name="numcontrol" placeholder="Numero de Control" maxlength="9" title="No. de control de 9 numeros" required /><br>
 					<input type="password" id="pass" name="pass" placeholder="Contraseña" title="ingresa tu contraseña" required /><br>
-					<input type="button" id="boton" class="boton2" style="margin:0;" value="Entrar" />
+					<input type="submit" id="boton" class="boton2" style="margin:0;" value="Entrar" />
 				</form><br>				
 				<div id="mensaje" style="color: darkred;"></div>
 				</div>

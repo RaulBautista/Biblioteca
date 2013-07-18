@@ -1,6 +1,6 @@
 $(document).on('ready', function(){
     var inicio = 0;
-    var limite = 1;
+    var limite = 2;
     var ocupado = false;
     function peticion(){
         $.ajax({
@@ -8,35 +8,30 @@ $(document).on('ready', function(){
         type: 'POST',
         data: {inicio: inicio, limite: limite},
         dataType: "json",
-        success: function(datos)
-        {
-            if(datos){
-            var fecha = datos.fecha;
-            var total = datos.total;
-            if (total == 0) {
-                total = "Sin respuestas";
-            }
-            else if(total == 1){
-                total = "1 respuesta";
-            }
-            else{
-                total = total+" respuestas";
-            };
-            $(".contenido").append(
-                '<article class="area_preguntas"><div class="mensaje_foro">'+
-                datos.mensaje+'</div><div class="fecha_foro"><span data-livestamp="'+
-                moment(fecha).unix()+'"></span></div><div class="num_respuestas">'+
-                total+'</div></article>');
-            //moment(fecha).fromNow()
-            //<span data-livestamp="1373926936"></span>
+        success: function(datos){
+        if(datos == "no"){
+            $('button#cargando').html('<center>No hay mas preguntas</center>'); 
+            $(window).off("scroll");
+            $('button#cargando').off("click").addClass('boton_error');
+        }
+        else{
+            $.each(datos, function(c, v){
+                var total = v.total;
+                if(total == 0){
+                    total = '<div class="num_respuestas_cero">Sé el primero en responder</div>';
+                }
+                else if(total == 1){
+                    total = '<div class="num_respuestas">'+total+' respuesta</div>';
+                }else{
+                    total = '<div class="num_respuestas">'+total+' respuestas</div>';
+                }
+                $(".contenido").append(
+                    '<article class="area_preguntas"><div class="mensaje_foro">'+
+                    v.mensaje+'</div><div class="fecha_foro"><span data-livestamp="'+
+                    moment(v.fecha).unix()+'"></span></div>'+total+'</article>');
+            });
             inicio = inicio + limite;
-            }
-            else if(!datos)
-            {
-                $('button#cargando').html('<center>No hay mas preguntas</center>'); 
-                $(window).off("scroll");
-                $('button#cargando').off("click").addClass('boton_error');
-            };
+        }
             ocupado = false;
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -49,7 +44,7 @@ $(document).on('ready', function(){
         }
         });
         }
-	//$(window).scroll(function()
+    //$(window).scroll(function()
     $(window).on("scroll", function(){
         //if($(window).scrollTop() == $(document).height() - $(window).height())
         if($(window).scrollTop() + $(window).height() > $('boton#cargando').height() && !ocupado)

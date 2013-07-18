@@ -210,7 +210,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 }
 .msg_respuesta img, iframe{
 	display: block;
-	margin: 0 auto;
+	margin: 0 auto 10px auto;
 	max-width: 670px;
 	max-height: 430px;
 	padding: 15px 0;
@@ -220,12 +220,23 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	border: solid 1px royalblue;
 	border-radius: 5px;
 	color: white;
-	font-size: 14px;
+	font-size: 12px;
 	padding: 2px;
 	text-align: center;
-	max-width: 120px;
+	max-width: 100px;
+}
+.num_respuestas_cero{
+	background-color: darkgreen;
+	border: solid 1px royalblue;
+	border-radius: 5px;
+	color: white;
+	font-size: 12px;
+	padding: 2px;
+	text-align: center;
+	max-width: 180px;
 }
 .respuetas_alumnos{ /*Article de cada respuesta */
+	position: relative;
 	background-color: white;
 	border: solid 1px gray;
 	border-radius: 7px;
@@ -263,11 +274,13 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	padding: 10px;
 	max-width: 700px;
 }
-#problema{ /*respuestas.php*/
-	background: #F8F8F8;
+#problema{ /*Prblebla de la pag respuestas.php*/
+	background: white;/*#F8F8F8*/
 	border: 2px solid #C8C8C8;
 	border-radius: 4px;
 	box-shadow: 1px 5px 10px #888888;
+	color: cornflowerblue;
+	font-size: 18px;
 	margin: 0 20px;
 	padding: 11px;
 }
@@ -278,11 +291,18 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	resize: none;
 	width: 600px;
 	-webkit-transition: height 0.2s;
-				-moz-transition: height 0.2s;
-				transition: height 0.2s;
+	-moz-transition: height 0.2s;
+	transition: height 0.2s;
 }
 #tabs{
 	display: block;
 	max-width: 700px;
 	margin: 0 auto;
+}
+.voto{
+	display: block;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	width: 30px;
 }

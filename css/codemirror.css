@@ -9,6 +9,9 @@
   /* Set scrolling behaviour here */
   overflow: auto;
 }
+/*Linea activa*/
+.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+.CodeMirror-activeline-background {background: #e8f2ff !important;}
 
 /* PADDING */
 

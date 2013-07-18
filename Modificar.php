@@ -40,7 +40,7 @@
 			$ano = strip_tags($_POST['ano']);
 			$paginas = strip_tags($_POST['paginas']);
 			$ejemplar_num = strip_tags($_POST['ejemplar_num']);
-			$id_area = strip_tags($_POST['id_area']);
+			$area = strip_tags($_POST['id_area']);
 			$estado = strip_tags($_POST['estado']);
 
 			//htmlentities
@@ -56,7 +56,7 @@
 				ano_edicion = '$ano',
 				num_paginas = '$paginas',
 				ejemplar_num = '$ejemplar_num',
-				id_area = '$id_area',
+				area = '$area',
 				estado = '$estado'
 				WHERE id = '$id'", $link)
 				or die(mysql_error());
@@ -90,11 +90,11 @@
 			<input type="text" name="ejemplar_num" value="<?php echo $row['ejemplar_num']; ?>" required /><br>
 			<label>Area del libro: </label>
 			<select name="id_area" title="Seleccione area" required >
-				<option value="">Seleccione una opcion</option>
-				<option value="001">Programacion</option>
-				<option value="002">Historia</option>
-				<option value="003">Quimica</option>
-				<option value="004">Matematicas</option>
+				<option value="">Seleccione una opción</option>
+				<option value="Programación">Programación</option>
+				<option value="Historia">Historia</option>
+				<option value="Química">Química</option>
+				<option value="Matemáticas">Matemáticas</option>
  			</select>
 			<!-- <input type="text" name="id_area" value="<?php echo $row['id_area']; ?>" required /><br> -->
 			<label>Estado: </label>

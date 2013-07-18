@@ -14,7 +14,7 @@
     </style>
     <script src="js/new/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="js/new/jquery.toastmessage.js"></script>
+    
     <script type="text/javascript">
     $(document).ready(function(){
         $('#datatables').dataTable({
@@ -126,7 +126,7 @@
 					 	<a href='#' onClick='confirmar()'><img src='img/delete.png'></a>
 					</td>							
 				</tr>", 
-				$row["autor"], $row["titulo"],  $row["edicion"],  $row["lugar_edicion"], $row["editorial"], $row["ano_edicion"], $row["num_paginas"], $row["ejemplar_num"],$row["id_area"], $row["estado"]);
+				$row["autor"], $row["titulo"],  $row["edicion"],  $row["lugar_edicion"], $row["editorial"], $row["ano_edicion"], $row["num_paginas"], $row["ejemplar_num"],$row["area"], $row["estado"]);
 				}
 				mysql_free_result($result);
 				mysql_close($link);

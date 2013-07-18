@@ -9,7 +9,7 @@ td, th{
 }
 
 .paging_full_numbers .ui-button {
-	padding: 2px 6px;
+	padding: 1px 1px;
 	margin: 0;
 	cursor: pointer;
 	* cursor: hand;
@@ -24,7 +24,7 @@ td, th{
 }
 
 .dataTables_wrapper .ui-toolbar {
-	padding: 5px;
+	padding: 2px;
 }
 
 .dataTables_paginate {
@@ -36,7 +36,7 @@ td, th{
 }
 
 table.display thead th {
-	padding: 3px 0px 3px 10px;
+	padding: 1px 0px 1px 1px;
 	cursor: pointer;
 	* cursor: hand;
 }
