@@ -73,7 +73,7 @@
 		<div class="frame">
 			<ul>
 				<?php
-				echo "<h1>Tienes $numero_preguntas preguntas realizadas en el foro</h1><br><hr><br>";
+				echo "<h1>Tienes $numero_preguntas preguntas realizadas en el foro</h1><br><hr size='4'><br>";
 				while ($preguntas = mysql_fetch_array($consultap)) {
 					$total = $preguntas['total'];
 					if ($total == 0) {
@@ -82,7 +82,7 @@
 				echo "<li><a href='respuestas.php?id=$preguntas[id]'><b>$preguntas[pregunta]<br> </b>respuestas: <b>$total</b></a></li><br>";
 				} ?>
 			</ul>
-		</div>
+		</div><br>
 		<?php }else{
 			echo "<br><h3><a href='foro.php'>
 			¿Tienes alguna pregunta? Entra al foro. O tal vez que sabes la respuesta a alguna pregunta.

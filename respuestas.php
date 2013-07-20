@@ -80,7 +80,7 @@
 				var maxChars = 499;
 				if($(this).val().length <= maxChars){
 					var charsLeft = ( maxChars - $(this).val().length );
-					$('#contador').text( charsLeft + ' caracteres restantes.' ).css('color', (charsLeft<10)?'#F00':'#000' );
+					$('#contador_resp').text( charsLeft + ' caracteres restantes.' ).css('color', (charsLeft<10)?'#F00':'#000' );
 				}else{
 					return ($.inArray(e.keyCode,[8,35,36,37,38,39,40]) !== -1);
 				}
@@ -130,7 +130,7 @@
 					<input type="hidden" name="autor" value="<?php echo $nombre ?>"/>
 					<input type="hidden" name="id" value="<?php echo $id ?>"/>
 					<input type="submit" id="boton" value="Publica tu respuesta" class="boton2"/>
-					<div id="contador"></div>	
+					<div id="contador_resp"></div>	
 				</form>			
 				</div>				
 				 <div id="tabs-2">	

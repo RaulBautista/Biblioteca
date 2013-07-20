@@ -37,7 +37,7 @@
 		$id = strip_tags($_GET['id']);
 		$hoyday = date("d-m-Y"); 
 		$hora = date("g:i a");
-		$consulta = mysql_query("SELECT * FROM Libros
+		$consulta = mysql_query("SELECT estado, id FROM Libros
 			WHERE id = $id", $link)
 			or die(mysql_error());
 			$fila = mysql_fetch_array($consulta);

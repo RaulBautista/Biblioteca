@@ -15,7 +15,8 @@ while($row = mysql_fetch_array($query)) {
 	$preguntas[] = array(
 		'total' =>$row['total'] ,
 		'mensaje'=>"<a href='respuestas.php?id=$row[id]'>$mensaje</a>",
-		'fecha'=>$row['fecha']
+		'fecha'=>$row['fecha'],
+		'tag'=>$row['tags']
 	);
 	
 }

@@ -26,7 +26,7 @@
         $('#numcontrol').focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
         return false;
     }
-    if($('#pass').val().length < 3){
+    else if($('#pass').val().length < 3){
         $('#mensaje').html('Tu contraseña debe ser mayor a 3 caracteres').hide().fadeIn(900).delay(3000).fadeOut(500);
         $('#pass').focus();
         return false;

@@ -4,17 +4,31 @@
 	<meta charset="UTF-8">
 	<title>Foro</title>
 	<link rel="stylesheet" href="css/design2.css">
-	<link rel="stylesheet" type="text/css" media="all" href="css/formulario.css">
-  	<link rel="stylesheet" type="text/css" media="all" href="css/fancybox/jquery.fancybox.css">
-  	<style>
-  		#checkbox{display: inline; margin-left: 10px;}
-  	</style>
-	<script type="text/javascript" src="js/new/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="css/fancybox/jquery.fancybox.js?v=2.0.6"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="css/formulario_foro.css">
+  	<link rel="stylesheet" href="css/chosen.css">
+	<script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
 	<script src="js/moment.min.js"></script>
 	<script src="js/es.js"></script>
 	<script src="js/livestamp.min.js"></script>
-	<script src="js/scrollFunction.js"></script>
+	<script src="js/chosen.jquery.min.js"></script>
+	<script src="js/jquery.autosize-min.js"></script>
+	<script type="text/javascript" src="js/new/cargaDatosForo.js"></script>
+	<script>
+		$(document).on('ready', function(){
+			$('.txtarea').autosize({append: "\n"});
+			$(".chzn-select").chosen({width: "400px", no_results_text: "Oops, etiqueta no disponible", max_selected_options: 3});
+			$('#msg').keydown(function(e){
+			var maxChars = 299;
+			if($(this).val().length <= maxChars)
+			{
+				var charsLeft = ( maxChars - $(this).val().length );
+				$('#contador_foro').text( charsLeft + ' caracteres restantes' ).css('color', (charsLeft<10)?'#F00':'darkcyan' );
+			}else{
+				return ($.inArray(e.keyCode,[8,35,36,37,38,39,40]) !== -1);
+			}
+			})
+		});
+	</script>
 </head>
 <body>
 	<header>
@@ -32,37 +46,37 @@
 			or die (mysql_error()); 
 			echo "<div class='bienvenido'>Bienvenido al Foro de preguntas.</div><hr><br>"
 			?>
-			<a href="#inline" class="boton" id="modalbox">Tienes alguna pregunta</a>
-			<div id="inline">
-				<h2>Ingresa datos suficientes para ayudarte a resolver tu pregunta</h2><br>
-				<form id="contact" name="contact" action="NuevoTema" method="post">
-					<label>Titulo</label>
+			<button class="boton" id="open_form">Realiza un pregunta</button>
+			<div class="msg_resp_foro"></div>
+			<div id="form">
+				<div id="mensajes_form"><h2>Haz tu pregunta aquí</h2></div><br>
+				<form id="form_preguntar">
+					<label>Titulo para tu pregunta</label>
 					<input type="text" id="pregunta" name="pregunta" class="txt" placeholder="Maximo 100 caracteres" maxlength="100px"><br>
 					<label>Describe tu pregunta</label>
-					<textarea id="msg" name="msg" class="txtarea"></textarea>				
-					<div id="contador"></div>
-					<button id="send">Publica tu pregunta</button>
+					<textarea id="msg" name="msg" class="txtarea" ></textarea>				
+					<div id="contador_foro"></div>					
+					<select data-placeholder="Tags..." name="tags" id="tags" class="chzn-select" multiple style="width:200px;" tabindex="4">
+			    		<option value="<a href='#'>PHP</a>">PHP</option> 
+			    		<option value="<a href='#'>Java</a>">Java</option>
+			    		<option value="<a href='#'>Javascript</a>">Javascript</option> 
+			 			<option value="<a href='#'>HTML</a>">HTML</option>
+			 			<option value="<a href='#'>CSS</a>">CSS</option>
+			 			<option value="<a href='#'>Android</a>">Android</option>
+			 			<option value="<a href='#'>C++</a>">C++</option>
+					</select><br>
+					<input type="submit" class="boton2" id="enviar" value="Preguntar"><br>
 				</form>
-			</div>
-			<script type="text/javascript" src="js/new/formularioNuevoTema.js"></script>
+			</div>			
 			<div class="contenido"></div>
 			<br><br>
 			<button id="cargando" class="boton2">Click para ver mas</button>
 			<script>
-			$('#msg').keydown(function(e){
-			var maxChars = 299;
-			if($(this).val().length <= maxChars)
-			{
-				var charsLeft = ( maxChars - $(this).val().length );
-				$('#contador').text( charsLeft + ' caracteres restantes' ).css('color', (charsLeft<10)?'#F00':'#000' );
-			}else{
-				return ($.inArray(e.keyCode,[8,35,36,37,38,39,40]) !== -1);
-			}
-			})
+			
 			</script>
 		<?php 
 		}else{
-		header("Location: index.php");
+			header("Location: index.php");
 		} ?>
 	</section>
 	<footer>

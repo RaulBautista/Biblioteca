@@ -38,7 +38,7 @@
 	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook" class="facebook"></a>
+		<div class="facebook"><a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook"></a></div>
 		<a href="http://www.sep.gob.mx/"><img src="img/sep.gif" alt="sep" class="img_footer"></a>
 		<a href="http://www.dgit.gob.mx/"><img src="img/dgest.png" alt="dgest" class="img_footer"></a>
 		<a href="http://www.tecnologicosdf.mx/"><img src="img/SEP_IT.png" alt="sep" class="img_footer"></a>

@@ -8,10 +8,6 @@
 	<link rel="stylesheet" href="css/demo_table_jui.css">
     <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="css/toastmessage.css">
-    <style type="text/css">
-    	#link{text-decoration: none; color: white;}
-    	input{width: 50%; }
-    </style>
     <script src="js/new/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
     
