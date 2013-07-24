@@ -5,7 +5,7 @@ $(document).on('ready', function(){
 	var boton = $('#open_form');
     var mensajes_foro = $('.msg_resp_foro');
 	var inicio = 0;
-    var limite = 2;
+    var limite = 5;
     var ocupado = false;
 
 	$("#open_form").on('click', function(){		
@@ -28,7 +28,7 @@ $(document).on('ready', function(){
 	        data: {pregunta: pregunta, mensaje: mensaje, tag: tag},
 	        dataType: "json",
             beforeSend: function(){
-                mensajes_foro.html('<h2>Enviando....</h2>');
+                mensajes_foro.html('<img src="img/preloader.gif" width="40px">');
                 mensajes_foro.fadeIn("slow");
             },
 	        success: function(datos){
@@ -47,14 +47,15 @@ $(document).on('ready', function(){
 		                    total = '<div class="num_respuestas">'+total+' respuestas</div>';
 		                }
 	                	$(".contenido").prepend(
-                            '<article class="area_preguntas" id="preg_last"><div class="mensaje_foro">'+
+                            '<article class="area_preguntas preg_last"><div class="mensaje_foro">'+
                             v.mensaje+'</div><div class="fecha_foro"><span data-livestamp="'+
                             moment(v.fecha).unix()+'"></span></div>'+total+
                             '<br><div class="tags_foro">'+v.tag+'</div></article>'
                         );
-                        $('#preg_last').hide().slideDown(1000);
+                        $('.preg_last').hide().slideDown(1000);
             		}); 		         
-	        		$(mensajes_foro).html('<h2>Publicación exitosa</h2>');
+	        		//$(mensajes_foro).html('<h2>Publicación exitosa</h2>');
+                    $(mensajes_foro).hide();
 	        		$('#pregunta').val("");
 	        		$('#msg').val("");	        		
 	        	}
@@ -72,6 +73,7 @@ $(document).on('ready', function(){
 	    });
         div.fadeOut(700);
         visible = false;
+        $('#mensajes_form').html("<h2>Haz tu pregunta aquí</h2>");
         $(boton).text("Realiza una pregunta");
     };
     //Ajax peticion de preguntas
@@ -130,7 +132,7 @@ $(document).on('ready', function(){
     		$('#mensajes_form').html("<h1>Tu descripcion debe contener mas de 20 caracteres</h1>").hide().fadeIn(1000);
     		$('#msg').focus(); 
     		return false;
-    	}
+    	}        
     	return true;
     };
 
@@ -142,14 +144,14 @@ $(document).on('ready', function(){
             var tag1 = $('#tags').val();
             if(tag1 != null)
             var tag = tag1.toString().replace(/\,/g,' ');
-            //regresar = importe.toString(); 
+            ocupado = true;
     		postearPregunta(pregunta, mensaje, tag);
     	}
     });
     //
     $(window).on("scroll", function(){
-        //if($(window).scrollTop() == $(document).height() - $(window).height())
-        if($(window).scrollTop() + $(window).height() > $('boton#cargando').height() && !ocupado)
+        if($(window).scrollTop() == $(document).height() - $(window).height() && !ocupado)
+        //if($(window).scrollTop() + $(window).height() > $('boton#cargando').height() && !ocupado)
         {                
             ocupado = true;
             setTimeout(function() {            

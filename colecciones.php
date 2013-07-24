@@ -22,12 +22,12 @@
   	<script>
   	function validaForm(){
     if($('#numcontrol').val().length < 9){
-        $('#mensaje').html('Tu numero de control debe tener 9 numeros').hide().fadeIn(900).delay(3000).fadeOut(500);
+        $('#mensaje').html('Tu numero de control debe tener 9 numeros').hide().fadeIn(900).delay(3400).fadeOut(500);
         $('#numcontrol').focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
         return false;
     }
     else if($('#pass').val().length < 3){
-        $('#mensaje').html('Tu contraseña debe ser mayor a 3 caracteres').hide().fadeIn(900).delay(3000).fadeOut(500);
+        $('#mensaje').html('Tu contraseña debe ser mayor a 3 caracteres').hide().fadeIn(900).delay(3400).fadeOut(500);
         $('#pass').focus();
         return false;
     }
@@ -37,10 +37,10 @@
 		$("#formlogin").submit(function (event) {
 			event.preventDefault();
 			if(validaForm()){
-				$('#mensaje').html('<img src="img/load-indicator.gif" alt="..." id="load"/>').hide().fadeIn(600);
+				$('#mensaje').html('<img src="img/load-indicator.gif" alt="..." id="load"/>').hide().fadeIn(500);
 				$.post("includes/login.php",$('#formlogin').serialize(),function(res){                
             		if(res == "error"){
-           				$('#mensaje').html('No estas registrado o tus datos son incorrectos. Verificalos por favor').hide().fadeIn(900).delay(3000).fadeOut(500);
+           				$('#mensaje').html('No estas registrado o tus datos son incorrectos. Verificalos por favor').hide().fadeIn(500);
             		}else if(res == "exito"){            		
             			window.location='alumno.php';
             		}else{

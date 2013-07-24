@@ -4,15 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Articulos</title>
 	<link rel="stylesheet" href="css/design2.css">
-	<link rel="stylesheet" href="css/dropzone.css">
 	<link rel="stylesheet" href="css/tabla.css">
-	<style>
-		#mens{color: darkred; font-size: 12px;}
-	</style>
 	<link rel='stylesheet' href='css/toastmessage.css'>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src='js/new/jquery.toastmessage.js'></script>
-	<script src = "js/new/dropzone.js"></script>
+	<script src="js/new/jquery-ui-1.10.3.custom.min.js"></script>
 	<script type="text/javascript">
 	$(function() {
 		$(".vote").click(function() {
@@ -68,12 +64,9 @@
 		include "includes/menualumno.php";
 		echo "<p id='bienvenido'>Aqui puedes compartir archivos en formato PDF.<br></p><hr><br>"
 		?>
-		<form action="upload.php" class="dropzone">
-  			<div class="fallback">
-    			<input name="file" type="file" >
-  			</div>
-		</form>
-		<br>
+		<!--Drop Zone -->
+
+		<!-- End drop zone -->
 		<div class="exito"></div>
 		<article id="articulos">
 		<?php

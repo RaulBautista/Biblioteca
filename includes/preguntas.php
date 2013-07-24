@@ -25,8 +25,6 @@ if (empty($preguntas)){
 }else{
 echo json_encode($preguntas);
 }
-
-//mysql_free_result($query);
-//mysql_close($link);
-
+mysql_free_result($query);
+mysql_close($link);
 ?>

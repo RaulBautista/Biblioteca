@@ -68,7 +68,7 @@
 				</ul>
 				<div id="tabs-1">
 				<form class="formRespuesta">
-					<textarea name="respuesta" class="animated respuesta" placeholder="Publica aqui tus comentarios..."></textarea>
+					<textarea name="respuesta" class="animated respuesta" placeholder="Publica aqui tus comentarios..." ></textarea>
 					<div class="liveurl-loader"></div>
 					<div class="liveurl">
 			            <div class="close" title="Entfernen"></div>
@@ -99,9 +99,8 @@
 					<input type="hidden" name="autor" class="autor" value="<?php echo $nombre ?>"/>
 					<input type="hidden" name="id" class="id" value="<?php echo $id ?>"/>
 					<input type="hidden" name="control" class="control" value="0"/>
-					<input type="submit" id="boton" value="Publica tu respuesta" class="boton2"/>
+					<input type="submit" id="boton" value="Publica tu respuesta" class="boton2"/>					
 					<div id="contador_resp"></div>	
-					<div class='mensajes_load'></div>			
 				</form>			
 				</div>				
 				 <div id="tabs-2">	
@@ -111,12 +110,11 @@
 					<input type="hidden" name="id" class="id2" value="<?php echo $id ?>"/>
 					<input type="hidden" name="control" class="control2" value="1"/>
 					<input type="submit" id="boton" value="Publica tu codigo" class="boton2"/>
-					<div class='mensajes_load'></div>
 				</form>
 				</div>				
 			</div>
 			<script type="text/javascript">
-			var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+				var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
 				lineNumbers: true,
 				//mode: 'text/html',
 				mode: 'application/x-httpd-php',
@@ -125,7 +123,7 @@
 				viewportMargin: Infinity,
 				indentWithTabs: true,
 				autoCloseTags: true
-			});
+				});
 				//
     		</script>    		
     		<!-- <pre class="brush:php;" id="ocul"></pre>-->

@@ -18,7 +18,7 @@
 			$('.txtarea').autosize({append: "\n"});
 			$(".chzn-select").chosen({width: "400px", no_results_text: "Oops, etiqueta no disponible", max_selected_options: 3});
 			$('#msg').keydown(function(e){
-			var maxChars = 299;
+			var maxChars = 349;
 			if($(this).val().length <= maxChars)
 			{
 				var charsLeft = ( maxChars - $(this).val().length );
@@ -57,13 +57,19 @@
 					<textarea id="msg" name="msg" class="txtarea" ></textarea>				
 					<div id="contador_foro"></div>					
 					<select data-placeholder="Tags..." name="tags" id="tags" class="chzn-select" multiple style="width:200px;" tabindex="4">
-			    		<option value="<a href='#'>PHP</a>">PHP</option> 
-			    		<option value="<a href='#'>Java</a>">Java</option>
-			    		<option value="<a href='#'>Javascript</a>">Javascript</option> 
-			 			<option value="<a href='#'>HTML</a>">HTML</option>
-			 			<option value="<a href='#'>CSS</a>">CSS</option>
 			 			<option value="<a href='#'>Android</a>">Android</option>
+			 			<option value="<a href='#'>Ajax</a>">Ajax</option>
 			 			<option value="<a href='#'>C++</a>">C++</option>
+			 			<option value="<a href='#'>CSS</a>">CSS</option>
+			 			<option value="<a href='#'>HTML</a>">HTML</option>
+			    		<option value="<a href='#'>Java</a>">Java</option>
+			    		<option value="<a href='#'>Javascript</a>">Javascript</option>
+			    		<option value="<a href='#'>JQuery</a>">JQuery</option>
+			    		<option value="<a href='#'>Linux</a>">Linux</option>
+			    		<option value="<a href='#'>MySQL</a>">MySQL</option>			    		
+			    		<option value="<a href='#'>PHP</a>">PHP</option>
+			    		<option value="<a href='#'>SQL</a>">SQL</option>
+			    		<option value="<a href='#'>Ubuntu</a>">Ubuntu</option>
 					</select><br>
 					<input type="submit" class="boton2" id="enviar" value="Preguntar"><br>
 				</form>

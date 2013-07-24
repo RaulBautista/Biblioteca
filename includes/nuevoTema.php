@@ -1,5 +1,4 @@
 <?php
-sleep(5);
 error_reporting(E_ALL & ~E_NOTICE);  
 session_start();
 if($_SESSION['logged'] == '1') { 
@@ -17,7 +16,7 @@ if($_SESSION['logged'] == '1') {
 		exit();
 	}else{
 		$hoy = time();
-		$fecha = date("y-m-d H:i:s", $hoy);
+		$fecha = date("Y-m-d H:i:s", $hoy);
 
 		$meter = @mysql_query('INSERT INTO Preguntas (
 		autor, pregunta, mensaje, fecha, tags)
@@ -47,4 +46,6 @@ if($_SESSION['logged'] == '1') {
 }else{
 	header("location: ../index.php");
 }
+mysql_free_result($query);
+mysql_close($link);
 ?>
