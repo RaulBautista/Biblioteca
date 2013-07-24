@@ -31,6 +31,7 @@ $(document).on('ready', function(){
                         
                         output.find('.close').one('click', function() 
                         {
+                            hayImagen = false;
                             var liveUrl     = $(this).parent();
                             liveUrl.hide('fast');
                             liveUrl.find('.video').html('').hide();
@@ -189,7 +190,8 @@ $(document).on('ready', function(){
         			'<div class="msg_respuesta">'+res+'</div>'+
         			'<a href="#"><img src="img/corazon.png" class="voto"></a></article>'
         		);
-        	});        	
+        	}); 
+            aplicarColor();       	
         },
         error: function (xhr, ajaxOptions, thrownError) {
         	console.log(xhr.status);
@@ -215,8 +217,8 @@ $(document).on('ready', function(){
 		}
 	});
 //End
-	//Syntax
-    setTimeout(function() {
+	//Syntax highlighter
+    function aplicarColor() {
 	function path(){
 		var args = arguments,
 		    result = []
@@ -254,7 +256,10 @@ $(document).on('ready', function(){
 		'html                   @shBrushXml.js'
 	));
 	SyntaxHighlighter.all();
-    }, 1100);//En time
+    }
+    //setTimeout(function () { aplicarColor(); }, 2000);
+    //En time
+
     function validar(){
         if($('textarea.respuesta').val().length < 10){
             $('.mensajes_load').html('<h1>Ingrese minimo 10 caracteres</h1>').hide().slideDown(500);
@@ -299,6 +304,7 @@ $(document).on('ready', function(){
                     $('.total_resp').text(total_respuestas+" comentarios").fadeIn(500);
                     //REsetear campos
                     videosrc = null;
+                    hayImagen = false;
                     var ocultar = $('.liveurl');
                     ocultar.hide('fast');
                     ocultar.find('.video').html('').hide();
@@ -311,12 +317,10 @@ $(document).on('ready', function(){
                     $('textarea.respuesta').trigger('clear'); 
                     curImages = new Array();
                     //
-                    $('textarea.respuesta').val('');
-                    $('textarea.respuesta2').val('');                    
+                    $('textarea.respuesta').val("");                    
                 });
-                }       
-                $('.mensajes_load').css('color', 'darkgreen');
-                $('.mensajes_load').html('<h1>Publicación exitosa</h1>').hide().slideDown(500);            
+                }                
+                aplicarColor();               
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 $('.mensajes_load').html('<h1>Ocurrió un error. Intente mas tarde</h1>').hide().slideDown(500);
@@ -324,6 +328,7 @@ $(document).on('ready', function(){
                 console.log(thrownError);                               
             }            
         });
+        $('.mensajes_load').html('<img src="img/preloader.gif" width="40px">').hide(); 
     };//end funcion
     //Crear links
     //fin links
@@ -357,4 +362,7 @@ $(document).on('ready', function(){
             publicarRespuesta(id, respuesta, autor, control);
         };
     });
+    //Inicio script votacion
+    
+    //Termina script votacion
 });//End jquery onload

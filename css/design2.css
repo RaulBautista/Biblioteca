@@ -54,7 +54,7 @@ p{
 	line-height: 22px;
 }
 footer{
-	background: url(../img/head_bg.png);
+	/*background: url(../img/head_bg.png);*/
 	color: cornflowerblue;
 	display: block;
 	min-height: 50px;
@@ -101,10 +101,11 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 }
 .autor{ /*Autor de cada respuesta en respuestas.php*/
 	bottom: 5px;
+	border-bottom: solid 1px lightgray;
 	color: cornflowerblue;
 	font-size: 12px;
-	letter-spacing: 1px;
-	position: absolute;
+	font-weight: bold;
+	letter-spacing: 1px; 
 	padding: 2px;
 }
 .autor_preg{ /*Autor de la pregunta en respuestas.php*/
@@ -203,10 +204,10 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 .fecha_resp{/*Fecha de las respuestas*/
 	color: gray;
 	font-size: 12px;
-	letter-spacing: 1px;
+	/*letter-spacing: 1px;*/
 	position: absolute;
 	bottom: 7px;
-	right: 35px;
+	left: 10px;
 }
 .frame{
 	border: solid 1px gray;
