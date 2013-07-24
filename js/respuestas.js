@@ -6,7 +6,7 @@ $(document).on('ready', function(){
         var urlImagen;
         var hayImagen = false;
         var total_respuestas;
-        var imagenWeb; //para obtener ruta preview
+        var imagenWeb; //para obtener ruta preview        
 
         var curImages = new Array();
         
@@ -180,7 +180,7 @@ $(document).on('ready', function(){
         dataType: "json",
         success: function(data){
         	$.each(data, function(c, v){
-        		var res = v.respuesta;
+        		var res = v.respuesta;                
         		if(v.control == 1){        		
         			res = '<pre class="brush:php; html-script:true; toolbar: false;">'+res+'</pre>';                    
         		}
@@ -188,9 +188,10 @@ $(document).on('ready', function(){
         			'<article class="respuestas_alumnos"><div class="autor">'+v.autor+'</div>'+
         			'<div class="fecha_resp">'+moment(v.fecha).calendar()+'</div>'+
         			'<div class="msg_respuesta">'+res+'</div>'+
-        			'<a href="#"><img src="img/corazon.png" class="voto"></a></article>'
+        			'<div class="voto"><a href="#" class="clickme" id="'+v.id+'"><img src="img/corazon.png"></a><div class="'+v.id+' votos">'+v.votos+'</div></div></article>'
         		);
         	}); 
+            votar();
             aplicarColor();       	
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -297,7 +298,7 @@ $(document).on('ready', function(){
                         '<article class="respuestas_alumnos last"><div class="autor">'+v.autor+'</div>'+
                         '<div class="fecha_resp">'+moment(v.fecha).calendar()+'</div>'+
                         '<div class="msg_respuesta">'+res+'</div>'+
-                        '<a href="#"><img src="img/corazon.png" class="voto"></a></article>'
+                        '<div class="voto"><a href="#" class="clickme" id="'+v.id+'"><img src="img/corazon.png"></a><div class="'+v.id+' votos">'+v.votos+'</div></div></article>'
                     );                
                     $('.last').hide().slideDown(1000);
                     total_respuestas = parseInt(total_respuestas) + 1;
@@ -363,6 +364,33 @@ $(document).on('ready', function(){
         };
     });
     //Inicio script votacion
-    
+    function votar(){
+        $('.clickme').on('click', function(e){
+            e.preventDefault();
+            var idp = $(this).attr("id");
+            //ajax
+            $.ajax({
+                url: "includes/votarRespuesta.php",
+                type: 'POST',
+                data: {id: idp},
+                dataType: "json",
+                beforeSend: function(){                
+                    console.log("Enviando");
+                },
+                success: function(data){
+                    $.each(data, function(c, v){
+                        console.log("los datos: "+v.id);
+                        var idr = v.id;
+                        $('.'+idr).text(v.valor);
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {                
+                console.log(xhr.status);
+                console.log(thrownError);                               
+                } 
+            });
+            //end ajax 
+        })
+    }
     //Termina script votacion
 });//End jquery onload

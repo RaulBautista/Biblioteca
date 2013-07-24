@@ -112,7 +112,7 @@
 					<input type="hidden" name="control" class="control2" value="1"/>
 					<input type="submit" id="boton" value="Publica tu codigo" class="boton2"/>
 					<div class='mensajes_load'></div>
-				</form>
+				</form>					
 				</div>				
 			</div>
 			<script type="text/javascript">
@@ -127,9 +127,10 @@
 				autoCloseTags: true
 			});
 				//
-    		</script>    		
+    		</script>
+
     		<!-- <pre class="brush:php;" id="ocul"></pre>-->
-    		<div class="total_resp"></div>
+    		<div class="total_resp"></div>    		
     		<article class="add_resp"></article>			
 		<a href="foro.php" class="boton">Regresar al foro</a>
 		<?php }else{
