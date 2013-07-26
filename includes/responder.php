@@ -36,10 +36,12 @@ if($_SESSION['logged'] == '1') {
 					$res = nl2br($res2);
 				}
 				$respuesta[] = array(
+					'id'=>$data['id'],
 					'autor' =>$data['autor'],
 					'fecha'=>$data['fecha'],
 					'respuesta'=>$res,
-					'control'=>$data['control']
+					'control'=>$data['control'],
+					'votos'=>$data['votos']
 				);
 				echo json_encode($respuesta);				
 		}

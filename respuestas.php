@@ -37,6 +37,40 @@
 	<script src="js/es.js"></script>
 	<script src="js/respuestas.js"></script>
 	<script src="js/jquery.liveurl.js"></script>
+	<script>
+	function votar(idp){        
+	    	$.ajax({	    	
+	        url: "includes/votarRespuesta.php",
+	        async: false,
+	        type: 'POST',
+	        data: {id: idp},
+	        dataType: "json",
+	        beforeSend: function(){                
+	            $('.'+idp).html('<img src="img/load.gif" alt="...">');
+	        },
+	        success: function(data){	        	
+	            $.each(data, function(c, v){
+	            	var eImagen = v.voto;
+	                var idr = v.id;
+	                var imagen = $('.imagen'+idr);
+	            	if(eImagen == 0){	            		
+	            		imagen.attr('src', 'img/corazon.png');
+	            		imagen.hide().slideDown(500);
+
+	            	}else{
+	            		imagen.attr('src', 'img/corazon2.png');
+	            		imagen.hide().slideDown(500);
+	            	}
+	                $('.'+idr).text(v.valor);
+	            });
+	        },
+	        error: function (xhr, ajaxOptions, thrownError) {                
+	        console.log(xhr.status);
+	        console.log(thrownError);                               
+	        } 
+    		})
+    };
+	</script>
 </head>
 <body>
 	<header>
@@ -110,7 +144,7 @@
 				 	<input type="hidden" name="autor" class="autor2" value="<?php echo $nombre ?>"/>
 					<input type="hidden" name="id" class="id2" value="<?php echo $id ?>"/>
 					<input type="hidden" name="control" class="control2" value="1"/>
-					<input type="submit" id="boton" value="Publica tu codigo" class="boton2"/>
+					<input type="submit" id="boton" value="Publica tu codigo" class="boton2"/>					
 					<div class='mensajes_load'></div>
 				</form>					
 				</div>				

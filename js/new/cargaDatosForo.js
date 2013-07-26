@@ -28,7 +28,7 @@ $(document).on('ready', function(){
 	        data: {pregunta: pregunta, mensaje: mensaje, tag: tag},
 	        dataType: "json",
             beforeSend: function(){
-                mensajes_foro.html('<img src="img/preloader.gif" width="40px">');
+                mensajes_foro.html('<img src="img/preloader.gif">');
                 mensajes_foro.fadeIn("slow");
             },
 	        success: function(datos){

@@ -6,7 +6,7 @@ $(document).on('ready', function(){
         var urlImagen;
         var hayImagen = false;
         var total_respuestas;
-        var imagenWeb; //para obtener ruta preview        
+        var imagenWeb; //para obtener ruta preview   
 
         var curImages = new Array();
         
@@ -75,8 +75,7 @@ $(document).on('ready', function(){
                         var output  = $('.liveurl');
                         var jqImage = $(image);                        
                         jqImage.attr('alt', 'Preview');
-
-                        console.log(image.src);
+                                            
                         imagenWeb = image.src;
 
                         if ((image.width / image.height)  > 7 
@@ -161,7 +160,7 @@ $(document).on('ready', function(){
         			'<div class="autor_preg">'+v.autor+'</div>'+
         			'<div class="fecha_preg">'+moment(v.fecha).calendar()+'</div>'
         		);
-        		$('.total_resp').append(total_respuestas+" comentarios"); 
+        		$('.total_resp').append(total_respuestas+" respuestas"); 
         	})
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -180,7 +179,14 @@ $(document).on('ready', function(){
         dataType: "json",
         success: function(data){
         	$.each(data, function(c, v){
-        		var res = v.respuesta;                
+        		var res = v.respuesta;  
+                var eImagen = v.voto;
+                if(eImagen == 0){
+                    eImagen = '<div class="voto"><img src="img/corazon.png" class="imagen'+v.id+'" onClick="votar('+v.id+');"><div class="'+v.id+' votos">'+v.votos+'</div></div>';
+                }
+                else{
+                     eImagen = '<div class="voto"><img src="img/corazon2.png" class="imagen'+v.id+'" onClick="votar('+v.id+');"><div class="'+v.id+' votos">'+v.votos+'</div></div>';
+                }
         		if(v.control == 1){        		
         			res = '<pre class="brush:php; html-script:true; toolbar: false;">'+res+'</pre>';                    
         		}
@@ -188,10 +194,9 @@ $(document).on('ready', function(){
         			'<article class="respuestas_alumnos"><div class="autor">'+v.autor+'</div>'+
         			'<div class="fecha_resp">'+moment(v.fecha).calendar()+'</div>'+
         			'<div class="msg_respuesta">'+res+'</div>'+
-        			'<div class="voto"><a href="#" class="clickme" id="'+v.id+'"><img src="img/corazon.png"></a><div class="'+v.id+' votos">'+v.votos+'</div></div></article>'
+        			eImagen+'</article>'
         		);
-        	}); 
-            votar();
+        	});            
             aplicarColor();       	
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -199,11 +204,11 @@ $(document).on('ready', function(){
             console.log(thrownError);
             console.log(ajaxOptions);
         }
-    	});
+    	});    
     }
     //End peticionRespuestas    
-    peticionRespuestas();
     peticionPregunta();
+    peticionRespuestas();
 	//Fin ajax	
 	//Redimencionar textarea
 	$('.animated').autosize({append: "\n"});	
@@ -298,11 +303,11 @@ $(document).on('ready', function(){
                         '<article class="respuestas_alumnos last"><div class="autor">'+v.autor+'</div>'+
                         '<div class="fecha_resp">'+moment(v.fecha).calendar()+'</div>'+
                         '<div class="msg_respuesta">'+res+'</div>'+
-                        '<div class="voto"><a href="#" class="clickme" id="'+v.id+'"><img src="img/corazon.png"></a><div class="'+v.id+' votos">'+v.votos+'</div></div></article>'
+                        '<div class="voto"><img src="img/corazon.png" class="imagen'+v.id+'" onClick="votar('+v.id+');"><div class="'+v.id+' votos">'+v.votos+'</div></div></article>'
                     );                
                     $('.last').hide().slideDown(1000);
                     total_respuestas = parseInt(total_respuestas) + 1;
-                    $('.total_resp').text(total_respuestas+" comentarios").fadeIn(500);
+                    $('.total_resp').text(total_respuestas+" respuestas").fadeIn(500);
                     //REsetear campos
                     videosrc = null;
                     hayImagen = false;
@@ -315,13 +320,14 @@ $(document).on('ready', function(){
                     ocultar.find('.thumbnail').hide();
                     ocultar.find('.image').hide();
 
-                    $('textarea.respuesta').trigger('clear'); 
+                    //$('textarea.respuesta').trigger('clear'); 
                     curImages = new Array();
                     //
-                    $('textarea.respuesta').val("");                    
+                    $('textarea.respuesta').val("");    
+                    $('textarea.respuesta2').trigger('clear');
                 });
-                }                
-                aplicarColor();               
+                }
+                aplicarColor();                
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 $('.mensajes_load').html('<h1>Ocurrió un error. Intente mas tarde</h1>').hide().slideDown(500);
@@ -329,21 +335,17 @@ $(document).on('ready', function(){
                 console.log(thrownError);                               
             }            
         });
-        $('.mensajes_load').html('<img src="img/preloader.gif" width="40px">').hide(); 
+        $('.mensajes_load').html('<img src="img/preloader.gif" width="40px">').hide();        
     };//end funcion
-    //Crear links
-    //fin links
     $('.formRespuesta').on('submit', function(e){
         e.preventDefault();        
-        //console.log(respuesta, autor, id, control);
         if(validar()){
             var respuesta = $('textarea.respuesta').val();
             var autor = $('.autor').val();
             var id = $('.id').val();
             var control = $('.control').val();        
             if(videosrc != null){
-                respuesta = respuesta.replace(/(https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/g,'<a href="'+urlVideo+'" target="_blank" >$1</a>\n') + '<iframe width="640" height="480" src="'+videosrc+'" frameborder="0" allowfullscreen></iframe>';
-                console.log(respuesta);
+                respuesta = respuesta.replace(/(https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/g,'<a href="'+urlVideo+'" target="_blank" >$1</a>\n') + '<iframe width="640" height="480" src="'+videosrc+'" frameborder="0" allowfullscreen></iframe>';                
             }
             else if(hayImagen){
                  respuesta = respuesta.replace(/(https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/g,'<a href="'+urlImagen+'" target="_blank" >$1</a>\n') + '<img src="'+imagenWeb+'" alt="Sin Vista previa">';
@@ -359,38 +361,7 @@ $(document).on('ready', function(){
             var autor = $('.autor2').val();
             var id = $('.id2').val();
             var control = $('.control2').val();
-            console.log(respuesta, autor, id, control);
             publicarRespuesta(id, respuesta, autor, control);
         };
     });
-    //Inicio script votacion
-    function votar(){
-        $('.clickme').on('click', function(e){
-            e.preventDefault();
-            var idp = $(this).attr("id");
-            //ajax
-            $.ajax({
-                url: "includes/votarRespuesta.php",
-                type: 'POST',
-                data: {id: idp},
-                dataType: "json",
-                beforeSend: function(){                
-                    console.log("Enviando");
-                },
-                success: function(data){
-                    $.each(data, function(c, v){
-                        console.log("los datos: "+v.id);
-                        var idr = v.id;
-                        $('.'+idr).text(v.valor);
-                    });
-                },
-                error: function (xhr, ajaxOptions, thrownError) {                
-                console.log(xhr.status);
-                console.log(thrownError);                               
-                } 
-            });
-            //end ajax 
-        })
-    }
-    //Termina script votacion
 });//End jquery onload

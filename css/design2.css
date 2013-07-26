@@ -343,6 +343,9 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	bottom: 2px;
 	width: 53px;
 }
+.voto img:hover{
+	cursor: pointer;
+}
 .votos{	
 	display: inline;
 	position: absolute;

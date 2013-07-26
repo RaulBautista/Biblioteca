@@ -45,7 +45,7 @@
 			$consulta = @mysql_query('SELECT * FROM Preguntas')
 			or die (mysql_error()); 
 			echo "<div class='bienvenido'>Bienvenido al Foro de preguntas.</div><hr><br>"
-			?>
+			?>			
 			<button class="boton" id="open_form">Realiza un pregunta</button>
 			<div class="msg_resp_foro"></div>
 			<div id="form">
