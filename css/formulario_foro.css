@@ -1,11 +1,120 @@
-#form { 
-	background-color: white;
+.contenido{/*Div de todo el contenido de mis preguntas*/
+	width: 570px;
+	margin-left: 10px;
+}
+.msg_resp_foro{
+	color: cornflowerblue;
+	display: none;
+	font-weight: bold;
+	max-width: 250px;
+	margin: 0 auto;
+	padding: 2px;
+	text-align: center;
+}
+.msg_resp_foro h1{
+	background-color: darkred;
+	border-radius: 5px;
+	color: white;
+	padding: 3px;
+	margin-bottom: 10px;
+}
+.totalPreguntas{
+	padding-bottom: 5px;
+	border-bottom: 1px solid lightgray;
+}
+.totalPreguntas p{
+	font-size: 30px;
+}
+#alignDerecha{	/*Article de mi contenido a la derecha*/	
 	border: solid 1px lightgray;
-	border-radius: 9px;
+	border-radius: 10px;
+	float: right;
+	margin-right: 10px;
+	margin-top: 27px;
+	width: 220px;
+	padding: 10px;
+}
+#busquedaForo{/*Formulario de busqueda*/
+	margin: 0 auto;	
+	position: relative;
+}
+#busquedaForo input{
+	background: url(../img/search.png) no-repeat left;	
+	background-position: 4px 5px;
+	border-radius: 15px;
+	display: block;
+	margin: 0 auto;
+	text-indent: 25px;
+	height: 22px;
+	width: 190px;
+}
+.closeSearch{
+	cursor: pointer;
+	height: 22px;
+	position: absolute;
+	right: -4px;
+	top: -7px;
+	width: 22px;
+}
+.closeSearchAdd{
+	background: url('../img/close.png') no-repeat;
+	background-size: 25px;
+}
+#cargando{
+	margin-left: 360px;
+}
+#close_form{
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+}
+#contador_foro{
+	display: block;
+	padding: 10px 0;
+	margin: 0 auto;
+	max-width: 400px;
+}
+#chose{	/*Listas*/
+	max-width: 370px;
+}
+#chose ul li{
+	border-bottom: solid 1px lightgray;
+	padding: 4px;
+}
+#form { 
+	/*background-color: white;
+	border: solid 1px lightgray;
+	border-radius: 9px;	
 	display: none;
 	margin: 0 auto;
-	max-width: 460px;
+	width: 350px;*/
+	background-color: #F9F9F9;
+	border: solid 1px gray;
+	border-radius: 10px;
+	display: none;
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    width: 44%;
+    height: 65%;
+    z-index:1002;
+    overflow: auto;
 }
+.fadebox {
+	cursor: pointer;
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+
 #form h2{
 	color: cornflowerblue;
 	text-align: center;
@@ -16,21 +125,42 @@
 }
 #form_preguntar label{
 	color: darkcyan;
-	margin-left: 30px;
-	padding: 4px;
-	max-width: 200px;
-}
-#form_preguntar input, textarea, select{
-	display: block;
-	width: 400px;
 	margin: 0 auto;
+	padding: 4px;
+	max-width: 400px;
+}
+#form_preguntar input[type='text']{
+	margin: 0 auto;
+	width: 400px;
 }
 #form_preguntar textarea{
+	display: block;
+	margin: 0 auto;
+	width: 400px;
 	resize: none;
 }
-#contador_foro{
+#open_form{ /*Boton*/
+	margin: 10px auto;
+}
+#enviar{
 	display: block;
-	padding: 10px 0;
+	margin: 0 auto;
+	height: 33px;
+	width: 150px;
+}
+#mensajes_form{	
+	margin: 0 auto;
+	max-width: 400px;
+	padding: 5px;
+}
+.resBusqueda{ /*Respuestas de la busqueda*/
+	padding: 5px;
+	border-bottom: solid 1px lightgray;
+	margin-top: 10px;
 	margin-left: 30px;
-	max-width: 200px;
+	max-width: 500px;
+}
+.resBusqueda span{
+	color: cornflowerblue;
+	padding-right: 6px;
 }

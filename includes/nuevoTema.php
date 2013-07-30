@@ -28,14 +28,15 @@ if($_SESSION['logged'] == '1') {
 		"'.mysql_real_escape_string($tags).'")');
 		if($meter){
 			$preguntas = array();
-			$query = mysql_query("SELECT id, total, pregunta, fecha, tags FROM Preguntas ORDER BY fecha DESC LIMIT 0, 1");
+			$query = mysql_query("SELECT id, total, pregunta, fecha, tags, votos FROM Preguntas ORDER BY fecha DESC LIMIT 0, 1");
 			$row = mysql_fetch_array($query);
 			$mensaje = nl2br($row['pregunta']);
 			$preguntas[] = array(
 				'total' =>$row['total'],
 				'mensaje'=>"<a href='respuestas.php?id=$row[id]'>$mensaje</a>",
 				'fecha'=>$row['fecha'],
-				'tag' => $row['tags']
+				'tag' => $row['tags'],
+				'votos' => $row['votos']
 			);
 			echo json_encode($preguntas);
 

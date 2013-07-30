@@ -50,20 +50,21 @@ $(document).on('ready', function(){
                         if (data.video != null) {
                             videosrc = data.video.file;
                             urlVideo = data.url;                   
-                            var ratioW        = data.video.width  /350;
-                            data.video.width  = 350;
-                            data.video.height = data.video.height / ratioW;
-        
+                            //var ratioW        = data.video.width  /350;
+                            //data.video.width  = 350;
+                            //data.video.height = data.video.height / ratioW;
                             var video = 
+                            '<iframe width="853" height="480" src="'+data.video.file+'" frameborder="0" allowfullscreen></iframe>';
+                            /*var video = 
                             '<object width="' + data.video.width  + '" height="' + data.video.height  + '">' +
                                 '<param name="movie"' +
                                       'value="' + data.video.file  + '"></param>' +
-                                '<param name="allowScriptAccess" value="always"></param>' +
+                                '<param name="allowScriptAccess" value="always" allowfullscreen="true"></param>' +
                                 '<embed src="' + data.video.file  + '"' +
                                       'type="application/x-shockwave-flash"' +
                                       'allowscriptaccess="always"' +
                                       'width="' + data.video.width  + '" height="' + data.video.height  + '"></embed>' +
-                            '</object>';
+                            '</object>'; */
                             output.find('.video').html(video).show();
                             
                          
@@ -144,6 +145,47 @@ $(document).on('ready', function(){
                    }                                                  
                 });
     //End live url
+    //VotarPregunta
+    function votacion(){
+        $('.up').on('click', function(){
+            $.ajax({
+                url: "includes/votarPregunta.php",
+                type: "POST",
+                data: {id: id, accion: 'up'},
+                dataType: "json",
+                success: function(datos){
+                    if (datos.votos == null) {
+                        //alert(datos.msge);
+                    };
+                    if(datos.statuss == 'up') {
+                        $('.up').attr('src', 'img/like2_active.png');
+                        $('.down').attr('src', 'img/deslike2.png');
+                    }            
+                    console.log(datos.votos+datos.statuss);
+                    $('.valorVotos').text(datos.votos);                        
+                }
+            });//ajax
+        });
+        $('.down').on('click', function(){
+            $.ajax({
+                url: "includes/votarPregunta.php",
+                type: "POST",
+                data: {id: id, accion: 'down'},
+                dataType: "json",
+                success: function(datos){
+                    if (datos.votos == null) {
+                        //alert(datos.msge);                        
+                    };
+                    if(datos.statuss == 'down') {
+                        $('.down').attr('src', 'img/deslike2_active.png');
+                        $('.up').attr('src', 'img/like2.png');                    
+                    }
+                    console.log(datos.votos+datos.statuss);
+                    $('.valorVotos').text(datos.votos);                    
+                }
+            });//ajax
+        });
+    };
 	//Peticion obtener pregunta
 	function peticionPregunta(){
         $.ajax({
@@ -151,24 +193,26 @@ $(document).on('ready', function(){
         type: "POST",
         data: {id: id},
         dataType: "json",
-        success: function(data){    
+        success: function(data){
         	$.each(data, function(c, v){
-                total_respuestas = v.total;
+                total_respuestas = v.total;                
         		$('#pregunta_res').append(
         			'<div class="pregunta_preg"><p>'+v.pregunta+'</p></div>'+
-        			'<div class="mensaje_preg">'+v.mensaje+'</div>'+
-        			'<div class="autor_preg">'+v.autor+'</div>'+
-        			'<div class="fecha_preg">'+moment(v.fecha).calendar()+'</div>'
+                    '<div class="votar_pregunta"><img src="img/like2.png" class="up" /><div class="valorVotos">'+v.votos+'</div><img src="img/deslike2.png" class="down" /></div>'+
+                    '<div class="mensaje_preg">'+v.mensaje+'</div>'+
+        			'<div class="footerPreg"><div class="autor_preg">'+v.autor+'</div>'+
+        			'<div class="fecha_preg">'+moment(v.fecha).calendar()+'</div></div>'
         		);
-        		$('.total_resp').append(total_respuestas+" respuestas"); 
+        		$('.total_resp').append(total_respuestas+" comentarios"); 
         	})
+            votacion();
         },
         error: function (xhr, ajaxOptions, thrownError) {
         	console.log(xhr.status);
             console.log(thrownError);
             console.log(ajaxOptions);
         }
-    	});
+    	});        
     };
     //Inicia nueva funcion respuestas
     function peticionRespuestas(){
@@ -214,7 +258,7 @@ $(document).on('ready', function(){
 	$('.animated').autosize({append: "\n"});	
 	//Contador respuesta
 	$('.respuesta').keydown(function(e){
-		var maxChars = 649;
+		var maxChars = 799;
 		if($(this).val().length <= maxChars){
 			var charsLeft = ( maxChars - $(this).val().length );
 			$('#contador_resp').text( charsLeft + ' caracteres restantes.' ).css('color', (charsLeft<10)?'#F00':'#000' );
@@ -310,19 +354,9 @@ $(document).on('ready', function(){
                     $('.total_resp').text(total_respuestas+" respuestas").fadeIn(500);
                     //REsetear campos
                     videosrc = null;
-                    hayImagen = false;
-                    var ocultar = $('.liveurl');
-                    ocultar.hide('fast');
-                    ocultar.find('.video').html('').hide();
-                    ocultar.find('.image').html('');
-                    ocultar.find('.controls .prev').addClass('inactive');
-                    ocultar.find('.controls .next').addClass('inactive');
-                    ocultar.find('.thumbnail').hide();
-                    ocultar.find('.image').hide();
+                    hayImagen = false;                   
 
-                    //$('textarea.respuesta').trigger('clear'); 
-                    curImages = new Array();
-                    //
+                    //$('textarea.respuesta').trigger('clear');                
                     $('textarea.respuesta').val("");    
                     $('textarea.respuesta2').trigger('clear');
                 });
@@ -345,10 +379,10 @@ $(document).on('ready', function(){
             var id = $('.id').val();
             var control = $('.control').val();        
             if(videosrc != null){
-                respuesta = respuesta.replace(/(https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/g,'<a href="'+urlVideo+'" target="_blank" >$1</a>\n') + '<iframe width="640" height="480" src="'+videosrc+'" frameborder="0" allowfullscreen></iframe>';                
+                respuesta = respuesta.replace(/(https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/gi,'<a href="'+urlVideo+'" target="_blank" >$1</a>\n') + '<iframe width="640" height="480" src="'+videosrc+'" frameborder="0" allowfullscreen></iframe>';                
             }
             else if(hayImagen){
-                 respuesta = respuesta.replace(/(https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/g,'<a href="'+urlImagen+'" target="_blank" >$1</a>\n') + '<img src="'+imagenWeb+'" alt="Sin Vista previa">';
+                 respuesta = respuesta.replace(/(https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/gi,'<a href="'+urlImagen+'" target="_blank" >$1</a>\n') + '<img src="'+imagenWeb+'" alt="Sin Vista previa">';//https?:\/\/[^ ;|\\*'"!,()<>]+\/?)+\n/g
             }
 
             publicarRespuesta(id, respuesta, autor, control);
@@ -364,4 +398,16 @@ $(document).on('ready', function(){
             publicarRespuesta(id, respuesta, autor, control);
         };
     });
+    //Boton subir pagina top
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 400) { //!=
+            $('.subir').slideDown(500);
+        } else {
+            $('.subir').slideUp(500);
+        }
+        });
+        $('.subir').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });    
 });//End jquery onload

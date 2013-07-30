@@ -46,7 +46,7 @@
 	        data: {id: idp},
 	        dataType: "json",
 	        beforeSend: function(){                
-	            $('.'+idp).html('<img src="img/load.gif" alt="...">');
+	            $('.'+idp).html('<img src="img/load.gif" alt="...">').delay(100);
 	        },
 	        success: function(data){	        	
 	            $.each(data, function(c, v){
@@ -133,7 +133,7 @@
 					<input type="hidden" name="autor" class="autor" value="<?php echo $nombre ?>"/>
 					<input type="hidden" name="id" class="id" value="<?php echo $id ?>"/>
 					<input type="hidden" name="control" class="control" value="0"/>
-					<input type="submit" id="boton" value="Publica tu respuesta" class="boton2"/>
+					<input type="submit" id="boton" value="Publica tu comentario" class="boton2"/>
 					<div id="contador_resp"></div>	
 					<div class='mensajes_load'></div>			
 				</form>			
@@ -162,11 +162,10 @@
 			});
 				//
     		</script>
-
-    		<!-- <pre class="brush:php;" id="ocul"></pre>-->
-    		<div class="total_resp"></div>    		
-    		<article class="add_resp"></article>			
-		<a href="foro.php" class="boton">Regresar al foro</a>
+    		<div class="total_resp"></div> 		
+    		<article class="add_resp"></article>    		
+			<a href="foro.php" class="boton" id="botonRespuestas">Regresar al foro</a>
+			<div class="subir"><img src="img/up.png" alt="subir"></div>
 		<?php }else{
 			header("Location: index.php");
 		} ?>

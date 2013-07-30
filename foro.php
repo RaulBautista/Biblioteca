@@ -16,7 +16,7 @@
 	<script>
 		$(document).on('ready', function(){
 			$('.txtarea').autosize({append: "\n"});
-			$(".chzn-select").chosen({width: "400px", no_results_text: "Oops, etiqueta no disponible", max_selected_options: 3});
+			$(".chzn-select").chosen({width: "300px", no_results_text: "Oops, etiqueta no disponible", max_selected_options: 3});
 			$('#msg').keydown(function(e){
 			var maxChars = 349;
 			if($(this).val().length <= maxChars)
@@ -30,12 +30,12 @@
 		});
 	</script>
 </head>
-<body>
+<body>	
 	<header>
 		<img src="img/logo_mini.png" alt="tec">	
 		<?php include("includes/menu.php");?>
-	</header>
-	<section class="contenedor">
+	</header>	
+	<section class="contenedorForo">		
 		<?php
 		error_reporting(E_ALL & ~E_NOTICE);  
 		session_start();
@@ -46,9 +46,13 @@
 			or die (mysql_error()); 
 			echo "<div class='bienvenido'>Bienvenido al Foro de preguntas.</div><hr><br>"
 			?>			
-			<button class="boton" id="open_form">Realiza un pregunta</button>
+			<article id="alignDerecha">
+			<div id="fade" class="fadebox"></div>
 			<div class="msg_resp_foro"></div>
+			<div class="totalPreguntas"><p></p><span>preguntas</span></div>
+			<button class="boton" id="open_form">Realiza un pregunta</button><br>
 			<div id="form">
+				<img src="img/close.png" id="close_form" alt="x">
 				<div id="mensajes_form"><h2>Haz tu pregunta aquí</h2></div><br>
 				<form id="form_preguntar">
 					<label>Titulo para tu pregunta</label>
@@ -59,27 +63,52 @@
 					<select data-placeholder="Tags..." name="tags" id="tags" class="chzn-select" multiple style="width:200px;" tabindex="4">
 			 			<option value="<a href='#'>Android</a>">Android</option>
 			 			<option value="<a href='#'>Ajax</a>">Ajax</option>
+			 			<option value="<a href='#'>Ubuntu</a>">Apache</option>
 			 			<option value="<a href='#'>C++</a>">C++</option>
+			 			<option value="<a href='#'>Ubuntu</a>">Chrome</option>
 			 			<option value="<a href='#'>CSS</a>">CSS</option>
+			 			<option value="<a href='#'>Ubuntu</a>">Django</option>
+			 			<option value="<a href='#'>Ubuntu</a>">Eclipse</option>
+			 			<option value="<a href='#'>Ubuntu</a>">Firefox</option>
 			 			<option value="<a href='#'>HTML</a>">HTML</option>
+			 			<option value="<a href='#'>Ubuntu</a>">IDE's</option>
+			 			<option value="<a href='#'>Ubuntu</a>">I Explorer</option>
+			 			<option value="<a href='#'>Ubuntu</a>">IIS</option>
 			    		<option value="<a href='#'>Java</a>">Java</option>
 			    		<option value="<a href='#'>Javascript</a>">Javascript</option>
 			    		<option value="<a href='#'>JQuery</a>">JQuery</option>
 			    		<option value="<a href='#'>Linux</a>">Linux</option>
-			    		<option value="<a href='#'>MySQL</a>">MySQL</option>			    		
+			    		<option value="<a href='#'>MySQL</a>">MySQL</option>
+			    		<option value="<a href='#'>Ubuntu</a>">Netbeans</option>
+			    		<option value="<a href='#'>Ubuntu</a>">Opera</option>
 			    		<option value="<a href='#'>PHP</a>">PHP</option>
-			    		<option value="<a href='#'>SQL</a>">SQL</option>
+			    		<option value="<a href='#'>Ubuntu</a>">Programación</option>
+			    		<option value="<a href='#'>Ubuntu</a>">Python</option>
+			    		<option value="<a href='#'>SQL</a>">SQL</option>			    		
 			    		<option value="<a href='#'>Ubuntu</a>">Ubuntu</option>
-					</select><br>
-					<input type="submit" class="boton2" id="enviar" value="Preguntar"><br>
+			    		<option value="<a href='#'>Ubuntu</a>">Windows</option>
+					</select><br>									
+					<input type="submit" class="boton2" id="enviar" value="Preguntar">
 				</form>
-			</div>			
+			</div>
+			<form id="busquedaForo">
+				<input type="text" id="buscar" placeholder="Buscar..">
+				<div class="closeSearch"></div>
+			</form>
+			<br>
+			<div id="chose">
+				<ul>
+					<li><a href="">Mas votadas</a></li>
+					<li><a href="">Sin responder</a></li>
+					<li><a href="">Tags</a></li>
+				</ul>				
+			</div>
+			</article><br>
 			<div class="contenido"></div>
+			<div class="resultadoBusqueda"></div>
 			<br><br>
 			<button id="cargando" class="boton2">Click para ver mas</button>
-			<script>
-			
-			</script>
+			<div class="subir"><img src="img/up.png" alt="subir"></div>
 		<?php 
 		}else{
 			header("Location: index.php");

@@ -7,7 +7,7 @@
 
 	if($tipo == '1') {
 	require_once('conexion.php');
-		$query = @mysql_query('SELECT * FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
+		$query = @mysql_query('SELECT numcontrol FROM Alumnos WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
 		if (!$existe = @mysql_fetch_object($query)) {
 			echo "error";
 			exit();
@@ -20,12 +20,12 @@
 			//echo '<script> window.location="../alumno.php"</script>';
 			echo "exito";
 			header ("Location: ../alumno.php");
+			exit();
 		}
 	}
-
 	elseif($tipo == '2') {
 		require_once('conexion.php');
-		$query2 = mysql_query('SELECT * FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
+		$query2 = mysql_query('SELECT numcontrol FROM Administradores WHERE numcontrol="'.mysql_real_escape_string($numcontrol).'" AND password="'.mysql_real_escape_string($password).'"', $link);
 		if(!$encontrado = @mysql_fetch_object($query2)) {
 			echo "error";
 			exit();

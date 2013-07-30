@@ -52,7 +52,7 @@ if ($cont == 0) {
 			$obt3 = mysql_query("SELECT votos FROM Respuestas WHERE id = '$id'", $link);
 			$obta3 = mysql_fetch_array($obt3);			
 			$enviar[] = array(
-				'valor' =>$obta3['votos'],
+				'valor' => $obta3['votos'],
 				'id' => $id,
 				'voto' => 1
 			);
