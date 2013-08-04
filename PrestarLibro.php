@@ -3,16 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Estado Prestamo</title>
-	<link rel="stylesheet" href="css/design.css">
+	<link rel="stylesheet" href="css/design2.css">
 </head>
 <body>
-<section class="contenedor">
 	<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
+			<img src="img/logo_mini.png" alt="tec">			
 			<?php include("includes/menu.php") ?>		
 		</header>
-<?php
+	<section class="contenedor">
+	<?php
 	header ('Content-type: text/html; charset=utf-8');
 	require("includes/conexion.php");
 
@@ -88,10 +87,10 @@
 		echo "<p align='center'>El numero de control <b>" .$numcontrol. "</b> no existe en la BD. Verifique los datos por favor</p>
 		<a href='EstadoLibro.php?id=$id_libro' class='boton'>Regresar</a>";
 	}	
-?>
+	?>
+	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 	</footer>
-</section>
 </body>
 </html>

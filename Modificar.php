@@ -3,16 +3,14 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Modificar</title>
-	<link rel="stylesheet" href="css/design.css">
+	<link rel="stylesheet" href="css/design2.css">
 </head>
 <body>
+	<header>
+		<img src="img/logo_mini.png" alt="tec">	
+		<?php include("includes/menu.php"); ?>
+	</header>
 	<section class="contenedor">
-		<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("includes/menu.php"); ?>
-		</header>
-
 		<?php
 		session_start();
 		if($_SESSION['logged'] == '2') { 
@@ -91,10 +89,10 @@
 			<label>Area del libro: </label>
 			<select name="id_area" title="Seleccione area" required >
 				<option value="">Seleccione una opción</option>
-				<option value="Programación">Programación</option>
+				<option value="Programacion">Programación</option>
 				<option value="Historia">Historia</option>
-				<option value="Química">Química</option>
-				<option value="Matemáticas">Matemáticas</option>
+				<option value="Quimica">Química</option>
+				<option value="Matematicas">Matemáticas</option>
  			</select>
 			<!-- <input type="text" name="id_area" value="<?php echo $row['id_area']; ?>" required /><br> -->
 			<label>Estado: </label>
@@ -107,9 +105,9 @@
 		header("location: index.php");
 	}
 	 ?>
-		<footer>
-			<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-		</footer>
 	</section>
+	<footer>
+		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
+	</footer>
 </body>
 </html>

@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="js/new/apprise-v2.js"></script>
 	<script>
 		$(document).ready(function(){
-    	if( $.browser.safari ) alert('Si la pagina no se visualiza bien, intenta con otro navegador (Chrome, Firefox u Opera)');
+    	//if( $.browser.webkit ) alert('Si la pagina no se visualiza bien, intenta con otro navegador (Chrome, Firefox u Opera)');
     	//B. El navegador es Internet Explorer, pero con versión superior a la 6
     	if ($.browser.msie && $.browser.version > 6 ) alert('Te recomendamos cambiar de navegador para ver mejor esta aplicación web. Cambiate a Chrome, Firefox u Opera');
     	//C. El navegador es Internet Explorer, pero con versión inferior o igual a la 6

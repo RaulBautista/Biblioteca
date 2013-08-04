@@ -4,7 +4,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<title>Libros</title>
-	<link rel="stylesheet" href="css/design.css" />
+	<link rel="stylesheet" href="css/design2.css" />
 	<link rel="stylesheet" href="css/tabla.css">
 	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css" />
 	<script type="text/javascript" src="js/new/jquery-1.9.1.min.js"></script>
@@ -23,12 +23,11 @@
 	</script>
 </head>
 <body>
+	<header>
+		<img src="img/logo_mini.png" alt="tec">			
+		<?php include("includes/menu.php") ?>
+	</header>
 	<section class="contenedor">
-		<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II</h1>
-			<?php include("includes/menu.php") ?>
-		</header>
 		<?php 
 		session_start();
 		if($_SESSION['logged']=='2'){
@@ -43,7 +42,7 @@
 			$fila = mysql_fetch_array($consulta);
 			$estado = strtoupper($fila["estado"]);
 		if ($estado == strtoupper('disponible')) {
-			echo "<p id='bienvenido'><strong>Formulario para prestamo de libro</strong><br><br>".date('j M Y - g:i:s A ')."</p>";
+			echo "<div class='bienvenido'><p><strong>Formulario para prestamo de libro</strong></p><br><br>".date('j M Y - g:i:s A ')."</p>";
 		?>
 		
 		<form method="POST" action="PrestarLibro.php" id="nuevo" >
@@ -109,9 +108,9 @@
 		}else{
 			header("location: colecciones.php");
 		} ?>
+	</section>
 	<footer>
 		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
 	</footer>
-	</section>
 </body>
 </html>

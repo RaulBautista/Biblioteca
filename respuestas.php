@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/codemirror.css">
 	<link rel="stylesheet" href="css/solarized.css">
 	<link rel="stylesheet" href="css/shCoreDefault.css">
-	<link rel="stylesheet" href="css/liveurl.css">
+	<link rel="stylesheet" href="css/liveurl.css">	
 	<style type="text/css">
       .CodeMirror { border: 1px solid silver; height: auto;}
       .CodeMirror-empty { outline: 1px solid #c22; }
@@ -36,7 +36,8 @@
 	<script src="js/moment.min.js"></script>
 	<script src="js/es.js"></script>
 	<script src="js/respuestas.js"></script>
-	<script src="js/jquery.liveurl.js"></script>
+	<script src="js/jquery.liveurl.js"></script>	
+
 	<script>
 	function votar(idp){        
 	    	$.ajax({	    	
@@ -75,15 +76,11 @@
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">			
-		<?php include("includes/menu.php");?>
+		<?php session_start(); error_reporting(E_ALL & ~E_NOTICE); if($_SESSION['logged'] == '1') { include("includes/menualumno.php");?>
 	</header>
-	<section class="contenedor">
-		<?php
-		error_reporting(E_ALL & ~E_NOTICE);
-		session_start();
-		date_default_timezone_set('America/Mexico_City');		
-		if($_SESSION['logged'] == '1') { 
-			include "includes/menualumno.php";
+	<section class="contenedorRespuestas">
+		<?php		
+		date_default_timezone_set('America/Mexico_City');			
 			require_once("includes/conexion.php");
 			$id = $_GET['id'];
 			$nombre = $_SESSION['user'];
@@ -162,7 +159,7 @@
 			});
 				//
     		</script>
-    		<div class="total_resp"></div> 		
+    		<div class="total_resp"><hr size="6"><br></div>
     		<article class="add_resp"></article>    		
 			<a href="foro.php" class="boton" id="botonRespuestas">Regresar al foro</a>
 			<div class="subir"><img src="img/up.png" alt="subir"></div>

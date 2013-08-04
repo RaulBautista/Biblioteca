@@ -25,34 +25,32 @@
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">		
-		<?php include("includes/menu.php"); ?>	
+		<?php session_start(); include("includes/menualumno.php"); ?>	
 	</header>
 	<section class="contenedor">
-		<?php
-		session_start();
+		<?php		
 		if($_SESSION['logged'] == '1') { 
-			$usuario = $_SESSION['user'];
-			include "includes/menualumno.php";			
+			$usuario = $_SESSION['user'];					
 			echo "<p class='bienvenido'>Informacion sobre libros que se encuentran en la Biblioteca.</p><hr><br>";
 			echo "<br>";			
 			require_once "includes/conexion.php";								
-		$result = mysql_query("SELECT * FROM Libros ORDER BY id", $link);
-		?>
-		<table id="datatables" class="display">
-        <thead>
-		<TR>
-			<th id="oculta"></th>
-			<th>Autor</th>
-			<th>Titulo</th>
-			<th id="oculta">Edicion</th>
-			<th id="oculta">Lugar de Edicion</th>
-			<th>Editorial</th>
-			<th id="oculta">Año de Edicion</th>
-			<th id="oculta">No. de Paginas</th>
-			<th id="oculta">Ejemplar No.</th>
-			<th>Estado</th>
-		</TR>
-	</thead>
+			$result = mysql_query("SELECT * FROM Libros ORDER BY id", $link);
+			?>
+			<table id="datatables" class="display">
+	        <thead>
+			<TR>
+				<th id="oculta"></th>
+				<th>Autor</th>
+				<th>Titulo</th>
+				<th id="oculta">Edicion</th>
+				<th id="oculta">Lugar de Edicion</th>
+				<th>Editorial</th>
+				<th id="oculta">Año de Edicion</th>
+				<th id="oculta">No. de Paginas</th>
+				<th id="oculta">Ejemplar No.</th>
+				<th>Estado</th>
+			</TR>
+		</thead>
                 <tbody>
                     <?php
                     $contador = 0;

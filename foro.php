@@ -33,17 +33,13 @@
 <body>	
 	<header>
 		<img src="img/logo_mini.png" alt="tec">	
-		<?php include("includes/menu.php");?>
+		<?php session_start(); include("includes/menualumno.php");?>
 	</header>	
 	<section class="contenedorForo">		
 		<?php
-		error_reporting(E_ALL & ~E_NOTICE);  
-		session_start();
-		if($_SESSION['logged'] == '1') { 
-			include "includes/menualumno.php";
-			require_once ("includes/conexion.php");
-			$consulta = @mysql_query('SELECT * FROM Preguntas')
-			or die (mysql_error()); 
+		error_reporting(E_ALL & ~E_NOTICE); 		
+		if($_SESSION['logged'] == '1') {			
+			require_once ("includes/conexion.php");			
 			echo "<div class='bienvenido'>Bienvenido al Foro de preguntas.</div><hr><br>"
 			?>			
 			<article id="alignDerecha">
@@ -63,30 +59,38 @@
 					<select data-placeholder="Tags..." name="tags" id="tags" class="chzn-select" multiple style="width:200px;" tabindex="4">
 			 			<option value="<a href='#'>Android</a>">Android</option>
 			 			<option value="<a href='#'>Ajax</a>">Ajax</option>
-			 			<option value="<a href='#'>Ubuntu</a>">Apache</option>
+			 			<option value="<a href='#'>Apache</a>">Apache</option>
 			 			<option value="<a href='#'>C++</a>">C++</option>
-			 			<option value="<a href='#'>Ubuntu</a>">Chrome</option>
+			 			<option value="<a href='#'>Chrome</a>">Chrome</option>
 			 			<option value="<a href='#'>CSS</a>">CSS</option>
-			 			<option value="<a href='#'>Ubuntu</a>">Django</option>
-			 			<option value="<a href='#'>Ubuntu</a>">Eclipse</option>
-			 			<option value="<a href='#'>Ubuntu</a>">Firefox</option>
+			 			<option value="<a href='#'>Django</a>">Django</option>
+			 			<option value="<a href='#'>Debian</a>">Debian</option>
+			 			<option value="<a href='#'>Eclipse</a>">Eclipse</option>
+			 			<option value="<a href='#'>Facebook</a>">Facebook</option>
+			 			<option value="<a href='#'>Firefox</a>">Firefox</option>			 			
+			 			<option value="<a href='#'>Gnome</a>">Gnome</option>
+			 			<option value="<a href='#'>Git</a>">Git</option>
+			 			<option value="<a href='#'>GitHub</a>">GitHub</option>
 			 			<option value="<a href='#'>HTML</a>">HTML</option>
-			 			<option value="<a href='#'>Ubuntu</a>">IDE's</option>
-			 			<option value="<a href='#'>Ubuntu</a>">I Explorer</option>
-			 			<option value="<a href='#'>Ubuntu</a>">IIS</option>
+			 			<option value="<a href='#'>IDE's</a>">IDE's</option>
+			 			<option value="<a href='#'>IExplorer</a>">I Explorer</option>
+			 			<option value="<a href='#'>IIS</a>">IIS</option>
 			    		<option value="<a href='#'>Java</a>">Java</option>
 			    		<option value="<a href='#'>Javascript</a>">Javascript</option>
 			    		<option value="<a href='#'>JQuery</a>">JQuery</option>
+			    		<option value="<a href='#'>KDE</a>">KDE</option>
 			    		<option value="<a href='#'>Linux</a>">Linux</option>
 			    		<option value="<a href='#'>MySQL</a>">MySQL</option>
-			    		<option value="<a href='#'>Ubuntu</a>">Netbeans</option>
-			    		<option value="<a href='#'>Ubuntu</a>">Opera</option>
+			    		<option value="<a href='#'></a>">Netbeans</option>
+			    		<option value="<a href='#'>Opera</a>">Opera</option>
 			    		<option value="<a href='#'>PHP</a>">PHP</option>
-			    		<option value="<a href='#'>Ubuntu</a>">Programación</option>
-			    		<option value="<a href='#'>Ubuntu</a>">Python</option>
-			    		<option value="<a href='#'>SQL</a>">SQL</option>			    		
+			    		<option value="<a href='#'>Programacion</a>">Programación</option>
+			    		<option value="<a href='#'>Python</a>">Python</option>
+			    		<option value="<a href='#'>Safari</a>">Safari</option>
+			    		<option value="<a href='#'>SQL</a>">SQL</option>
+			    		<option value="<a href='#'>Twitter</a>">Twitter</option>		    		
 			    		<option value="<a href='#'>Ubuntu</a>">Ubuntu</option>
-			    		<option value="<a href='#'>Ubuntu</a>">Windows</option>
+			    		<option value="<a href='#'>Windows</a>">Windows</option>
 					</select><br>									
 					<input type="submit" class="boton2" id="enviar" value="Preguntar">
 				</form>
@@ -98,11 +102,14 @@
 			<br>
 			<div id="chose">
 				<ul>
-					<li><a href="">Mas votadas</a></li>
-					<li><a href="">Sin responder</a></li>
-					<li><a href="">Tags</a></li>
-				</ul>				
+					<li><a href="#">Mas comentadas</a></li>
+					<li><a href="#">Mas votadas</a></li>
+					<li><a href="#">Sin responder</a></li>
+					<li><a href="#">Tags</a></li>
+				</ul>
 			</div>
+			<br>
+			<p style="text-align: center;">Recuerda que el administrador del foro puede borrar contenido indevido y preguntas o respuestas ofensivas.</p>
 			</article><br>
 			<div class="contenido"></div>
 			<div class="resultadoBusqueda"></div>

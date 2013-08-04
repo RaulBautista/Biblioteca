@@ -79,7 +79,7 @@
 				</div>
 			</p> <br>
 			<p>
-				<div class="cont">
+				<div class="conts"><br>
 				<h1>Iniciar sesión</h1><br>
 				<form id="formlogin" method="post">
         			<select name="tipo" id="tipo">

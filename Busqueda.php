@@ -5,16 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Busqueda</title>
 	<link href='http://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/design.css">
+	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" type="text/css" href="css/tabla.css">
 </head>
 <body>
+	<header>
+		<img src="img/logo_mini.png" alt="tec">			
+		<?php include("includes/menu.php"); ?>		
+	</header>
 	<section class="contenedor">
-		<header>
-			<img src="img/logos.png" alt="tec">
-			<h1>Instituto Tecnologico De Iztapalapa II<br>Biblioteca</h1>
-			<?php include("includes/menu.php") ?>	
-		</header><br>
 		<?php 
 		error_reporting(E_ALL & ~E_NOTICE);
 		session_start();
@@ -132,22 +131,23 @@
 		</form>
 		<section id="libros">
 			<article>
-				<a href="consultaColeccion.php?area=001 "><p>Programacion</p></a>
+				<a href="consultaColeccion.php?area=programacion "><p>Programacion</p></a>
 			</article>	
 			<article>
-				<a href="consultaColeccion.php?area=002 "><p>Historia</p></a>
+				<a href="consultaColeccion.php?area=Historia "><p>Historia</p></a>
 			</article>	
 			<article>
-				<a href="consultaColeccion.php?area=003 "><p>Quimica</p></a>
+				<a href="consultaColeccion.php?area=Quimica "><p>Quimica</p></a>
 			</article>
 			<article>
-				<a href="consultaColeccion.php?area=004 "><p>Matematicas</p></a>
+				<a href="consultaColeccion.php?area=Matematicas "><p>Matematicas</p></a>
 			</article>
 		</section>	
-		<?php } ?>
-		<footer>
-			<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
-		</footer>
+		<?php } ?>	
 	</section>
+	<footer>
+		<p>Calle 25 de Septiembre de 1873, Col. Leyes de Reforma S/N, Delegación Iztapalapa, México D.F. C.P. 09310.</p>
+		<a href="https://www.facebook.com/Xnour" target="_blank"><img src="img/face.jpeg" alt="Facebook" class="facebook"></a>
+	</footer>
 </body>
 </html>

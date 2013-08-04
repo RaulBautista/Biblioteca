@@ -16,7 +16,7 @@
 	if ($row['control'] == "1") {
 		$res = htmlspecialchars($row["respuesta"]);		
 	}else{
-		$res2 = strip_tags($row["respuesta"],'<iframe><img><a>'); 
+		$res2 = strip_tags($row["respuesta"],'<iframe><img><object><embed><a>'); 
 		$res = nl2br($res2);
 	}
 	$respuestas[] = array(

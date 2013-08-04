@@ -73,7 +73,8 @@ table.display thead th div.DataTables_sort_wrapper span {
  * DataTables features tabla en general
  */
 .dataTables_wrapper {
-	margin-top: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	position: relative;
 	min-height: 302px;
 	_height: 302px;

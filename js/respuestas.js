@@ -50,12 +50,10 @@ $(document).on('ready', function(){
                         if (data.video != null) {
                             videosrc = data.video.file;
                             urlVideo = data.url;                   
-                            //var ratioW        = data.video.width  /350;
-                            //data.video.width  = 350;
-                            //data.video.height = data.video.height / ratioW;
+                            var ratioW        = data.video.width  /350;
+                            data.video.width  = 350;
+                            data.video.height = data.video.height / ratioW;                            
                             var video = 
-                            '<iframe width="853" height="480" src="'+data.video.file+'" frameborder="0" allowfullscreen></iframe>';
-                            /*var video = 
                             '<object width="' + data.video.width  + '" height="' + data.video.height  + '">' +
                                 '<param name="movie"' +
                                       'value="' + data.video.file  + '"></param>' +
@@ -64,7 +62,7 @@ $(document).on('ready', function(){
                                       'type="application/x-shockwave-flash"' +
                                       'allowscriptaccess="always"' +
                                       'width="' + data.video.width  + '" height="' + data.video.height  + '"></embed>' +
-                            '</object>'; */
+                            '</object>'; 
                             output.find('.video').html(video).show();
                             
                          
@@ -154,13 +152,15 @@ $(document).on('ready', function(){
                 data: {id: id, accion: 'up'},
                 dataType: "json",
                 success: function(datos){
-                    if (datos.votos == null) {
-                        //alert(datos.msge);
-                    };
-                    if(datos.statuss == 'up') {
+                    if (datos == 'error') {
+                        alert("error" + datos);
+                    }
+                    if(datos.statuss == 'up_active') {
                         $('.up').attr('src', 'img/like2_active.png');
                         $('.down').attr('src', 'img/deslike2.png');
-                    }            
+                    }else{
+                        $('.up').attr('src', 'img/like2.png');
+                    }
                     console.log(datos.votos+datos.statuss);
                     $('.valorVotos').text(datos.votos);                        
                 }
@@ -173,12 +173,14 @@ $(document).on('ready', function(){
                 data: {id: id, accion: 'down'},
                 dataType: "json",
                 success: function(datos){
-                    if (datos.votos == null) {
-                        //alert(datos.msge);                        
-                    };
-                    if(datos.statuss == 'down') {
+                    if (datos.votos == 'error') {
+                        alert('error'+ datos);
+                    }
+                    if(datos.statuss == 'down_active') {
                         $('.down').attr('src', 'img/deslike2_active.png');
                         $('.up').attr('src', 'img/like2.png');                    
+                    }else{
+                        $('.down').attr('src', 'img/deslike2.png'); 
                     }
                     console.log(datos.votos+datos.statuss);
                     $('.valorVotos').text(datos.votos);                    
@@ -194,11 +196,18 @@ $(document).on('ready', function(){
         data: {id: id},
         dataType: "json",
         success: function(data){
-        	$.each(data, function(c, v){
+            var imagenUp = '<img src="img/like2.png" class="up" />';
+            var imagenDown = '<img src="img/deslike2.png" class="down" />';
+        	$.each(data, function(c, v){                  
+                if (v.statuss == 1) {
+                    imagenUp = '<img src="img/like2_active.png" class="up" />';
+                }else if(v.statuss == 2){
+                    imagenDown = '<img src="img/deslike2_active.png" class="down" />';
+                }
                 total_respuestas = v.total;                
         		$('#pregunta_res').append(
         			'<div class="pregunta_preg"><p>'+v.pregunta+'</p></div>'+
-                    '<div class="votar_pregunta"><img src="img/like2.png" class="up" /><div class="valorVotos">'+v.votos+'</div><img src="img/deslike2.png" class="down" /></div>'+
+                    '<div class="votar_pregunta">'+imagenUp+'<div class="valorVotos">'+v.votos+'</div>'+imagenDown+'</div>'+
                     '<div class="mensaje_preg">'+v.mensaje+'</div>'+
         			'<div class="footerPreg"><div class="autor_preg">'+v.autor+'</div>'+
         			'<div class="fecha_preg">'+moment(v.fecha).calendar()+'</div></div>'
@@ -241,7 +250,7 @@ $(document).on('ready', function(){
         			eImagen+'</article>'
         		);
         	});            
-            aplicarColor();       	
+            aplicarColor();            
         },
         error: function (xhr, ajaxOptions, thrownError) {
         	console.log(xhr.status);
@@ -409,5 +418,5 @@ $(document).on('ready', function(){
         $('.subir').click(function(){
             $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
-    });    
+    });
 });//End jquery onload

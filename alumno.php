@@ -25,14 +25,13 @@
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">		
-		<?php include "includes/menu.php"; ?>	
+		<?php session_start(); include "includes/menualumno.php"; ?>
 	</header>
 	<section class="contenedor">
-		<?php
-		session_start();
+		<?php		
 		if($_SESSION['logged'] == '1') { 
 			$usuario = $_SESSION['user'];
-			include "includes/menualumno.php";
+			//include "includes/menualumno.php";
 			require_once "includes/conexion.php";
 			echo "<div class='bienvenido'><img src='img/avatar.png' alt='avatar' class='avatar'><p>Bienvenido(a) <strong>$usuario</strong></p><hr></div><br>";
 			//echo gettype($link);

@@ -4,7 +4,7 @@ $(document).on('ready', function(){
 	var boton = $('#open_form');
     var mensajes_foro = $('.msg_resp_foro');
 	var inicio = 0;
-    var limite = 3;
+    var limite = 5;
     var ocupado = false;
     var ultimo = false;
 

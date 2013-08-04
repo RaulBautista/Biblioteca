@@ -54,14 +54,10 @@
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">		
-		<?php include("includes/menu.php") ?>		
+		<?php session_start(); error_reporting(E_ALL & ~E_NOTICE); if($_SESSION['logged'] == '1') {  include("includes/menualumno.php") ?>
 	</header>
 	<section class="contenedor">
-		<?php
-		error_reporting(E_ALL & ~E_NOTICE);
-		session_start();
-		if($_SESSION['logged'] == '1') { 
-		include "includes/menualumno.php";
+		<?php		
 		echo "<p id='bienvenido'>Aqui puedes compartir archivos en formato PDF.<br></p><hr><br>"
 		?>
 		<!--Drop Zone -->

@@ -13,7 +13,8 @@ a:hover{
 	color: cornflowerblue;
 }
 body{
-	background:#e3eef0 url(../img/bg_body.png);
+	/*background:#e3eef0 url(../img/bg_body.png);*/	
+	background: url(../img/books1400px.jpg) no-repeat fixed center top #BDDDEB; /*#BADEEC*/
 }
 header{
 	position:fixed !important;
@@ -28,27 +29,28 @@ header{
 header img{
 	width: 51px;
 	margin-left: 20px;
+	margin-top: 4px;
 	position: relative;
 }
 li{
 	list-style: none;
 }
-nav ul{
-	max-width: 400px;
-	margin-top: -32px;
+.menu ul{
+	max-width: 500px;
+	margin-top: -34px;
 	position: absolute;
 	right: 0;
 }
-nav ul li{	
+.menu ul li{	
 	display: inline-block;
 	list-style: none;
 	padding: 6px 10px;
 	border-left: solid 1px gray;
 }
-nav ul li a{
-	color: cornflowerblue;
+.menu ul li a{
+	color: cornflowerblue;	
 }
-nav ul li a:hover{
+.menu ul li a:hover{
 	border-bottom: solid 1px darkcyan;
 }
 p{
@@ -56,7 +58,7 @@ p{
 }
 footer{
 	/*background: url(../img/head_bg.png);*/
-	color: cornflowerblue;
+	color: white;
 	display: block;
 	min-height: 50px;
 	padding-top: 10px;
@@ -179,13 +181,17 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	padding: 10px;
 }
 .cont{	/*divs de la pagina coleccion.php*/
+	margin-top: 80px;
 	height: 280px;
 }
 .contenedor{ /*Contiene todo mi contenido dentro del body*/	
+	background-color: white;
+	border: solid 1px lightgray;
+	border-radius: 10px;
 	display: block;
 	max-width: 1024px;
 	min-height: 515px;
-	margin: 70px auto 10px auto;
+	margin: 60px auto 10px auto;
 	padding: 10px;
 	position: relative;
 }
@@ -198,6 +204,9 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	min-height: 515px;
 	padding: 10px;
 	position: relative;
+}
+.contenedorRespuestas{
+	margin: 50px 0;
 }
 .clickme{
 	cursor: pointer;
@@ -214,7 +223,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	color: gray;
 	position: absolute;
 	right: 10px;
-	bottom: 6px;
+	bottom: 1px;
 }
 .fecha_foro span{
 	font-size: 14px;
@@ -265,6 +274,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	font-size: 18px;
 }
 .msg_respuesta{ /*Mensajes de respuesta en respuestas.php*/	
+	color: #444444;
 	border-bottom: solid 1px lightgray;
 	margin-bottom: 25px;
 	padding: 5px 0;
@@ -294,7 +304,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	color: darkred;
 }
 .num_respuestas{
-	background-color: royalblue;
+	background-color: cornflowerblue;
 	border: solid 1px royalblue;
 	border-radius: 5px;
 	color: white;
@@ -326,7 +336,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	border-radius: 7px;
 	display: block;
 	max-width: 700px;
-	margin: 7px auto;
+	margin: 15px auto;
 	padding: 5px;
 }
 .respuesta{ /*Textarea responder pregunta*/
@@ -338,12 +348,12 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	-moz-transition: height 0.2s;
 	transition: height 0.2s;
 }
-.subir{
+.subir{	
 	display: none;
 	position: fixed;
-	right: 20px;
-	top: 80px;
-	width: 60px
+	right: 30px;
+	top: 83px;
+	width: 40px
 }
 .subir:hover{
 	cursor: pointer;
@@ -351,20 +361,20 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 .tags_foro{
 	/*background: none repeat scroll 0 0 #DEE9F4;*/
 	border-top: solid 1px lightgray;
-	/*color: #365C7F;*/
-	padding: 4px;
+	/*color: #365C7F;*/	
+	padding: 3px 0 0 0;
 	min-height: 15px;
 }
 .tags_foro a{
 	background-color: lightgray;
 	border-radius: 2px;
 	color: white;
-	font-size: 14px;
-	margin: 1px;
+	font-size: 14px;	
 	padding: 1px 5px;
 	
 }
 .total_resp{ /*Total de respuestas en respuestas.php*/
+	color: white;
 	font-weight:bold;
 	max-width: 700px;
 	margin: 20px auto 10px auto;
@@ -380,6 +390,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	cursor: pointer;
 }
 .votos{	
+	color: #444444;
 	display: inline;
 	position: absolute;
 	left: 30px;
@@ -393,7 +404,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	width: 60px;
 }
 .votos_preg{
-	background-color: royalblue;
+	background-color: cornflowerblue;
 	border: solid 1px royalblue;
 	border-radius: 5px;
 	color: white;
@@ -401,7 +412,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	font-size: 12px;
 	text-align: center;
 	padding: 4px;
-	margin: 0 30px 10px 10px;
+	margin: 0 10px 10px 10px;
 	width: 40px;
 }
 #contador_resp{ /*Div donde aparece el contador de letras*/
@@ -429,7 +440,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	border-radius: 7px;
 	box-shadow: 10px 10px 5px #888;
 	display: block;
-	margin: 30px auto 25px auto;
+	margin: 10px auto 25px auto;
 	padding: 10px;
 	overflow: auto; /*No es relevante*/
 	position: relative;
