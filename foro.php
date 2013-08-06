@@ -33,14 +33,14 @@
 <body>	
 	<header>
 		<img src="img/logo_mini.png" alt="tec">	
-		<?php session_start(); include("includes/menualumno.php");?>
+		<?php session_start(); include("includes/menu.php");?>
 	</header>	
 	<section class="contenedorForo">		
 		<?php
-		error_reporting(E_ALL & ~E_NOTICE); 		
+		error_reporting(E_ALL & ~E_NOTICE); 				
 		if($_SESSION['logged'] == '1') {			
 			require_once ("includes/conexion.php");			
-			echo "<div class='bienvenido'>Bienvenido al Foro de preguntas.</div><hr><br>"
+			echo "<div class='blanco'>Bienvenido al Foro de preguntas.</div><hr><br>"
 			?>			
 			<article id="alignDerecha">
 			<div id="fade" class="fadebox"></div>

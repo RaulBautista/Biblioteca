@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/toastmessage.css">
     <script src="js/new/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="js/new/jquery.dataTables.js" type="text/javascript"></script>
-    
+	<script src="js/new/jquery.toastmessage.js"></script>    
     <script type="text/javascript">
     $(document).ready(function(){
         $('#datatables').dataTable({

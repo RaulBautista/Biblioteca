@@ -54,7 +54,7 @@
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">		
-		<?php session_start(); error_reporting(E_ALL & ~E_NOTICE); if($_SESSION['logged'] == '1') {  include("includes/menualumno.php") ?>
+		<?php session_start(); error_reporting(E_ALL & ~E_NOTICE);  include("includes/menualumno.php"); if($_SESSION['logged'] == '1') { ?>
 	</header>
 	<section class="contenedor">
 		<?php		

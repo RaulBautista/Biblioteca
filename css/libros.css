@@ -1,0 +1,112 @@
+
+/*Termina estrellas*/
+.cargarLibros{	
+	margin: 60px auto;	
+	max-width: 1080px;
+	min-width: 0;
+	width: auto;
+}
+.coments{	
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+}
+.cerrarBusqueda{
+	position: absolute;	
+	right: 10px;
+	top: 5px;
+}
+.cerrarBusqueda:hover{
+	cursor: pointer;
+}
+.datosLibro{	
+	display: inline-block;
+	margin: 5px 0 0 80px;
+	width: 220px;
+}
+.imagenLibro{
+	position: absolute;
+	top: 20px;
+}
+.libro{
+	background-color: #fff;
+	border: solid 1px lightgray;
+	border-radius: 5px;
+	display: inline-block;
+	height: 100px;	
+	margin: 10px 17px;
+	padding: 7px 10px;
+	position: relative;
+	width: 300px;
+}
+.libro:hover{
+	background-color: #f5f5f5;
+}
+.numLibro{
+	color: #A9A9A9;
+	font-size: 12px;
+	position: absolute;
+	right: 10px;
+	top: 8px;
+}
+.letras{
+	color: white;
+	text-align: center;
+}
+.preloader{	
+	background-color: #fff;
+	border-radius: 50%;
+	display: block;
+	margin: 10px auto;
+	padding: 1px 5px;
+	width: 60px;
+}
+#busquedaLibros{
+	display: block;
+	margin: 30px auto 30px auto;
+	width: 330px;
+}
+#busquedaLibros select{
+	background-color:#FFF;
+	color: cornflowerblue;
+	display: inline-block;
+	margin-right: 17px;
+	width: 100px;	
+}
+#busquedaLibros option{
+	background-color: #FFF;
+}
+#busquedaLibros input{
+	background: url(../img/search.png) no-repeat left;
+	background-position: 4px 5px;
+	background-color: #FFF;	
+	border-radius: 15px;
+	display: inline-block;
+	text-indent: 25px;
+	height: 22px;
+}
+#resultados{	
+	border: solid 1px #f3f3f3;
+	border-radius: 10px;
+	display: none;
+	margin: 10px auto 30px auto;
+	min-height: 50px;
+	max-width: 1080px;
+	position: relative;
+	padding: 10px 0
+}
+#resultados h1{
+	text-align: center;
+}
+#resultados:before{
+	border-color: transparent transparent;
+    border-style: solid;
+    border-width: 20px;
+    border-bottom-color: #fff;
+    content: "";
+    height: 0;
+    position: absolute;
+    right: 48%;
+    top: -41px;
+    width: 0;
+}

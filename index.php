@@ -29,7 +29,7 @@
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">			
-		<?php include("includes/menu.php"); ?>	
+		<?php session_start(); include("includes/menu.php"); ?>	
 	</header>
 	<section class="contenedor">
 		<section>

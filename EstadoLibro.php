@@ -25,11 +25,10 @@
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">			
-		<?php include("includes/menu.php") ?>
+		<?php  session_start(); include("includes/menu.php") ?>
 	</header>
 	<section class="contenedor">
-		<?php 
-		session_start();
+		<?php 		
 		if($_SESSION['logged']=='2'){
 		date_default_timezone_set("America/Mexico_City");
 		require_once ("includes/conexion.php");

@@ -7,36 +7,23 @@
 	<link href='http://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" type="text/css" href="css/tabla.css">
+	<script src="js/jquery-2.0.3.min.js"></script>
 </head>
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">			
-		<?php include("includes/menu.php"); ?>		
+		<?php session_start(); include("includes/menu.php"); ?>		
 	</header>
 	<section class="contenedor">
 		<?php 
-		error_reporting(E_ALL & ~E_NOTICE);
-		session_start();
+		error_reporting(E_ALL & ~E_NOTICE);		
 		include("includes/conexion.php");
 		if(isset($_POST['enviar']) == 'enviar') {
-		$tipo = $_POST['tipo'];
-			if ($tipo=='id_area') {
-				$buscara = $_POST['busqueda'];
-				$consulta = mysql_query('SELECT * FROM Area
-				WHERE nombre= "'.mysql_real_escape_string($buscara).'" ', $link)
-				or die(mysql_error());
-				$row = mysql_fetch_array($consulta);
-				$buscar = $row['id'];
-				$result = @mysql_query('SELECT * FROM Libros where id_area = '.mysql_real_escape_string($buscar).' ', $link)
-				or die (mysql_error());
-			}else{
-				$buscar = $_POST['busqueda'];
-				$result = @mysql_query('SELECT * FROM Libros WHERE '.mysql_real_escape_string($tipo).' like "'.mysql_real_escape_string('%'.$buscar.'%').'" ',$link) or die("Error: ".mysql_error());
-			}
+		$tipo = $_POST['tipo'];			
+		$buscar = $_POST['busqueda'];
+		$result = @mysql_query('SELECT * FROM Libros WHERE '.mysql_real_escape_string($tipo).' like "'.mysql_real_escape_string('%'.$buscar.'%').'" ',$link);
 		if($_SESSION['logged']=='1') { 
-			if(mysql_num_rows($result) > 0){
-
-
+		if(mysql_num_rows($result) > 0){
 		?>
 		<TABLE id="tabla" border=1 CELLSPACING=1 CELLPADDING=1>
 	<thead>
@@ -49,7 +36,7 @@
 			<TH id="oculta">Año de Edicion</TH>
 			<TH>No. de Paginas</TH>
 			<TH id="oculta">Ejemplar No.</TH>
-			<TH id="oculta">Id area</TH>
+			<TH id="oculta">Area</TH>
 			<TH>Estado</TH>
 		</TR>
 	</thead>
@@ -67,7 +54,7 @@
 					<td id='oculta'>%s</td>
 					<td>%s</td>						
 				</tr>", 
-				$row["autor"], $row["titulo"], $row["edicion"], $row["lugar_edicion"], $row["editorial"], $row["ano_edicion"], $row["num_paginas"], $row["ejemplar_num"], $row["id_area"], $row["estado"]);
+				$row["autor"], $row["titulo"], $row["edicion"], $row["lugar_edicion"], $row["editorial"], $row["ano_edicion"], $row["num_paginas"], $row["ejemplar_num"], $row["area"], $row["estado"]);
 	}
 	}else{
 		echo "<p align='center'>No se hallaron registros que coincidan con el criterio de búsqueda </p>
@@ -102,7 +89,7 @@
 					<td>%s</td>
 					<td>%s</td>						
 				</tr>", 
-				$row["autor"], $row["titulo"], $row["edicion"], $row["editorial"], $row["num_paginas"], $row["id_area"]);
+				$row["autor"], $row["titulo"], $row["edicion"], $row["editorial"], $row["num_paginas"], $row["area"]);
 	}
 	}else{
 		echo "<p align='center'>No se hallaron registros que coincidan con el criterio de búsqueda </p>
@@ -123,7 +110,7 @@
 			<select name="tipo">
 			   <option value="autor">Autor</option>
 			   <option value="titulo">titulo</option>
-			   <option value="id_area">Area</option>
+			   <option value="area">Area</option>
 			   <option value="editorial">Editorial</option>
  			</select>
 			<input type="search" name="busqueda" id="busqueda" results="5" required/>

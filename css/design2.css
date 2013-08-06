@@ -18,7 +18,7 @@ body{
 }
 header{
 	position:fixed !important;
-	background: url(../img/head_bg.png);
+	background: url(../img/head_bg.png);	
 	/*
 	background-color: #F2F2F2;
     background-image: -moz-linear-gradient(center top , #FEFEFE, #F2F2F2); */
@@ -58,6 +58,7 @@ p{
 }
 footer{
 	/*background: url(../img/head_bg.png);*/
+	background: rgba(0, 0, 0, 0.6);
 	color: white;
 	display: block;
 	min-height: 50px;
@@ -176,9 +177,13 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	background-color: white;
 	color: darkred;
 }
-.bienvenido p{
+.bienvenido p{	
 	display: inline-block;	
 	padding: 10px;
+}
+.blanco{
+	color: white;
+	text-align: center;
 }
 .cont{	/*divs de la pagina coleccion.php*/
 	margin-top: 80px;
@@ -186,8 +191,10 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 }
 .contenedor{ /*Contiene todo mi contenido dentro del body*/	
 	background-color: white;
+	background: rgba(0, 0, 0, 0.5);
 	border: solid 1px lightgray;
 	border-radius: 10px;
+	color: #FFF;
 	display: block;
 	max-width: 1024px;
 	min-height: 515px;
@@ -196,7 +203,7 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 	position: relative;
 }
 .contenedorForo{
-	background-color: white;	
+	background: rgba(0, 0, 0, 0.5);
 	border-radius: 15px;
 	display: block;
 	margin: 70px auto 10px auto;

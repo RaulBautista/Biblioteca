@@ -5,11 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Acerca de</title>
 	<link rel="stylesheet" href="css/design2.css">
+	<script src="js/jquery-2.0.3.min.js"></script>
 </head>
 <body>
 	<header>
 		<img src="img/logo_mini.png" alt="tec">
-		<?php include("includes/menu.php") ?>
+		<?php session_start(); include("includes/menu.php") ?>
 	</header>
 	<section class="contenedor">
 		<article>

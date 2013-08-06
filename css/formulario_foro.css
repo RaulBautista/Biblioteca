@@ -26,6 +26,7 @@
 	font-size: 30px;
 }
 #alignDerecha{	/*Article de mi contenido a la derecha*/	
+	background-color: #fff;
 	border: solid 1px lightgray;
 	border-radius: 10px;
 	float: right;
@@ -154,8 +155,10 @@
 	padding: 5px;
 }
 .resBusqueda{ /*Respuestas de la busqueda*/
-	padding: 5px;
-	border-bottom: solid 1px lightgray;
+	background-color: #fff;
+	border-radius: 0 15px 15px 0;
+	padding: 7px;
+	border-left: solid 15px lightgray;
 	margin-top: 10px;
 	margin-left: 30px;
 	max-width: 500px;
