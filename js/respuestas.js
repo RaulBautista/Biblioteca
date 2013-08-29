@@ -198,7 +198,7 @@ $(document).on('ready', function(){
         success: function(data){
             var imagenUp = '<img src="img/like2.png" class="up" />';
             var imagenDown = '<img src="img/deslike2.png" class="down" />';
-        	$.each(data, function(c, v){                  
+        	$.each(data, function(c, v){           
                 if (v.statuss == 1) {
                     imagenUp = '<img src="img/like2_active.png" class="up" />';
                 }else if(v.statuss == 2){

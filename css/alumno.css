@@ -1,0 +1,67 @@
+.contenedorAlumno{	
+	max-width: 1024px;
+	min-height: 510px;
+	margin: 100px auto 50px auto;
+}
+.elegirImagen{	
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 5px;
+}
+.elegirImagen a{
+	display: none;
+}
+.frame{
+	background-color: #fff;
+	border: solid 1px gray;
+	border-radius: 7px;
+	margin-top: 30px;
+	padding: 10px;
+	position: relative;
+}
+.fotosFinales{	
+	margin: 0 auto;
+	max-width: 630px;
+	padding: 5px;
+}
+.imagenAlumno{
+	border: solid 1px #fff;
+	border-radius: 15px;
+	display: block;
+	margin: 0 auto;	
+}
+.lista_preguntas li span{
+	position: absolute;
+	right: 10px;
+}
+.lista_preguntas li{
+	padding: 2px;
+	border-bottom: solid 1px lightgray;
+}
+.lista_preguntas li:before{
+	content: ">";
+}
+.mensajes_upload{
+	color: white;
+	text-align: center;
+	margin-bottom: 30px;
+}
+#formFoto input[type=file]{
+	background-color: white;
+	border-radius: 10px;
+	margin: 5px auto;
+	padding: 3px;
+	width: 300px;
+}
+#formFoto input[type=submit]{
+	background-color: white;
+	border-radius: 10px;
+	color: cornflowerblue;
+	margin: 20px auto;
+	padding: 2px;
+	width: 200px;
+}
+#previewImage{	
+	margin: 0 auto;
+	max-width: 630px;
+}

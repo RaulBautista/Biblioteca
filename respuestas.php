@@ -35,8 +35,8 @@
 	<script src="js/jquery.autosize-min.js"></script>
 	<script src="js/moment.min.js"></script>
 	<script src="js/es.js"></script>
-	<script src="js/respuestas.js"></script>
 	<script src="js/jquery.liveurl.js"></script>	
+	<script src="js/respuestas.js"></script>
 
 	<script>
 	function votar(idp){        
@@ -160,8 +160,7 @@
 				//
     		</script>
     		<div class="total_resp"><hr size="6"><br></div>
-    		<article class="add_resp"></article>    		
-			<a href="foro.php" class="boton" id="botonRespuestas">Regresar al foro</a>
+    		<article class="add_resp"></article> 
 			<div class="subir"><img src="img/up.png" alt="subir"></div>
 		<?php }else{
 			header("Location: index.php");

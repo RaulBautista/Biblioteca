@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>alumnos</title>
+	<title>Datos Libro</title>
 	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" href="css/datosLibro.css">
     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script> 
@@ -16,15 +16,18 @@
 	</header>
 		<?php		
 		if($_SESSION['logged'] == '1') {  $id = $_GET['id']; ?>
-			<script>var id = <?php echo $id?>;</script>
-			<section class="contenedorLibro">
+			<script>var id = <?php echo $id?>;</script>			
+			<article class="contenedorLibro">
 				<div class="cargarDatos"></div>
-				<form action="" id="comentarLibro">
-					<textarea name="comentario" id="comentario" placeholder="Deja un comentario sobre este libro"></textarea>
+				<form id="comentarLibro">
+					<textarea name="comentario" id="comentario" placeholder="Deja un comentario sobre este libro..." required></textarea>
+					<input type="hidden" name="id" value="<?php echo $id ?>">
 					<input type="submit" class="boton2" value="comentar">
-				</form>
-				<div class="cargarComentarios"></div>
-			</section>
+				</form>				
+			</article>
+			<article id="comentariosLibro">
+				<div class="totalComentarios"></div>
+			</article>	
 		<?php }else{
 			header("location: index.php");
 		} ?>

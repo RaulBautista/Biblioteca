@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="es">
+<html lang="es-MX">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Busqueda</title>
-	<link href='http://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet' type='text/css'>
+	<title>Busqueda</title>	
 	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" type="text/css" href="css/tabla.css">
 	<script src="js/jquery-2.0.3.min.js"></script>

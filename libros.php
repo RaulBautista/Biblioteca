@@ -27,7 +27,7 @@
 					   <option value="area">Area</option>
 					   <option value="editorial">Editorial</option>
 		 			</select>
-					<input type="text" name="busqueda" id="busqueda" placeholder="Buscas algun libro?">
+					<input type="text" name="busqueda" id="busqueda" placeholder="¿Buscas algun libro?">
 				</form>
 				<div id="resultados"></div>
 				<hr size="5">

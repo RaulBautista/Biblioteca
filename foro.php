@@ -18,7 +18,7 @@
 			$('.txtarea').autosize({append: "\n"});
 			$(".chzn-select").chosen({width: "300px", no_results_text: "Oops, etiqueta no disponible", max_selected_options: 3});
 			$('#msg').keydown(function(e){
-			var maxChars = 349;
+			var maxChars = 699;
 			if($(this).val().length <= maxChars)
 			{
 				var charsLeft = ( maxChars - $(this).val().length );
@@ -52,7 +52,7 @@
 				<div id="mensajes_form"><h2>Haz tu pregunta aquí</h2></div><br>
 				<form id="form_preguntar">
 					<label>Titulo para tu pregunta</label>
-					<input type="text" id="pregunta" name="pregunta" class="txt" placeholder="Maximo 100 caracteres" maxlength="100px"><br>
+					<input type="text" id="pregunta" name="pregunta" class="txt" placeholder="Maximo 150 caracteres" maxlength="150"><br>
 					<label>Describe tu pregunta</label>
 					<textarea id="msg" name="msg" class="txtarea" ></textarea>				
 					<div id="contador_foro"></div>					

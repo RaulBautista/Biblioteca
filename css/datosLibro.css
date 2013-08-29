@@ -16,10 +16,39 @@
 	color: #888;
 }
 /*Termina estrellas*/
-.contenedorLibro{	
-	margin: 80px auto 10px auto;
-	max-width: 1080px;
-	min-height: 600px;
+/*Are de comentarios*/
+.autorComentario{	
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 12px;
+}
+.areaComentario{	
+	background-color: #fff;
+	border-top: solid 1px #f2f2f3;
+	border-bottom: solid 1px #f2f2f3;
+	position: relative;
+}
+.alignDerecha{ /*Cambiar tama;o comentarios desde aqui*/
+	display: inline-block;
+	min-height: 80px;
+	width: 400px;
+}
+.abajoImagen{	
+	margin-left: 9px;
+	text-align: center;
+	width: 120px;
+}
+.verde{
+	color: darkgreen;
+}
+.rojo{
+	color: darkred;
+}
+.contenedorLibro{
+	display: inline-block;	
+	float: left;
+	margin: 100px 10px 0 10%;	
+	width: 450px;
 }
 .datosLibro{
 	background-color: #fff;
@@ -27,19 +56,54 @@
 	margin: 0 auto;
 	padding: 5px;
 	position: relative;
-	max-width: 500px;
+	max-width: 410px;
 	min-height: 240px;
 }
 .datosLibro img{
 	padding: 5px;
+	margin-left: 15px;
 	max-width: 100px;
 	display: inline-block;
 }
-.derecha{	
+.derecha{
 	padding: 15px;
 	position: absolute;	
-	right: 0;
-	top:0;
+	right: 10px;
+	top:10px;
+}
+.comentario{
+	font-size: 14px;
+	margin-top: 2px;
+	margin-bottom: 5px;
+	text-align: justify;
+}
+.fechaComentario{
+	color: #999999;
+	font-size: 14px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.fotoComentario{
+	border: solid 2px #fff;
+	-webkit-box-shadow: 0px 1px 12px rgba(50, 50, 50, 0.68);
+	-moz-box-shadow:    0px 1px 12px rgba(50, 50, 50, 0.68);
+	box-shadow:         0px 1px 12px rgba(50, 50, 50, 0.68);
+	border-radius: 50%;
+	float: left;
+	height: 50px;
+	margin: 10px 10px 0 10px;
+	width: 50px;
+}
+.totalComentarios{
+	background: rgba(25, 25, 25, 0.8);
+	border:solid 2px #fff;
+	border-radius: 10px 10px 0 0;
+	color: white;
+	display: none;
+	padding: 5px 12px;
+	text-align: right;
+	text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F, 0 0 0.2em #87F;
 }
 .numComenarios{
 	background-color: #fff;
@@ -47,14 +111,25 @@
 	border-radius: 10px;
 	margin: 10px auto;
 	padding: 10px;
-	width: 500px;
+	width: 410px;
+}
+.nuevo{
+	background-color: #F2F2F3;	
 }
 #comentarLibro{
 	margin: 0 auto;
-	width: 500px;
+	width: 450px;
 }
 #comentarLibro textarea{
+	display: block;
+	margin: 0 auto;
 	height: 80px;
 	resize: none;
+	width: 415px;
+}
+#comentariosLibro{	
+	display: inline-block;
+	margin: 100px 5px;
+	min-height: 465px;
 	width: 500px;
 }

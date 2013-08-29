@@ -6,12 +6,6 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="css/design2.css">
 	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
-	<style>
-	#load{
-		margin-top: -10px;
-		width: 20px;
-	}
-	</style>
 	<!--[if lt IE 9]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -37,7 +31,7 @@
 		$("#formlogin").submit(function (event) {
 			event.preventDefault();
 			if(validaForm()){
-				$('#mensaje').html('<img src="img/load-indicator.gif" alt="..." id="load"/>').hide().fadeIn(500);
+				$('#mensaje').html('<img src="img/preloader.gif" alt="..." id="load"/>').hide().fadeIn(500);
 				$.post("includes/login.php",$('#formlogin').serialize(),function(res){                
             		if(res == "error"){
            				$('#mensaje').html('No estas registrado o tus datos son incorrectos. Verificalos por favor').hide().fadeIn(500);
@@ -79,8 +73,7 @@
 				</div>
 			</p> <br>
 			<p>
-				<div class="conts"><br>
-				<h1>Iniciar sesión</h1><br>
+				<div class="conts"><br>				
 				<form id="formlogin" method="post">
         			<select name="tipo" id="tipo">
                		 	<option value="1">Alumno</option>

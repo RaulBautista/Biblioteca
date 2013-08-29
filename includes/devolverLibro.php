@@ -20,12 +20,10 @@
 		//echo "<script>alert('Justo a tiempo')</script>";
 		$op1=@mysql_query("UPDATE Libros SET 
 		estado = 'Disponible'
-		WHERE id = '$id_libro'", $link)
-		or die(mysql_error());
+		WHERE id = '$id_libro'", $link);
 
 			if($op1){
-				mysql_query("DELETE FROM Prestamo WHERE id_prestamo = '$id_prestamo'", $link)
-				or die(mysql_error());
+				@mysql_query("DELETE FROM Prestamo WHERE id_prestamo = '$id_prestamo'", $link);
 				
 				echo "<script>
 				function exito(){
@@ -51,8 +49,7 @@
 		or die(mysql_error());
 
 			if($op1){
-				mysql_query("DELETE FROM Prestamo WHERE id_prestamo = '$id_prestamo'", $link)
-				or die(mysql_error());
+				mysql_query("DELETE FROM Prestamo WHERE id_prestamo = '$id_prestamo'", $link);
 				$fecha = date("j M Y - g:i:s A ", strtotime($devolver));
 				echo "<script>
 				function exito(){
